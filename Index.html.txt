@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Resto Lights MTL — Instant Headlight Restoration Quote</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Rajdhani:wght@600;700&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            display: ['Rajdhani', 'sans-serif'],
+          },
+          colors: {
+            void: '#05070a',
+            surface: '#0b0f17',
+            surface2: '#111827',
+            xenon: '#38bdf8',
+            xenonBright: '#7dd3fc',
+            xenonDeep: '#0284c7',
+            chrome: '#e2e8f0',
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body {
+      background-color: #05070a;
+      color: #f1f5f9;
+      background-image:
+        radial-gradient(circle at 50% -10%, rgba(56, 189, 248, 0.14), transparent 55%),
+        radial-gradient(circle at 85% 25%, rgba(14, 165, 233, 0.08), transparent 45%);
+    }
+    .glass-card {
+      background: linear-gradient(180deg, rgba(17, 24, 39, 0.92) 0%, rgba(10, 15, 24, 0.96) 100%);
+      border: 1px solid rgba(148, 163, 184, 0.16);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.65);
+    }
+    .xenon-glow {
+      box-shadow: 0 0 24px rgba(56, 189, 248, 0.35);
+    }
+    .logo-text-chrome {
+      background: linear-gradient(90deg, #ffffff 0%, #cbd5e1 42%, #7dd3fc 72%, #0284c7 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    select, input[type="text"], input[type="tel"], input[type="email"] {
+      color-scheme: dark;
+    }
+  </style>
+</head>
+<body class="min-h-screen antialiased selection:bg-sky-500/30 selection:text-sky-200">
+
+  <!-- Top Bar -->
+  <header class="border-b border-slate-800/80 bg-black/75 backdrop-blur-md sticky top-0 z-40">
+    <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between gap-3">
+      <!-- Custom Brand Logo Matching Uploaded Design -->
+      <a href="#" class="flex items-center gap-3 group">
+        <svg class="h-12 w-auto shrink-0" viewBox="0 0 340 120" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Resto Lights MTL Logo">
+          <defs>
+            <linearGradient id="carStrokeGrad" x1="20" y1="20" x2="315" y2="85" gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stop-color="#64748b"/>
+              <stop offset="50%" stop-color="#f8fafc"/>
+              <stop offset="100%" stop-color="#38bdf8"/>
+            </linearGradient>
+            <linearGradient id="titleGrad" x1="20" y1="60" x2="320" y2="95" gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stop-color="#94a3b8"/>
+              <stop offset="40%" stop-color="#ffffff"/>
+              <stop offset="72%" stop-color="#7dd3fc"/>
+              <stop offset="100%" stop-color="#0284c7"/>
+            </linearGradient>
+            <radialGradient id="xenonBeam" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="#ffffff" stop-opacity="1"/>
+              <stop offset="35%" stop-color="#7dd3fc" stop-opacity="0.9"/>
+              <stop offset="75%" stop-color="#0284c7" stop-opacity="0.35"/>
+              <stop offset="100%" stop-color="#0284c7" stop-opacity="0"/>
+            </radialGradient>
+          </defs>
+
+          <!-- Car Silhouette -->
+          <path d="M36 62 C52 54, 78 46, 105 34 C124 25, 145 19, 172 19 C202 19, 224 27, 242 42 C264 44, 288 47, 306 54 C312 57, 314 63, 311 68" stroke="url(#carStrokeGrad)" stroke-width="2.6" stroke-linecap="round"/>
+          <path d="M114 34 L166 23 L162 42 L106 43 Z" fill="#0f172a" stroke="#cbd5e1" stroke-width="1.6"/>
+          <path d="M172 23 C196 23, 214 29, 229 42 L170 42 Z" fill="#0f172a" stroke="#cbd5e1" stroke-width="1.6"/>
+
+          <!-- Left Hazy Headlight -->
+          <path d="M138 46 L215 46 L204 65 C182 67, 155 64, 138 46 Z" fill="#94a3b8" fill-opacity="0.35" stroke="#94a3b8" stroke-width="1.4"/>
+          <path d="M148 51 L195 51 L188 60 L154 60 Z" fill="#cbd5e1" fill-opacity="0.22"/>
+
+          <!-- Split Divider Line -->
+          <line x1="215" y1="36" x2="215" y2="70" stroke="#7dd3fc" stroke-width="2"/>
+
+          <!-- Right Restored Xenon Projector Headlight -->
+          <path d="M215 46 L296 47 C302 52, 301 61, 292 65 L215 66 Z" fill="#071324" stroke="#7dd3fc" stroke-width="1.8"/>
+          <circle cx="256" cy="56" r="10" fill="#0c4a6e" stroke="#bae6fd" stroke-width="1.5"/>
+          <circle cx="256" cy="56" r="5" fill="#ffffff"/>
+          <circle cx="256" cy="56" r="22" fill="url(#xenonBeam)"/>
+          <!-- Starburst flare -->
+          <path d="M256 32 L258 54 L280 56 L258 58 L256 80 L254 58 L232 56 L254 54 Z" fill="#e0f2fe" opacity="0.85"/>
+
+          <!-- Main Brand Title -->
+          <text x="170" y="93" text-anchor="middle" font-family="Rajdhani, sans-serif" font-weight="700" font-style="italic" font-size="29" letter-spacing="1.5" fill="url(#titleGrad)">RESTO LIGHTS</text>
+
+          <!-- MTL Divider & Subtext -->
+          <line x1="24" y1="104" x2="136" y2="104" stroke="#64748b" stroke-width="1.2"/>
+          <text x="170" y="108" text-anchor="middle" font-family="Rajdhani, sans-serif" font-weight="700" font-size="13" letter-spacing="4" fill="#38bdf8">MTL</text>
+          <line x1="204" y1="104" x2="316" y2="104" stroke="#64748b" stroke-width="1.2"/>
+
+          <text x="170" y="118" text-anchor="middle" font-family="Inter, sans-serif" font-weight="600" font-size="6.8" letter-spacing="3.6" fill="#cbd5e1">HEADLIGHTS RESTORATION</text>
+        </svg>
+      </a>
+
+      <div class="flex items-center gap-2 sm:gap-3">
+        <a href="tel:5147751126" class="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-700 hover:border-sky-400/60 text-xs font-semibold text-sky-300 transition">
+          <span>📞</span> (514) 775-1126
+        </a>
+
+        <!-- EN / FR Toggle -->
+        <div class="inline-flex rounded-lg bg-slate-900 p-1 border border-slate-800">
+          <button id="btn-en" onclick="setLang('en')" class="px-2.5 py-1 rounded-md text-xs font-bold bg-sky-500 text-slate-950 transition">EN</button>
+          <button id="btn-fr" onclick="setLang('fr')" class="px-2.5 py-1 rounded-md text-xs font-bold text-slate-300 hover:text-white transition">FR</button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="max-w-6xl mx-auto px-4 pt-8 pb-6 text-center">
+    <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-sky-500/10 border border-sky-400/30 text-sky-300 text-xs font-semibold tracking-wide mb-4">
+      <span class="w-2 h-2 rounded-full bg-sky-400 animate-pulse"></span>
+      <span id="hero-badge">100% MOBILE SERVICE • HOME DRIVEWAYS, WORKPLACES & PARKING LOTS</span>
+    </div>
+
+    <h1 class="font-display text-4xl sm:text-6xl font-bold tracking-tight uppercase leading-none mb-3">
+      <span id="hero-title-1" class="text-white">Crystal Clear Beams.</span>
+      <span id="hero-title-2" class="logo-text-chrome block sm:inline"> Instant Mobile Quote.</span>
+    </h1>
+
+    <p id="hero-subtitle" class="max-w-2xl mx-auto text-slate-300 text-sm sm:text-base leading-relaxed">
+      We come directly to your home, office, or any convenient parking lot across Greater Montreal. Enter your vehicle details and pick your headlight condition with visual examples to get an instant price.
+    </p>
+  </section>
+
+  <!-- Main Estimator Grid -->
+  <main class="max-w-6xl mx-auto px-4 pb-16 grid grid-cols-1 lg:grid-cols-12 gap-7 items-start">
+
+    <!-- Left 7 Columns: Vehicle, Condition & Mobile Service Details -->
+    <div class="lg:col-span-7 space-y-6">
+
+      <!-- Step 1: Vehicle Information -->
+      <div class="glass-card rounded-2xl p-5 sm:p-6">
+        <div class="flex items-center justify-between mb-4">
+          <h2 class="font-display text-xl sm:text-2xl font-bold uppercase tracking-wide text-white flex items-center gap-2.5">
+            <span class="w-7 h-7 rounded-lg bg-sky-500/20 border border-sky-400/40 text-sky-300 text-sm flex items-center justify-center font-bold">1</span>
+            <span id="step1-title">Vehicle Information</span>
+          </h2>
+          <span id="step1-tag" class="text-xs text-sky-300/90 font-medium">Year • Make • Model</span>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+          <div>
+            <label for="car-year" id="lbl-year" class="block text-xs font-semibold uppercase tracking-wider text-slate-300 mb-1.5">Year</label>
+            <select id="car-year" onchange="updateQuote()" class="w-full rounded-xl bg-slate-950/90 border border-slate-700/80 focus:border-sky-400 focus:ring-2 focus:ring-sky-400/20 px-3.5 py-2.5 text-sm text-white outline-none transition"></select>
+          </div>
+
+          <div>
+            <label for="car-make" id="lbl-make" class="block text-xs font-semibold uppercase tracking-wider text-slate-300 mb-1.5">Make</label>
+            <select id="car-make" onchange="handleMakeChange()" class="w-full rounded-xl bg-slate-950/90 border border-slate-700/80 focus:border-sky-400 focus:ring-2 focus:ring-sky-400/20 px-3.5 py-2.5 text-sm text-white outline-none transition"></select>
+          </div>
+
+          <div>
+            <label for="car-model" id="lbl-model" class="block text-xs font-semibold uppercase tracking-wider text-slate-300 mb-1.5">Model</label>
+            <select id="car-model" onchange="updateQuote()" class="w-full rounded-xl bg-slate-950/90 border border-slate-700/80 focus:border-sky-400 focus:ring-2 focus:ring-sky-400/20 px-3.5 py-2.5 text-sm text-white outline-none transition"></select>
+          </div>
+        </div>
+
+        <!-- Custom Model Input (if "Other") -->
+        <div id="custom-model-wrap" class="hidden mt-3">
+          <input id="custom-model-input" type="text" oninput="updateQuote()" placeholder="Enter your car model (e.g. Civic Touring, Rav4 Hybrid)" class="w-full rounded-xl bg-slate-950/90 border border-slate-700/80 focus:border-sky-400 px-3.5 py-2.5 text-sm text-white outline-none transition" />
+        </div>
+
+        <!-- Lens Size / Vehicle Type Adjustment -->
+        <div class="mt-4 pt-4 border-t border-slate-800/80">
+          <label id="lbl-size" class="block text-xs font-semibold uppercase tracking-wider text-slate-300 mb-2">Lens Size / Vehicle Class</label>
+          <div class="grid grid-cols-3 gap-2.5">
+            <button type="button" data-size="standard" onclick="selectSize('standard')" id="size-standard" class="size-btn py-2.5 px-3 rounded-xl border border-sky-400 bg-sky-500/15 text-sky-200 text-xs sm:text-sm font-semibold transition text-center">
+              <span id="size-std-label">Sedan / Coupe</span>
+              <span class="block text-[11px] text-sky-300/80 font-normal">Base Rate</span>
+            </button>
+            <button type="button" data-size="suv" onclick="selectSize('suv')" id="size-suv" class="size-btn py-2.5 px-3 rounded-xl border border-slate-700/80 bg-slate-950/60 text-slate-300 hover:border-slate-500 text-xs sm:text-sm font-semibold transition text-center">
+              <span id="size-suv-label">SUV / Crossover</span>
+              <span class="block text-[11px] text-slate-400 font-normal">+$10</span>
+            </button>
+            <button type="button" data-size="truck" onclick="selectSize('truck')" id="size-truck" class="size-btn py-2.5 px-3 rounded-xl border border-slate-700/80 bg-slate-950/60 text-slate-300 hover:border-slate-500 text-xs sm:text-sm font-semibold transition text-center">
+              <span id="size-trk-label">Large SUV / Truck</span>
+              <span class="block text-[11px] text-slate-400 font-normal">+$15</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 2: Headlight Condition With Photos/Visuals -->
+      <div class="glass-card rounded-2xl p-5 sm:p-6">
+        <div class="flex items-center justify-between mb-4">
+          <h2 class="font-display text-xl sm:text-2xl font-bold uppercase tracking-wide text-white flex items-center gap-2.5">
+            <span class="w-7 h-7 rounded-lg bg-sky-500/20 border border-sky-400/40 text-sky-300 text-sm flex items-center justify-center font-bold">2</span>
+            <span id="step2-title">Headlight Condition</span>
+          </h2>
+          <span id="step2-tag" class="text-xs text-sky-300 font-medium">Match Your Lens</span>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <!-- Condition 1: Light Haze -->
+          <button type="button" id="cond-light" onclick="selectCondition('light')" class="cond-card text-left rounded-xl p-3.5 border-2 border-sky-400 bg-sky-500/10 transition flex flex-col justify-between">
+            <div>
+              <div class="rounded-lg overflow-hidden border border-slate-700/80 mb-3 bg-slate-950 relative h-28">
+                <svg viewBox="0 0 240 120" class="w-full h-full">
+                  <rect width="240" height="120" fill="#090d16"/>
+                  <ellipse cx="120" cy="60" rx="86" ry="38" fill="#cbd5e1" fill-opacity="0.22" stroke="#94a3b8" stroke-width="2"/>
+                  <ellipse cx="120" cy="60" rx="86" ry="38" fill="url(#haze1)" opacity="0.55"/>
+                  <circle cx="132" cy="60" r="20" fill="#e2e8f0" fill-opacity="0.35"/>
+                  <defs>
+                    <pattern id="haze1" width="8" height="8" patternUnits="userSpaceOnUse">
+                      <circle cx="2" cy="2" r="1.2" fill="#e2e8f0" fill-opacity="0.35"/>
+                      <circle cx="6" cy="6" r="1" fill="#94a3b8" fill-opacity="0.3"/>
+                    </pattern>
+                  </defs>
+                </svg>
+                <span class="absolute top-2 left-2 px-2 py-0.5 rounded bg-black/75 text-[10px] font-bold uppercase text-sky-300 border border-sky-400/30">Stage 1</span>
+              </div>
+              <div class="flex items-baseline justify-between gap-2">
+                <h3 id="cond1-title" class="font-bold text-white text-sm">Light Haze / Fog</h3>
+                <span class="font-display font-bold text-lg text-sky-300">$80</span>
+              </div>
+              <p id="cond1-desc" class="text-xs text-slate-300 mt-1 leading-relaxed">Slight oxidation or cloudy top layer. Light wet-sanding, multi-stage polish & UV seal.</p>
+            </div>
+          </button>
+
+          <!-- Condition 2: Moderate Yellowing -->
+          <button type="button" id="cond-moderate" onclick="selectCondition('moderate')" class="cond-card text-left rounded-xl p-3.5 border border-slate-700/80 bg-slate-950/60 hover:border-slate-500 transition flex flex-col justify-between">
+            <div>
+              <div class="rounded-lg overflow-hidden border border-slate-700/80 mb-3 bg-slate-950 relative h-28">
+                <svg viewBox="0 0 240 120" class="w-full h-full">
+                  <rect width="240" height="120" fill="#090d16"/>
+                  <ellipse cx="120" cy="60" rx="86" ry="38" fill="#eab308" fill-opacity="0.38" stroke="#ca8a04" stroke-width="2"/>
+                  <ellipse cx="105" cy="56" rx="55" ry="22" fill="#facc15" fill-opacity="0.28"/>
+                  <circle cx="135" cy="62" r="18" fill="#fef08a" fill-opacity="0.22"/>
+                </svg>
+                <span class="absolute top-2 left-2 px-2 py-0.5 rounded bg-black/75 text-[10px] font-bold uppercase text-amber-300 border border-amber-400/30">Stage 2</span>
+              </div>
+              <div class="flex items-baseline justify-between gap-2">
+                <h3 id="cond2-title" class="font-bold text-white text-sm">Moderate Yellowing</h3>
+                <span class="font-display font-bold text-lg text-sky-300">$100</span>
+              </div>
+              <p id="cond2-desc" class="text-xs text-slate-300 mt-1 leading-relaxed">Noticeable amber tint & dull beam output. Full progressive sanding, compounding & UV ceramic coat.</p>
+            </div>
+          </button>
+
+          <!-- Condition 3: Severe Peeling -->
+          <button type="button" id="cond-severe" onclick="selectCondition('severe')" class="cond-card text-left rounded-xl p-3.5 border border-slate-700/80 bg-slate-950/60 hover:border-slate-500 transition flex flex-col justify-between">
+            <div>
+              <div class="rounded-lg overflow-hidden border border-slate-700/80 mb-3 bg-slate-950 relative h-28">
+                <svg viewBox="0 0 240 120" class="w-full h-full">
+                  <rect width="240" height="120" fill="#090d16"/>
+                  <ellipse cx="120" cy="60" rx="86" ry="38" fill="#a16207" fill-opacity="0.45" stroke="#78350f" stroke-width="2"/>
+                  <path d="M55 45 L88 52 L74 72 L48 64 Z" fill="#fef9c3" fill-opacity="0.25"/>
+                  <path d="M120 36 L162 44 L145 68 L112 58 Z" fill="#fef9c3" fill-opacity="0.2"/>
+                  <path d="M150 66 L186 72 L172 86 L142 78 Z" fill="#713f12" fill-opacity="0.5"/>
+                </svg>
+                <span class="absolute top-2 left-2 px-2 py-0.5 rounded bg-black/75 text-[10px] font-bold uppercase text-rose-300 border border-rose-400/30">Stage 3</span>
+              </div>
+              <div class="flex items-baseline justify-between gap-2">
+                <h3 id="cond3-title" class="font-bold text-white text-sm">Severe Peeling / Flaking</h3>
+                <span class="font-display font-bold text-lg text-sky-300">$120</span>
+              </div>
+              <p id="cond3-desc" class="text-xs text-slate-300 mt-1 leading-relaxed">Peeling clear coat, heavy oxidation & micro-cracks. Deep multi-grit restoration + heavy UV protection.</p>
+            </div>
+          </button>
+        </div>
+
+        <!-- Optional Customer Photo Upload -->
+        <div class="mt-4 pt-4 border-t border-slate-800/80 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+          <div>
+            <label for="photo-upload" id="lbl-photo" class="block text-xs font-semibold uppercase tracking-wider text-slate-300">Optional: Attach Your Headlight Photo</label>
+            <p id="photo-sub" class="text-xs text-slate-400">Preview your actual lens right here before sending your quote.</p>
+          </div>
+          <label class="cursor-pointer inline-flex items-center gap-2 px-3.5 py-2 rounded-xl bg-slate-900 hover:bg-slate-800 border border-slate-700 text-xs font-semibold text-sky-300 transition shrink-0">
+            <span>📷</span>
+            <span id="btn-upload-photo">Choose Photo</span>
+            <input id="photo-upload" type="file" accept="image/*" onchange="handlePhotoUpload(event)" class="hidden" />
+          </label>
+        </div>
+
+        <div id="photo-preview-box" class="hidden mt-3 p-3 rounded-xl bg-slate-950/80 border border-slate-800 flex items-center justify-between gap-3">
+          <div class="flex items-center gap-3">
+            <img id="photo-preview-img" src="" alt="Uploaded headlight preview" class="w-16 h-12 object-cover rounded-lg border border-slate-700" />
+            <div>
+              <p id="photo-name" class="text-xs font-semibold text-white"></p>
+              <p id="photo-ready" class="text-[11px] text-sky-300">Photo attached to your quote preview</p>
+            </div>
+          </div>
+          <button type="button" onclick="clearPhoto()" class="text-xs text-slate-400 hover:text-rose-400 px-2 py-1">Remove</button>
+        </div>
+      </div>
+
+      <!-- Step 3: 100% Mobile Service Location & Add-ons -->
+      <div class="glass-card rounded-2xl p-5 sm:p-6">
+        <div class="flex items-center justify-between mb-4">
+          <h2 class="font-display text-xl sm:text-2xl font-bold uppercase tracking-wide text-white flex items-center gap-2.5">
+            <span class="w-7 h-7 rounded-lg bg-sky-500/20 border border-sky-400/40 text-sky-300 text-sm flex items-center justify-center font-bold">3</span>
+            <span id="step3-title">Mobile Service Spot & Add-ons</span>
+          </h2>
+          <span class="text-xs text-sky-300 font-semibold">We Come To You</span>
+        </div>
+
+        <div class="p-3.5 rounded-xl bg-sky-500/10 border border-sky-400/30 mb-4 text-xs text-slate-200 leading-relaxed">
+          <strong class="text-sky-300">100% Mobile Service (No Shop Needed):</strong> <span id="mobile-note">We come to your home driveway, workplace, or any convenient parking lot where you feel comfortable. Standard mobile travel is included; distant / far-out zones add <strong>+$20</strong>.</span>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-4">
+          <div>
+            <label for="mobile-zone" id="lbl-zone" class="block text-xs font-semibold uppercase tracking-wider text-slate-300 mb-1.5">Area / Distance</label>
+            <select id="mobile-zone" onchange="updateQuote()" class="w-full rounded-xl bg-slate-950/90 border border-slate-700/80 focus:border-sky-400 px-3.5 py-2.5 text-sm text-white outline-none transition">
+              <option value="standard" data-fee="0">Standard Montreal / Nearby Area ($0)</option>
+              <option value="far" data-fee="20">Distant / Far-Out Area (+$20)</option>
+            </select>
+          </div>
+
+          <div>
+            <label for="spot-type" id="lbl-spot" class="block text-xs font-semibold uppercase tracking-wider text-slate-300 mb-1.5">Preferred Spot</label>
+            <select id="spot-type" onchange="updateQuote()" class="w-full rounded-xl bg-slate-950/90 border border-slate-700/80 focus:border-sky-400 px-3.5 py-2.5 text-sm text-white outline-none transition">
+              <option value="Home Driveway">Home Driveway / Street</option>
+              <option value="Workplace / Office">Workplace / Office Lot</option>
+              <option value="Public Parking Lot">Convenient Parking Lot</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Optional Add-ons (Self-Healing PPF Removed) -->
+        <div class="space-y-2.5 pt-2 border-t border-slate-800/80">
+          <label class="flex items-center justify-between p-3 rounded-xl bg-slate-950/60 border border-slate-800 hover:border-slate-700 cursor-pointer transition">
+            <div class="flex items-center gap-3">
+              <input id="addon-ceramic" type="checkbox" onchange="updateQuote()" class="w-4 h-4 accent-sky-400 rounded" />
+              <div>
+                <span id="addon-ceramic-title" class="text-sm font-semibold text-white block">2-Year Ceramic UV Coating Upgrade</span>
+                <span id="addon-ceramic-desc" class="text-xs text-slate-400">Extra hydrophobic shield against sun & winter salt</span>
+              </div>
+            </div>
+            <span class="font-display font-bold text-sky-300 text-base">+$25</span>
+          </label>
+
+          <label class="flex items-center justify-between p-3 rounded-xl bg-slate-950/60 border border-slate-800 hover:border-slate-700 cursor-pointer transition">
+            <div class="flex items-center gap-3">
+              <input id="addon-fog" type="checkbox" onchange="updateQuote()" class="w-4 h-4 accent-sky-400 rounded" />
+              <div>
+                <span id="addon-fog-title" class="text-sm font-semibold text-white block">Fog Lights Restoration Pair</span>
+                <span id="addon-fog-desc" class="text-xs text-slate-400">Restore matching fog lamps during the same visit</span>
+              </div>
+            </div>
+            <span class="font-display font-bold text-sky-300 text-base">+$35</span>
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right 5 Columns: Live Quote Card & Contact Submission -->
+    <div class="lg:col-span-5 lg:sticky lg:top-20 space-y-5">
+      <div class="glass-card rounded-2xl p-5 sm:p-6 border-sky-400/30">
+        <div class="flex items-center justify-between border-b border-slate-800 pb-4 mb-4">
+          <div>
+            <span id="quote-label" class="text-xs font-bold uppercase tracking-widest text-sky-400">Instant Estimate</span>
+            <h2 id="quote-vehicle-heading" class="font-display text-2xl font-bold text-white mt-0.5">2018 Toyota Corolla</h2>
+          </div>
+          <div class="text-right">
+            <div id="quote-total" class="font-display text-4xl font-bold text-white xenon-glow px-2 rounded">$80</div>
+            <span id="quote-tax-note" class="text-[11px] text-slate-400">Est. turnaround ~45–60 min</span>
+          </div>
+        </div>
+
+        <!-- Breakdown -->
+        <div class="space-y-2 text-sm border-b border-slate-800 pb-4 mb-4">
+          <div class="flex justify-between text-slate-300">
+            <span id="bd-cond-label">Condition Base</span>
+            <span id="bd-cond-val" class="font-semibold text-white">$80</span>
+          </div>
+          <div class="flex justify-between text-slate-300">
+            <span id="bd-size-label">Vehicle Size</span>
+            <span id="bd-size-val" class="font-semibold text-white">$0</span>
+          </div>
+          <div class="flex justify-between text-slate-300">
+            <span id="bd-travel-label">Mobile Service</span>
+            <span id="bd-travel-val" class="font-semibold text-emerald-400">Included ($0)</span>
+          </div>
+          <div id="bd-addons-row" class="hidden flex justify-between text-slate-300">
+            <span id="bd-addons-label">Add-ons</span>
+            <span id="bd-addons-val" class="font-semibold text-sky-300">$0</span>
+          </div>
+        </div>
+
+        <!-- Customer Info Form -->
+        <form id="quote-form" onsubmit="submitQuote(event)" class="space-y-3">
+          <div>
+            <label for="cust-name" id="lbl-name" class="block text-xs font-semibold uppercase tracking-wider text-slate-300 mb-1">Your Name *</label>
+            <input id="cust-name" type="text" required placeholder="e.g. Jaspreet Singh" class="w-full rounded-xl bg-slate-950 border border-slate-700 focus:border-sky-400 px-3.5 py-2.5 text-sm text-white outline-none transition" />
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <div>
+              <label for="cust-phone" id="lbl-phone" class="block text-xs font-semibold uppercase tracking-wider text-slate-300 mb-1">Phone Number *</label>
+              <input id="cust-phone" type="tel" required placeholder="(514) 555-0199" class="w-full rounded-xl bg-slate-950 border border-slate-700 focus:border-sky-400 px-3.5 py-2.5 text-sm text-white outline-none transition" />
+            </div>
+            <div>
+              <label for="cust-address" id="lbl-address" class="block text-xs font-semibold uppercase tracking-wider text-slate-300 mb-1">Street / Area *</label>
+              <input id="cust-address" type="text" required placeholder="Street or parking spot" class="w-full rounded-xl bg-slate-950 border border-slate-700 focus:border-sky-400 px-3.5 py-2.5 text-sm text-white outline-none transition" />
+            </div>
+          </div>
+
+          <button id="btn-submit-quote" type="submit" class="w-full py-3.5 px-4 rounded-xl bg-sky-400 hover:bg-sky-300 text-slate-950 font-bold text-sm uppercase tracking-wider transition xenon-glow cursor-pointer">
+            Lock Quote & Send Request
+          </button>
+        </form>
+
+        <!-- Direct Action Buttons: WhatsApp, SMS & Download Receipt -->
+        <div class="grid grid-cols-3 gap-2 mt-3">
+          <button type="button" onclick="sendWhatsApp()" class="py-2.5 px-2 rounded-xl bg-emerald-500/15 hover:bg-emerald-500/25 border border-emerald-400/40 text-emerald-300 text-xs font-bold transition text-center cursor-pointer">
+            💬 WhatsApp
+          </button>
+          <button type="button" onclick="sendSMS()" class="py-2.5 px-2 rounded-xl bg-sky-500/15 hover:bg-sky-500/25 border border-sky-400/40 text-sky-300 text-xs font-bold transition text-center cursor-pointer">
+            ✉️ Text / SMS
+          </button>
+          <button type="button" onclick="downloadQuote()" class="py-2.5 px-2 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-600 text-slate-100 text-xs font-bold transition text-center cursor-pointer">
+            ⬇️ Quote
+          </button>
+        </div>
+
+        <!-- Status Feedback -->
+        <div id="status-banner" class="hidden mt-4 p-3.5 rounded-xl text-xs leading-relaxed border"></div>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    const OWNER_WEB3FORMS_KEY = "31e61cc2-53bf-405a-bb25-811432eaf4b6";
+    const OWNER_PHONE_RAW = "5147751126";
+
+    const VEHICLES = {
+      "Toyota": ["Corolla", "Camry", "RAV4", "Highlander", "Prius", "Tacoma", "Other"],
+      "Honda": ["Civic", "Accord", "CR-V", "HR-V", "Pilot", "Odyssey", "Other"],
+      "Hyundai": ["Elantra", "Sonata", "Tucson", "Santa Fe", "Kona", "Venue", "Other"],
+      "Kia": ["Forte", "K5", "Sportage", "Sorento", "Telluride", "Soul", "Other"],
+      "Mazda": ["Mazda3", "Mazda6", "CX-30", "CX-5", "CX-50", "CX-9", "Other"],
+      "Nissan": ["Sentra", "Altima", "Rogue", "Qashqai", "Pathfinder", "Frontier", "Other"],
+      "Ford": ["Escape", "Fusion", "F-150", "Explorer", "Bronco Sport", "Mustang", "Other"],
+      "Chevrolet": ["Malibu", "Equinox", "Silverado", "Traverse", "Trax", "Cruze", "Other"],
+      "Volkswagen": ["Jetta", "Golf", "Tiguan", "Atlas", "Passat", "Taigun", "Other"],
+      "BMW": ["3 Series", "5 Series", "X3", "X5", "X1", "4 Series", "Other"],
+      "Mercedes-Benz": ["C-Class", "E-Class", "GLC", "GLE", "GLA", "A-Class", "Other"],
+      "Audi": ["A3", "A4", "Q3", "Q5", "Q7", "A6", "Other"],
+      "Subaru": ["Impreza", "Crosstrek", "Forester", "Outback", "WRX", "Other"],
+      "Other": ["Other Model"]
+    };
+
+    const CONDITION_PRICES = {
+      light: 80,
+      moderate: 100,
+      severe: 120
+    };
+
+    const SIZE_PRICES = {
+      standard: 0,
+      suv: 10,
+      truck: 15
+    };
+
+    const I18N = {
+      en: {
+        heroBadge: "100% MOBILE SERVICE • HOME DRIVEWAYS, WORKPLACES & PARKING LOTS",
+        heroTitle1: "Crystal Clear Beams.",
+        heroTitle2: " Instant Mobile Quote.",
+        heroSubtitle: "We come directly to your home, office, or any convenient parking lot across Greater Montreal. Enter your vehicle details and pick your headlight condition with visual examples to get an instant price.",
+        step1Title: "Vehicle Information",
+        step2Title: "Headlight Condition",
+        step3Title: "Mobile Service Spot & Add-ons",
+        quoteLabel: "Instant Estimate",
+        btnSubmit: "Lock Quote & Send Request"
+      },
+      fr: {
+        heroBadge: "SERVICE 100% MOBILE • ENTRÉES, BUREAU & STATIONNEMENTS",
+        heroTitle1: "Phares Cristallins.",
+        heroTitle2: " Soumission Mobile Instantanée.",
+        heroSubtitle: "Nous nous déplaçons directement à votre domicile, au travail ou dans tout stationnement pratique du Grand Montréal. Entrez votre véhicule et l'état de vos phares pour obtenir votre prix.",
+        step1Title: "Informations du véhicule",
+        step2Title: "État des phares",
+        step3Title: "Lieu mobile & options",
+        quoteLabel: "Estimation instantanée",
+        btnSubmit: "Confirmer & envoyer la demande"
+      }
+    };
+
+    let state = {
+      lang: "en",
+      year: 2018,
+      make: "Toyota",
+      model: "Corolla",
+      customModel: "",
+      size: "standard",
+      condition: "light",
+      photoName: ""
+    };
+
+    function init() {
+      const yearSel = document.getElementById("car-year");
+      for (let y = 2027; y >= 1995; y--) {
+        const opt = document.createElement("option");
+        opt.value = y;
+        opt.textContent = y;
+        if (y === state.year) opt.selected = true;
+        yearSel.appendChild(opt);
+      }
+
+      const makeSel = document.getElementById("car-make");
+      Object.keys(VEHICLES).forEach(mk => {
+        const opt = document.createElement("option");
+        opt.value = mk;
+        opt.textContent = mk;
+        if (mk === state.make) opt.selected = true;
+        makeSel.appendChild(opt);
+      });
+
+      populateModels(state.make, state.model);
+      updateQuote();
+    }
+
+    function populateModels(make, selectedModel) {
+      const modelSel = document.getElementById("car-model");
+      modelSel.innerHTML = "";
+      const list = VEHICLES[make] || ["Other"];
+      list.forEach(m => {
+        const opt = document.createElement("option");
+        opt.value = m;
+        opt.textContent = m;
+        if (m === selectedModel) opt.selected = true;
+        modelSel.appendChild(opt);
+      });
+      toggleCustomModel();
+    }
+
+    function handleMakeChange() {
+      state.make = document.getElementById("car-make").value;
+      const list = VEHICLES[state.make] || ["Other"];
+      state.model = list[0];
+      populateModels(state.make, state.model);
+      updateQuote();
+    }
+
+    function toggleCustomModel() {
+      const modelVal = document.getElementById("car-model").value;
+      const wrap = document.getElementById("custom-model-wrap");
+      if (modelVal === "Other" || modelVal === "Other Model") {
+        wrap.classList.remove("hidden");
+      } else {
+        wrap.classList.add("hidden");
+      }
+    }
+
+    function selectSize(sz) {
+      state.size = sz;
+      document.querySelectorAll(".size-btn").forEach(btn => {
+        if (btn.dataset.size === sz) {
+          btn.className = "size-btn py-2.5 px-3 rounded-xl border border-sky-400 bg-sky-500/15 text-sky-200 text-xs sm:text-sm font-semibold transition text-center";
+        } else {
+          btn.className = "size-btn py-2.5 px-3 rounded-xl border border-slate-700/80 bg-slate-950/60 text-slate-300 hover:border-slate-500 text-xs sm:text-sm font-semibold transition text-center";
+        }
+      });
+      updateQuote();
+    }
+
+    function selectCondition(cond) {
+      state.condition = cond;
+      ["light", "moderate", "severe"].forEach(k => {
+        const card = document.getElementById("cond-" + k);
+        if (k === cond) {
+          card.className = "cond-card text-left rounded-xl p-3.5 border-2 border-sky-400 bg-sky-500/10 transition flex flex-col justify-between";
+        } else {
+          card.className = "cond-card text-left rounded-xl p-3.5 border border-slate-700/80 bg-slate-950/60 hover:border-slate-500 transition flex flex-col justify-between";
+        }
+      });
+      updateQuote();
+    }
+
+    function handlePhotoUpload(e) {
+      const file = e.target.files && e.target.files[0];
+      if (!file) return;
+      state.photoName = file.name;
+      const reader = new FileReader();
+      reader.onload = ev => {
+        document.getElementById("photo-preview-img").src = ev.target.result;
+        document.getElementById("photo-name").textContent = file.name;
+        document.getElementById("photo-preview-box").classList.remove("hidden");
+      };
+      reader.readAsDataURL(file);
+    }
+
+    function clearPhoto() {
+      state.photoName = "";
+      document.getElementById("photo-upload").value = "";
+      document.getElementById("photo-preview-box").classList.add("hidden");
+    }
+
+    function setLang(lang) {
+      state.lang = lang;
+      const t = I18N[lang];
+      document.getElementById("btn-en").className = lang === "en"
+        ? "px-2.5 py-1 rounded-md text-xs font-bold bg-sky-500 text-slate-950 transition"
+        : "px-2.5 py-1 rounded-md text-xs font-bold text-slate-300 hover:text-white transition";
+      document.getElementById("btn-fr").className = lang === "fr"
+        ? "px-2.5 py-1 rounded-md text-xs font-bold bg-sky-500 text-slate-950 transition"
+        : "px-2.5 py-1 rounded-md text-xs font-bold text-slate-300 hover:text-white transition";
+
+      document.getElementById("hero-badge").textContent = t.heroBadge;
+      document.getElementById("hero-title-1").textContent = t.heroTitle1;
+      document.getElementById("hero-title-2").textContent = t.heroTitle2;
+      document.getElementById("hero-subtitle").textContent = t.heroSubtitle;
+      document.getElementById("step1-title").textContent = t.step1Title;
+      document.getElementById("step2-title").textContent = t.step2Title;
+      document.getElementById("step3-title").textContent = t.step3Title;
+      document.getElementById("quote-label").textContent = t.quoteLabel;
+      document.getElementById("btn-submit-quote").textContent = t.btnSubmit;
+    }
+
+    function getQuoteSummary() {
+      toggleCustomModel();
+      const year = document.getElementById("car-year").value;
+      const make = document.getElementById("car-make").value;
+      let model = document.getElementById("car-model").value;
+      const customMod = document.getElementById("custom-model-input").value.trim();
+      if ((model === "Other" || model === "Other Model") && customMod) {
+        model = customMod;
+      }
+
+      const condPrice = CONDITION_PRICES[state.condition] || 80;
+      const sizePrice = SIZE_PRICES[state.size] || 0;
+      const zoneVal = document.getElementById("mobile-zone").value;
+      const travelFee = zoneVal === "far" ? 20 : 0;
+      const spotType = document.getElementById("spot-type").value;
+
+      const ceramicOn = document.getElementById("addon-ceramic").checked;
+      const fogOn = document.getElementById("addon-fog").checked;
+      const addonsTotal = (ceramicOn ? 25 : 0) + (fogOn ? 35 : 0);
+
+      const addonsList = [];
+      if (ceramicOn) addonsList.push("2-Yr Ceramic UV (+$25)");
+      if (fogOn) addonsList.push("Fog Lights Pair (+$35)");
+
+      const total = condPrice + sizePrice + travelFee + addonsTotal;
+
+      return {
+        vehicle: `${year} ${make} ${model}`,
+        condition: state.condition,
+        condPrice,
+        size: state.size,
+        sizePrice,
+        travelFee,
+        zoneLabel: zoneVal === "far" ? "Distant / Far-Out (+$20)" : "Standard Area ($0)",
+        spotType,
+        addonsList,
+        addonsTotal,
+        photoName: state.photoName || "None",
+        total
+      };
+    }
+
+    function updateQuote() {
+      const q = getQuoteSummary();
+      document.getElementById("quote-vehicle-heading").textContent = q.vehicle;
+      document.getElementById("quote-total").textContent = `$${q.total}`;
+      document.getElementById("bd-cond-val").textContent = `$${q.condPrice}`;
+      document.getElementById("bd-size-val").textContent = q.sizePrice > 0 ? `+$${q.sizePrice}` : "$0";
+
+      const travelEl = document.getElementById("bd-travel-val");
+      if (q.travelFee > 0) {
+        travelEl.textContent = `+$${q.travelFee}`;
+        travelEl.className = "font-semibold text-amber-300";
+      } else {
+        travelEl.textContent = "Included ($0)";
+        travelEl.className = "font-semibold text-emerald-400";
+      }
+
+      const addonsRow = document.getElementById("bd-addons-row");
+      if (q.addonsTotal > 0) {
+        addonsRow.classList.remove("hidden");
+        document.getElementById("bd-addons-val").textContent = `+$${q.addonsTotal}`;
+      } else {
+        addonsRow.classList.add("hidden");
+      }
+    }
+
+    function buildQuoteText() {
+      const q = getQuoteSummary();
+      const name = document.getElementById("cust-name").value.trim() || "Customer";
+      const phone = document.getElementById("cust-phone").value.trim() || "Not provided";
+      const address = document.getElementById("cust-address").value.trim() || "Not provided";
+
+      return [
+        "RESTO LIGHTS MTL - MOBILE QUOTE",
+        "------------------------------",
+        `Name: ${name}`,
+        `Phone: ${phone}`,
+        `Vehicle: ${q.vehicle}`,
+        `Condition: ${q.condition.toUpperCase()} ($${q.condPrice})`,
+        `Vehicle Class: ${q.size.toUpperCase()} (+$${q.sizePrice})`,
+        `Mobile Spot: ${q.spotType} | ${q.zoneLabel}`,
+        `Add-ons: ${q.addonsList.length ? q.addonsList.join(", ") : "None"}`,
+        `Photo Attached: ${q.photoName}`,
+        `Location/Spot Notes: ${address}`,
+        `ESTIMATED TOTAL: $${q.total} CAD`,
+        `Contact: (514) 775-1126`
+      ].join("\n");
+    }
+
+    function showStatus(msg, isSuccess = true) {
+      const box = document.getElementById("status-banner");
+      box.className = isSuccess
+        ? "mt-4 p-3.5 rounded-xl text-xs leading-relaxed border bg-sky-500/15 border-sky-400/40 text-sky-100"
+        : "mt-4 p-3.5 rounded-xl text-xs leading-relaxed border bg-rose-500/15 border-rose-400/40 text-rose-200";
+      box.textContent = msg;
+      box.classList.remove("hidden");
+    }
+
+    async function submitQuote(e) {
+      e.preventDefault();
+      const q = getQuoteSummary();
+      const name = document.getElementById("cust-name").value.trim();
+      const phone = document.getElementById("cust-phone").value.trim();
+      const address = document.getElementById("cust-address").value.trim();
+
+      const payload = {
+        access_key: OWNER_WEB3FORMS_KEY,
+        subject: `New Resto Lights MTL Quote: ${q.vehicle} ($${q.total})`,
+        from_name: "Resto Lights MTL Estimator",
+        customer_name: name,
+        customer_phone: phone,
+        vehicle: q.vehicle,
+        condition: `${q.condition} ($${q.condPrice})`,
+        vehicle_size: `${q.size} (+$${q.sizePrice})`,
+        mobile_zone: q.zoneLabel,
+        preferred_spot: q.spotType,
+        address_or_spot: address,
+        addons: q.addonsList.length ? q.addonsList.join(", ") : "None",
+        photo_filename: q.photoName,
+        estimated_total: `$${q.total} CAD`
+      };
+
+      try {
+        const res = await fetch("https://api.web3forms.com/submit", {
+          method: "POST",
+          headers: { "Content-Type": "application/json", "Accept": "application/json" },
+          body: JSON.stringify(payload)
+        });
+        const data = await res.json();
+        if (data.success) {
+          showStatus(`Quote locked ($${q.total}) and sent to Resto Lights MTL! We will reach out to ${phone} shortly.`, true);
+        } else {
+          showStatus("Could not send email automatically—please tap WhatsApp or Text / SMS below to send your quote directly.", false);
+        }
+      } catch (err) {
+        showStatus("Network issue sending email—please tap WhatsApp or Text / SMS below to send your quote directly.", false);
+      }
+    }
+
+    function sendWhatsApp() {
+      const text = encodeURIComponent(buildQuoteText());
+      window.open(`https://wa.me/1${OWNER_PHONE_RAW}?text=${text}`, "_blank", "noopener,noreferrer");
+    }
+
+    function sendSMS() {
+      const text = encodeURIComponent(buildQuoteText());
+      window.location.href = `sms:+1${OWNER_PHONE_RAW}?body=${text}`;
+    }
+
+    function downloadQuote() {
+      const q = getQuoteSummary();
+      const blob = new Blob([buildQuoteText()], { type: "text/plain;charset=utf-8" });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = `Resto-Lights-MTL-Quote-${q.vehicle.replace(/\s+/g, "-")}.txt`;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+      showStatus("Quote summary downloaded!", true);
+    }
+
+    init();
+  </script>
+</body>
+</html>
