@@ -191,17 +191,17 @@
         <div class="mt-4 pt-4 border-t border-slate-800/80">
           <label id="lbl-size" class="block text-xs font-semibold uppercase tracking-wider text-slate-300 mb-2">Lens Size / Vehicle Class</label>
           <div class="grid grid-cols-3 gap-2.5">
-            <button type="button" data-size="standard" onclick="selectSize('standard')" id="size-standard" class="size-btn py-2.5 px-3 rounded-xl border border-sky-400 bg-sky-500/15 text-sky-200 text-xs sm:text-sm font-semibold transition text-center cursor-pointer">
-              <span id="size-std-label">Sedan / Coupe</span>
-              <span class="block text-[11px] text-sky-300/80 font-normal">$0</span>
+            <button type="button" data-size="sedan" onclick="selectSize('sedan')" id="size-sedan" class="size-btn py-2.5 px-3 rounded-xl border border-sky-400 bg-sky-500/15 text-sky-200 text-xs sm:text-sm font-semibold transition text-center cursor-pointer">
+              <span id="size-sedan-label">Sedan / Coupe</span>
+              <span id="size-sedan-sub" class="block text-[11px] text-sky-300/80 font-normal">Mobile Service</span>
             </button>
             <button type="button" data-size="suv" onclick="selectSize('suv')" id="size-suv" class="size-btn py-2.5 px-3 rounded-xl border border-slate-700/80 bg-slate-950/60 text-slate-300 hover:border-slate-500 text-xs sm:text-sm font-semibold transition text-center cursor-pointer">
               <span id="size-suv-label">SUV / Crossover</span>
-              <span class="block text-[11px] text-slate-400 font-normal">+$10</span>
+              <span id="size-suv-sub" class="block text-[11px] text-slate-400 font-normal">Mobile Service</span>
             </button>
             <button type="button" data-size="truck" onclick="selectSize('truck')" id="size-truck" class="size-btn py-2.5 px-3 rounded-xl border border-slate-700/80 bg-slate-950/60 text-slate-300 hover:border-slate-500 text-xs sm:text-sm font-semibold transition text-center cursor-pointer">
               <span id="size-trk-label">Large SUV / Truck</span>
-              <span class="block text-[11px] text-slate-400 font-normal">+$15</span>
+              <span id="size-trk-sub" class="block text-[11px] text-slate-400 font-normal">Mobile Service</span>
             </button>
           </div>
         </div>
@@ -218,7 +218,7 @@
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-          <!-- Light Haze / Fog ($80) -->
+          <!-- Light Haze / Fog -->
           <button type="button" id="cond-light" onclick="selectCondition('light')" class="cond-card text-left rounded-xl p-3.5 border-2 border-sky-400 bg-sky-500/10 transition flex flex-col justify-between cursor-pointer">
             <div>
               <div class="rounded-lg overflow-hidden border border-slate-700/80 mb-3 bg-slate-950 relative h-28">
@@ -238,13 +238,13 @@
               </div>
               <div class="flex items-baseline justify-between gap-2">
                 <h3 id="cond1-title" class="font-bold text-white text-sm">Light Haze / Fog</h3>
-                <span class="font-display font-bold text-lg text-sky-300">$80</span>
+                <span id="cond1-tag" class="text-[11px] font-semibold uppercase tracking-wider text-sky-300">Stage 1</span>
               </div>
               <p id="cond1-desc" class="text-xs text-slate-300 mt-1 leading-relaxed">Light oxidation + multi-stage polish + included 3-year ceramic coating warranty.</p>
             </div>
           </button>
 
-          <!-- Moderate Yellowing ($100) -->
+          <!-- Moderate Yellowing -->
           <button type="button" id="cond-moderate" onclick="selectCondition('moderate')" class="cond-card text-left rounded-xl p-3.5 border border-slate-700/80 bg-slate-950/60 hover:border-slate-500 transition flex flex-col justify-between cursor-pointer">
             <div>
               <div class="rounded-lg overflow-hidden border border-slate-700/80 mb-3 bg-slate-950 relative h-28">
@@ -258,13 +258,13 @@
               </div>
               <div class="flex items-baseline justify-between gap-2">
                 <h3 id="cond2-title" class="font-bold text-white text-sm">Moderate Yellowing</h3>
-                <span class="font-display font-bold text-lg text-sky-300">$100</span>
+                <span id="cond2-tag" class="text-[11px] font-semibold uppercase tracking-wider text-amber-300">Stage 2</span>
               </div>
               <p id="cond2-desc" class="text-xs text-slate-300 mt-1 leading-relaxed">Amber lens tint + progressive sanding & polish + included 3-year ceramic coating warranty.</p>
             </div>
           </button>
 
-          <!-- Severe Peeling / Flaking ($120) -->
+          <!-- Severe Peeling / Flaking -->
           <button type="button" id="cond-severe" onclick="selectCondition('severe')" class="cond-card text-left rounded-xl p-3.5 border border-slate-700/80 bg-slate-950/60 hover:border-slate-500 transition flex flex-col justify-between cursor-pointer">
             <div>
               <div class="rounded-lg overflow-hidden border border-slate-700/80 mb-3 bg-slate-950 relative h-28">
@@ -279,7 +279,7 @@
               </div>
               <div class="flex items-baseline justify-between gap-2">
                 <h3 id="cond3-title" class="font-bold text-white text-sm">Severe Peeling / Flaking</h3>
-                <span class="font-display font-bold text-lg text-sky-300">$120</span>
+                <span id="cond3-tag" class="text-[11px] font-semibold uppercase tracking-wider text-rose-300">Stage 3</span>
               </div>
               <p id="cond3-desc" class="text-xs text-slate-300 mt-1 leading-relaxed">Peeling clear coat + deep multi-grit restoration + included 3-year ceramic coating warranty.</p>
             </div>
@@ -324,15 +324,15 @@
 
         <div class="p-3.5 rounded-xl bg-sky-500/10 border border-sky-400/30 mb-4 text-xs text-slate-200 leading-relaxed">
           <strong class="text-sky-300">100% Mobile Service:</strong>
-          <span id="mobile-note">We come directly to your home driveway, workplace, or any convenient parking lot across Greater Montreal. Standard mobile travel is included; distant / far-out areas add <strong>+$20</strong>.</span>
+          <span id="mobile-note">We come directly to your home driveway, workplace, or any convenient parking lot across Greater Montreal. Your Quote Number and total estimate appear right after you submit your quote.</span>
         </div>
 
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-4">
           <div>
             <label for="mobile-zone" id="lbl-zone" class="block text-xs font-semibold uppercase tracking-wider text-slate-300 mb-1.5">Area / Distance</label>
             <select id="mobile-zone" onchange="updateQuote()" class="w-full rounded-xl bg-slate-950/90 border border-slate-700/80 focus:border-sky-400 px-3.5 py-2.5 text-sm text-white outline-none transition">
-              <option value="standard" data-fee="0">Standard Montreal / Nearby Area ($0)</option>
-              <option value="far" data-fee="20">Distant / Far-Out Area (+$20)</option>
+              <option value="standard">Standard Montreal / Nearby Area</option>
+              <option value="far">Distant / Far-Out Area</option>
             </select>
           </div>
 
@@ -364,83 +364,113 @@
                 <span id="addon-fog-desc" class="text-xs text-slate-400">Restore matching fog lamps during the same mobile visit</span>
               </div>
             </div>
-            <span class="font-display font-bold text-sky-300 text-base">+$35</span>
+            <span id="addon-fog-tag" class="text-xs font-semibold uppercase tracking-wider text-sky-300">Optional Add-On</span>
           </label>
         </div>
       </div>
     </div>
 
-    <!-- Right Column: Live Quote Summary Card & Submission Form -->
+    <!-- Right Column: Quote Request Card & Post-Submission Reveal -->
     <div class="lg:col-span-5 lg:sticky lg:top-20 space-y-5">
       <div class="glass-card rounded-2xl p-5 sm:p-6 border-sky-400/30">
-        <div class="flex items-center justify-between border-b border-slate-800 pb-4 mb-4">
+        <div class="flex items-center justify-between border-b border-slate-800 pb-4 mb-4 gap-2">
           <div>
-            <span id="quote-label" class="text-xs font-bold uppercase tracking-widest text-sky-400">Live Quote Summary</span>
+            <span id="quote-label" class="text-xs font-bold uppercase tracking-widest text-sky-400">Mobile Quote Request</span>
             <h2 id="quote-vehicle-heading" class="font-display text-2xl font-bold text-white mt-0.5">2018 Toyota Corolla</h2>
           </div>
-          <div class="text-right">
-            <div id="quote-total" class="font-display text-4xl font-bold text-white xenon-glow px-2 rounded">$80 CAD</div>
-            <span id="quote-sub-note" class="text-[11px] text-emerald-300 font-medium">3-Yr Ceramic Warranty Included</span>
+          <div class="text-right shrink-0">
+            <div id="quote-pre-reveal" class="inline-flex items-center px-3 py-1 rounded-lg bg-sky-500/10 border border-sky-400/30 text-xs font-semibold text-sky-200">
+              Price Shown After Submit
+            </div>
+            <div id="quote-total" class="hidden font-display text-3xl sm:text-4xl font-bold text-emerald-300 xenon-glow px-2 rounded"></div>
+            <div id="quote-number-badge" class="hidden mt-1 text-xs font-mono font-bold text-sky-300 bg-sky-500/10 border border-sky-400/30 px-2 py-0.5 rounded inline-block"></div>
+            <span id="quote-sub-note" class="block text-[11px] text-emerald-300 font-medium mt-1">3-Yr Ceramic Warranty Included</span>
           </div>
         </div>
 
-        <!-- Itemized Breakdown -->
-        <div class="space-y-2 text-sm border-b border-slate-800 pb-4 mb-4">
+        <!-- Pre-Submission Selection Summary (Strictly No Prices Shown) -->
+        <div id="pre-submit-summary" class="space-y-2 text-sm border-b border-slate-800 pb-4 mb-4">
           <div class="flex justify-between text-slate-300">
             <span id="bd-cond-label">Headlight Condition</span>
-            <span id="bd-cond-val" class="font-semibold text-white">$80</span>
+            <span id="bd-cond-val" class="font-semibold text-white">Light Haze / Fog</span>
           </div>
           <div class="flex justify-between text-slate-300">
             <span id="bd-size-label">Vehicle Class</span>
-            <span id="bd-size-val" class="font-semibold text-white">$0</span>
+            <span id="bd-size-val" class="font-semibold text-white">Sedan / Coupe</span>
           </div>
           <div class="flex justify-between text-slate-300">
             <span id="bd-warranty-label">3-Yr Ceramic Coating Warranty</span>
-            <span id="bd-warranty-val" class="font-semibold text-emerald-400">Included ($0)</span>
+            <span id="bd-warranty-val" class="font-semibold text-emerald-400">Included</span>
           </div>
           <div class="flex justify-between text-slate-300">
-            <span id="bd-travel-label">Mobile Service Area</span>
-            <span id="bd-travel-val" class="font-semibold text-emerald-400">Included ($0)</span>
+            <span id="bd-travel-label">Mobile Service Spot</span>
+            <span id="bd-travel-val" class="font-semibold text-sky-300">Home Driveway / Street</span>
+          </div>
+          <div class="flex justify-between text-slate-300">
+            <span id="bd-area-label">Service Area</span>
+            <span id="bd-area-val" class="font-semibold text-white">Standard Montreal / Nearby Area</span>
           </div>
           <div id="bd-addons-row" class="hidden flex justify-between text-slate-300">
-            <span id="bd-addons-label">Fog Lights Add-on</span>
-            <span id="bd-addons-val" class="font-semibold text-sky-300">+$35</span>
+            <span id="bd-addons-label">Add-on Selected</span>
+            <span id="bd-addons-val" class="font-semibold text-sky-300">Fog Lights Restoration Pair</span>
           </div>
         </div>
 
-        <!-- Customer Form -->
-        <form id="quote-form" onsubmit="submitQuote(event)" class="space-y-3">
-          <div>
-            <label for="cust-name" id="lbl-name" class="block text-xs font-semibold uppercase tracking-wider text-slate-300 mb-1">Name *</label>
-            <input id="cust-name" type="text" required placeholder="e.g. Jaspreet Singh" class="w-full rounded-xl bg-slate-950 border border-slate-700 focus:border-sky-400 px-3.5 py-2.5 text-sm text-white outline-none transition" />
+        <!-- Revealed Quote Number, Full Details & Price Breakdown After Submission -->
+        <div id="revealed-breakdown" class="hidden space-y-2 text-xs sm:text-sm border border-emerald-400/35 bg-emerald-500/10 rounded-xl p-3.5 mb-4">
+          <div class="flex items-center justify-between pb-2 border-b border-emerald-400/20">
+            <span class="font-semibold text-emerald-200">Quote Number</span>
+            <span id="rev-quote-num" class="font-mono font-bold text-sm text-white bg-slate-950/80 px-2.5 py-0.5 rounded border border-sky-400/40"></span>
           </div>
-
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-            <div>
-              <label for="cust-phone" id="lbl-phone" class="block text-xs font-semibold uppercase tracking-wider text-slate-300 mb-1">Phone *</label>
-              <input id="cust-phone" type="tel" required placeholder="(514) 555-0199" class="w-full rounded-xl bg-slate-950 border border-slate-700 focus:border-sky-400 px-3.5 py-2.5 text-sm text-white outline-none transition" />
-            </div>
-            <div>
-              <label for="cust-address" id="lbl-address" class="block text-xs font-semibold uppercase tracking-wider text-slate-300 mb-1">Street / Area *</label>
-              <input id="cust-address" type="text" required placeholder="Street or parking spot" class="w-full rounded-xl bg-slate-950 border border-slate-700 focus:border-sky-400 px-3.5 py-2.5 text-sm text-white outline-none transition" />
+          <div class="flex justify-between text-slate-200 gap-2">
+            <span class="text-slate-300">Customer & Phone</span>
+            <span id="rev-customer-val" class="font-semibold text-white text-right"></span>
+          </div>
+          <div class="flex justify-between text-slate-200 gap-2">
+            <span class="text-slate-300">Vehicle & Spot</span>
+            <span id="rev-vehicle-spot-val" class="font-semibold text-white text-right"></span>
+          </div>
+          <div class="flex justify-between text-slate-200 gap-2">
+            <span class="text-slate-300">Location / Area</span>
+            <span id="rev-location-val" class="font-semibold text-white text-right"></span>
+          </div>
+          <div class="pt-1.5 border-t border-slate-700/80 flex justify-between text-slate-200">
+            <span>Vehicle Base Rate</span>
+            <span id="rev-base-val" class="font-semibold text-white"></span>
+          </div>
+          <div class="flex justify-between text-slate-200">
+            <span>Headlight Condition Adj.</span>
+            <span id="rev-cond-val" class="font-semibold text-white"></span>
+          </div>
+          <div class="flex justify-between text-slate-200">
+            <span>3-Year Ceramic Coating Warranty</span>
+            <span class="font-semibold text-emerald-300">Included ($0)</span>
+          </div>
+          <div id="rev-travel-row" class="hidden flex justify-between text-slate-200">
+            <span>Distant / Far-Out Area</span>
+            <span id="rev-travel-val" class="font-semibold text-amber-300"></span>
+          </div>
+          <div id="rev-fog-row" class="hidden flex justify-between text-slate-200">
+            <span>Fog Lights Restoration Pair</span>
+            <span id="rev-fog-val" class="font-semibold text-sky-300"></span>
+          </div>
+          <div class="flex justify-between pt-2 border-t border-emerald-400/25 text-base font-bold text-white">
+            <span>Total Quote Price</span>
+            <span id="rev-total-val" class="text-emerald-300"></span>
+          </div>
+          <!-- Visual Headlight Photo Preview in Revealed Quote Card -->
+          <div id="rev-photo-wrap" class="hidden pt-2.5 border-t border-slate-700/80">
+            <span class="block text-xs text-slate-300 mb-1.5">Attached Headlight Photo</span>
+            <div class="flex items-center gap-3 bg-slate-950/85 border border-slate-700/80 rounded-lg p-2">
+              <img id="rev-photo-img" src="" alt="Submitted headlight photo" class="w-20 h-14 object-cover rounded border border-slate-600 shrink-0" />
+              <div class="min-w-0">
+                <p id="rev-photo-name" class="text-xs font-semibold text-white truncate"></p>
+                <p id="rev-photo-meta" class="text-[11px] text-emerald-300">Included in quote submission</p>
+              </div>
             </div>
           </div>
-
-          <button id="btn-submit-quote" type="submit" class="w-full py-3.5 px-4 rounded-xl bg-sky-400 hover:bg-sky-300 text-slate-950 font-bold text-sm uppercase tracking-wider transition xenon-glow cursor-pointer">
-            Lock Quote & Send Request
-          </button>
-        </form>
-
-        <!-- Direct Action Buttons: WhatsApp, Text/SMS & Download Quote (.txt) -->
-        <div class="grid grid-cols-3 gap-2 mt-3">
-          <a id="btn-whatsapp" href="https://wa.me/15147751126" target="_blank" rel="noopener noreferrer" onclick="handleDirectChannel('whatsapp', event)" class="py-2.5 px-2 rounded-xl bg-emerald-500/15 hover:bg-emerald-500/25 border border-emerald-400/40 text-emerald-300 text-xs font-bold transition text-center flex items-center justify-center gap-1">
-            <span>💬</span> <span id="lbl-wa">WhatsApp</span>
-          </a>
-          <a id="btn-sms" href="sms:+15147751126" onclick="handleDirectChannel('sms', event)" class="py-2.5 px-2 rounded-xl bg-sky-500/15 hover:bg-sky-500/25 border border-sky-400/40 text-sky-300 text-xs font-bold transition text-center flex items-center justify-center gap-1">
-            <span>✉️</span> <span id="lbl-sms">Text / SMS</span>
-          </a>
-          <button type="button" onclick="downloadQuote()" id="btn-download" class="py-2.5 px-2 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-600 text-slate-100 text-xs font-bold transition text-center flex items-center justify-center gap-1 cursor-pointer">
-            <span>⬇️</span> <span id="lbl-dl">Quote (.txt)</span>
+          <button type="button" onclick="startNewQuote()" id="btn-new-quote" class="mt-2 w-full py-2 px-3 rounded-lg bg-slate-900 hover:bg-slate-800 border border-sky-400/40 text-sky-300 text-xs font-bold uppercase tracking-wider transition cursor-pointer">
+            New Quote (Generate Fresh Number)
           </button>
         </div>
 
@@ -571,107 +601,236 @@
     function handleMakeChange() {
       const make = document.getElementById("car-make").value;
       const models = VEHICLES[make] || ["Other"];
-      populateModels(make, models[0]);
-      updateQuote();
+    const VEHICLE_BASE_PRICES = {
+      sedan: 100,
+      suv: 120,
+      truck: 120
+    };
+
+    const CONDITION_ADJUSTMENTS = {
+      light: 0,
+      moderate: 20,
+      severe: 30
+    };
+
+    const FOG_LIGHTS_ADDON_PRICE = 35;
+    const DISTANT_ZONE_SURCHARGE = 20;
+
+    const SIZE_LABELS = {
+      sedan: "Sedan / Coupe",
+      suv: "SUV / Crossover",
+      truck: "Truck / Large SUV"
+    };
+
+    const CONDITION_LABELS = {
+      light: "Light Haze / Fog",
+      moderate: "Moderate Yellowing",
+      severe: "Severe Peeling / Flaking"
+    };
+
+    const I18N = {
+      en: {
+        heroBadge: "100% MOBILE SERVICE • 3-YR CERAMIC COATING INCLUDED",
+        heroTitle1: "Crystal Clear Beams.",
+        heroTitle2: " Instant Mobile Quote.",
+        heroSubtitle: "We come directly to your home driveway, workplace, or any convenient parking lot across Greater Montreal. Every restoration includes a 3-year ceramic coating warranty.",
+        step1Title: "Vehicle Information",
+        step2Title: "Headlight Condition",
+        step3Title: "Mobile Service Spot & Add-ons",
+        quoteLabel: "Mobile Quote Request",
+        btnSubmit: "Lock Quote & Send Request",
+        btnNewQuote: "New Quote (Generate Fresh Number)",
+        lblWa: "WhatsApp",
+        lblSms: "Text / SMS",
+        lblDl: "Quote (.txt)"
+      },
+      fr: {
+        heroBadge: "SERVICE 100% MOBILE • GARANTIE CÉRAMIQUE 3 ANS INCLUSE",
+        heroTitle1: "Phares Cristallins.",
+        heroTitle2: " Soumission Mobile Instantanée.",
+        heroSubtitle: "Nous venons directement à votre entrée de maison, lieu de travail ou tout stationnement pratique du Grand Montréal. Garantie céramique 3 ans incluse.",
+        step1Title: "Informations du véhicule",
+        step2Title: "État des phares",
+        step3Title: "Lieu mobile & options",
+        quoteLabel: "Demande de soumission",
+        btnSubmit: "Confirmer & envoyer la demande",
+        btnNewQuote: "Nouveau devis (Nouveau numéro)",
+        lblWa: "WhatsApp",
+        lblSms: "Texte / SMS",
+        lblDl: "Devis (.txt)"
+      }
+    };
+
+    const state = {
+      lang: "en",
+      size: "sedan",
+      condition: "light",
+      photoName: "",
+      photoDataUrl: "",
+      photoMeta: "",
+      quoteRevealed: false,
+      quoteNumber: ""
+    };
+
+    /**
+     * Compresses and resizes an uploaded image file on a canvas so it stays compact
+     * for both on-screen quote preview and Web3Forms JSON submission.
+     */
+    function compressImageFile(file, maxDimension = 800, initialQuality = 0.72) {
+      return new Promise((resolve, reject) => {
+        if (!file || !file.type || !file.type.startsWith("image/")) {
+          reject(new Error("Please choose a valid image file (JPG, PNG, or WEBP)."));
+          return;
+        }
+        if (file.size > 15 * 1024 * 1024) {
+          reject(new Error("Image file is too large (max 15 MB before compression)."));
+          return;
+        }
+
+        const reader = new FileReader();
+        reader.onerror = () => reject(new Error("Could not read the selected photo."));
+        reader.onload = (ev) => {
+          const img = new Image();
+          img.onerror = () => reject(new Error("Unable to decode the selected image."));
+          img.onload = () => {
+            try {
+              let width = img.naturalWidth || img.width;
+              let height = img.naturalHeight || img.height;
+
+              if (width > maxDimension || height > maxDimension) {
+                if (width >= height) {
+                  height = Math.round((height * maxDimension) / width);
+                  width = maxDimension;
+                } else {
+                  width = Math.round((width * maxDimension) / height);
+                  height = maxDimension;
+                }
+              }
+
+              const canvas = document.createElement("canvas");
+              canvas.width = Math.max(1, width);
+              canvas.height = Math.max(1, height);
+              const ctx = canvas.getContext("2d");
+              if (!ctx) {
+                reject(new Error("Image processing is not supported in this browser."));
+                return;
+              }
+
+              ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+
+              let quality = initialQuality;
+              let dataUrl = canvas.toDataURL("image/jpeg", quality);
+
+              // Keep base64 payload well within safe email/JSON limits (~320 KB data URL)
+              const maxDataUrlLength = 320000;
+              while (dataUrl.length > maxDataUrlLength && quality > 0.35) {
+                quality = Number((quality - 0.1).toFixed(2));
+                dataUrl = canvas.toDataURL("image/jpeg", quality);
+              }
+
+              if (dataUrl.length > 450000) {
+                reject(new Error("Photo is still too detailed after compression; please choose a smaller photo."));
+                return;
+              }
+
+              const approxKb = Math.max(1, Math.round((dataUrl.length * 3) / 4 / 1024));
+              resolve({
+                dataUrl,
+                meta: `${canvas.width}x${canvas.height} • ~${approxKb} KB`
+              });
+            } catch (err) {
+              reject(err);
+            }
+          };
+          img.src = ev.target.result;
+        };
+        reader.readAsDataURL(file);
+      });
+    }
+      } else {
+        for (let i = 0; i < 6; i++) {
+          code += chars[Math.floor(Math.random() * chars.length)];
+        }
+      }
+      return `RLM-${code}`;
     }
 
     /**
-     * Shows or hides the custom model field when "Other" or "Other Model" is selected.
+     * Ensures a quote number exists for the active quote session.
      */
-    function toggleCustomModel() {
-      const modelVal = document.getElementById("car-model").value;
-      const customWrap = document.getElementById("custom-model-wrap");
-      if (modelVal === "Other" || modelVal === "Other Model") {
-        customWrap.classList.remove("hidden");
-      } else {
-        customWrap.classList.add("hidden");
+    function ensureQuoteNumber() {
+      if (!state.quoteNumber) {
+        state.quoteNumber = generateQuoteNumber();
+      }
+      return state.quoteNumber;
+    }
+
+    /**
+     * Resets revealed quote view and generates a fresh random Quote Number for a new quote.
+     */
+    function startNewQuote() {
+      state.quoteNumber = generateQuoteNumber();
+      state.quoteRevealed = false;
+      document.getElementById("revealed-breakdown").classList.add("hidden");
+      document.getElementById("rev-photo-wrap").classList.add("hidden");
+      document.getElementById("quote-total").classList.add("hidden");
+      document.getElementById("quote-number-badge").classList.add("hidden");
+      document.getElementById("quote-pre-reveal").classList.remove("hidden");
+      document.getElementById("status-banner").classList.add("hidden");
+      updateQuote();
+      showStatus(`New quote started with Quote Number ${state.quoteNumber}.`, true);
+    }
+
+    /**
+     * Handles customer headlight photo selection, compresses it cleanly, and updates preview feedback.
+     */
+    async function handlePhotoUpload(e) {
+      const file = e.target.files && e.target.files[0];
+      if (!file) return;
+
+      try {
+        const compressed = await compressImageFile(file);
+        state.photoName = file.name;
+        state.photoDataUrl = compressed.dataUrl;
+        state.photoMeta = compressed.meta;
+
+        document.getElementById("photo-preview-img").src = state.photoDataUrl;
+        document.getElementById("photo-name").textContent = file.name;
+        document.getElementById("photo-ready").textContent = `Photo compressed & attached (${state.photoMeta})`;
+        document.getElementById("photo-preview-box").classList.remove("hidden");
+        showStatus(`Headlight photo "${file.name}" attached and compressed (${state.photoMeta}).`, true);
+        updateQuote();
+      } catch (err) {
+        clearPhoto();
+        showStatus(err && err.message ? err.message : "Could not attach photo. Please try another image.", false);
       }
     }
 
     /**
-     * Selects vehicle class / lens size surcharge and updates UI styling.
-     */
-    function selectSize(sizeKey) {
-      state.size = sizeKey;
-      document.querySelectorAll(".size-btn").forEach((btn) => {
-        const active = btn.dataset.size === sizeKey;
-        btn.className = active
-          ? "size-btn py-2.5 px-3 rounded-xl border border-sky-400 bg-sky-500/15 text-sky-200 text-xs sm:text-sm font-semibold transition text-center cursor-pointer"
-          : "size-btn py-2.5 px-3 rounded-xl border border-slate-700/80 bg-slate-950/60 text-slate-300 hover:border-slate-500 text-xs sm:text-sm font-semibold transition text-center cursor-pointer";
-      });
-      updateQuote();
-    }
-
-    /**
-     * Selects headlight condition tier ($80 / $100 / $120) and highlights card.
-     */
-    function selectCondition(condKey) {
-      state.condition = condKey;
-      ["light", "moderate", "severe"].forEach((key) => {
-        const card = document.getElementById("cond-" + key);
-        const active = key === condKey;
-        card.className = active
-          ? "cond-card text-left rounded-xl p-3.5 border-2 border-sky-400 bg-sky-500/10 transition flex flex-col justify-between cursor-pointer"
-          : "cond-card text-left rounded-xl p-3.5 border border-slate-700/80 bg-slate-950/60 hover:border-slate-500 transition flex flex-col justify-between cursor-pointer";
-      });
-      updateQuote();
-    }
-
-    /**
-     * Reads and displays a preview of the customer's uploaded headlight photo.
-     */
-    function handlePhotoUpload(event) {
-      const file = event.target.files && event.target.files[0];
-      if (!file) return;
-      state.photoName = file.name;
-      const reader = new FileReader();
-      reader.onload = (ev) => {
-        if (ev.target && typeof ev.target.result === "string") {
-          document.getElementById("photo-preview-img").src = ev.target.result;
-          document.getElementById("photo-name").textContent = file.name;
-          document.getElementById("photo-preview-box").classList.remove("hidden");
-        }
-      };
-      reader.readAsDataURL(file);
-    }
-
-    /**
-     * Clears the uploaded headlight photo and resets file input.
+     * Clears attached customer photo state and preview UI.
      */
     function clearPhoto() {
       state.photoName = "";
+      state.photoDataUrl = "";
+      state.photoMeta = "";
       document.getElementById("photo-upload").value = "";
       document.getElementById("photo-preview-img").src = "";
+      document.getElementById("rev-photo-img").src = "";
+      document.getElementById("rev-photo-wrap").classList.add("hidden");
       document.getElementById("photo-preview-box").classList.add("hidden");
+      updateQuote();
     }
+    };
 
-    /**
-     * Switches UI text between English (EN) and French (FR).
-     */
-    function setLang(lang) {
-      state.lang = lang;
-      const strings = I18N[lang] || I18N.en;
-      document.getElementById("btn-en").className = lang === "en"
-        ? "px-2.5 py-1 rounded-md text-xs font-bold bg-sky-500 text-slate-950 transition cursor-pointer"
-        : "px-2.5 py-1 rounded-md text-xs font-bold text-slate-300 hover:text-white transition cursor-pointer";
-      document.getElementById("btn-fr").className = lang === "fr"
-        ? "px-2.5 py-1 rounded-md text-xs font-bold bg-sky-500 text-slate-950 transition cursor-pointer"
-        : "px-2.5 py-1 rounded-md text-xs font-bold text-slate-300 hover:text-white transition cursor-pointer";
+    const state = {
+      lang: "en",
+      size: "sedan",
+      condition: "light",
+      photoName: "",
+      quoteRevealed: false
+    };
 
-      document.getElementById("hero-badge").textContent = strings.heroBadge;
-      document.getElementById("hero-title-1").textContent = strings.heroTitle1;
-      document.getElementById("hero-title-2").textContent = strings.heroTitle2;
-      document.getElementById("hero-subtitle").textContent = strings.heroSubtitle;
-      document.getElementById("step1-title").textContent = strings.step1Title;
-      document.getElementById("step2-title").textContent = strings.step2Title;
-      document.getElementById("step3-title").textContent = strings.step3Title;
-      document.getElementById("quote-label").textContent = strings.quoteLabel;
-      document.getElementById("btn-submit-quote").textContent = strings.btnSubmit;
-      document.getElementById("lbl-wa").textContent = strings.lblWa;
-      document.getElementById("lbl-sms").textContent = strings.lblSms;
-      document.getElementById("lbl-dl").textContent = strings.lblDl;
-    }
-
+// ... existing existing code ...
     /**
      * Computes full quote details and CAD total from current form selections.
      */
@@ -685,25 +844,27 @@
         model = customModel;
       }
 
-      const condPrice = CONDITION_PRICES[state.condition] || 80;
-      const sizePrice = SIZE_PRICES[state.size] || 0;
+      const basePrice = VEHICLE_BASE_PRICES[state.size] ?? 100;
+      const condAdj = CONDITION_ADJUSTMENTS[state.condition] ?? 0;
       const zoneVal = document.getElementById("mobile-zone").value;
-      const travelFee = zoneVal === "far" ? 20 : 0;
+      const travelFee = zoneVal === "far" ? DISTANT_ZONE_SURCHARGE : 0;
       const spotType = document.getElementById("spot-type").value;
       const fogOn = document.getElementById("addon-fog").checked;
-      const fogFee = fogOn ? 35 : 0;
+      const fogFee = fogOn ? FOG_LIGHTS_ADDON_PRICE : 0;
 
-      const total = condPrice + sizePrice + travelFee + fogFee;
+      const total = basePrice + condAdj + travelFee + fogFee;
 
       return {
         vehicle: `${year} ${make} ${model}`,
         condition: state.condition,
-        condPrice,
+        conditionLabel: CONDITION_LABELS[state.condition] || "Light Haze / Fog",
+        condAdj,
         size: state.size,
-        sizePrice,
-        warranty: "3-Yr Ceramic Coating Warranty Included ($0)",
+        sizeLabel: SIZE_LABELS[state.size] || "Sedan / Coupe",
+        basePrice,
+        warranty: "3-Year Ceramic Coating Warranty Included ($0)",
         travelFee,
-        zoneLabel: zoneVal === "far" ? "Distant / Far-Out Area (+$20)" : "Standard Montreal / Nearby Area ($0)",
+        zoneLabel: zoneVal === "far" ? `Distant / Far-Out Area (+$${DISTANT_ZONE_SURCHARGE})` : "Standard Montreal / Nearby Area ($0)",
         spotType,
         fogOn,
         fogFee,
@@ -713,31 +874,26 @@
     }
 
     /**
-     * Updates the live quote summary card and direct WhatsApp/SMS links.
+     * Updates non-priced selection summary before submission, and refreshes revealed quote if already submitted.
      */
     function updateQuote() {
       const q = getQuoteSummary();
       document.getElementById("quote-vehicle-heading").textContent = q.vehicle;
-      document.getElementById("quote-total").textContent = `$${q.total} CAD`;
-      document.getElementById("bd-cond-val").textContent = `$${q.condPrice}`;
-      document.getElementById("bd-size-val").textContent = q.sizePrice > 0 ? `+$${q.sizePrice}` : "$0";
-      document.getElementById("bd-warranty-val").textContent = "Included ($0)";
-
-      const travelEl = document.getElementById("bd-travel-val");
-      if (q.travelFee > 0) {
-        travelEl.textContent = `+$${q.travelFee}`;
-        travelEl.className = "font-semibold text-amber-300";
-      } else {
-        travelEl.textContent = "Included ($0)";
-        travelEl.className = "font-semibold text-emerald-400";
-      }
+      document.getElementById("bd-cond-val").textContent = q.conditionLabel;
+      document.getElementById("bd-size-val").textContent = q.sizeLabel;
+      document.getElementById("bd-warranty-val").textContent = "Included";
+      document.getElementById("bd-travel-val").textContent = q.spotType;
 
       const addonsRow = document.getElementById("bd-addons-row");
       if (q.fogOn) {
         addonsRow.classList.remove("hidden");
-        document.getElementById("bd-addons-val").textContent = `+$${q.fogFee}`;
+        document.getElementById("bd-addons-val").textContent = "Fog Lights Restoration Pair";
       } else {
         addonsRow.classList.add("hidden");
+      }
+
+      if (state.quoteRevealed) {
+        renderRevealedQuote(q);
       }
 
       const encodedText = encodeURIComponent(buildQuoteText());
@@ -746,7 +902,41 @@
     }
 
     /**
-     * Builds formatted plain-text quote summary for WhatsApp, SMS, and .txt download.
+     * Reveals the calculated pricing breakdown and total after quote submission.
+     */
+    function renderRevealedQuote(q) {
+      state.quoteRevealed = true;
+      document.getElementById("quote-pre-reveal").classList.add("hidden");
+
+      const totalEl = document.getElementById("quote-total");
+      totalEl.textContent = `$${q.total} CAD`;
+      totalEl.classList.remove("hidden");
+
+      document.getElementById("rev-base-val").textContent = `$${q.basePrice}`;
+      document.getElementById("rev-cond-val").textContent = q.condAdj > 0 ? `+$${q.condAdj}` : "+$0";
+
+      const revTravelRow = document.getElementById("rev-travel-row");
+      if (q.travelFee > 0) {
+        revTravelRow.classList.remove("hidden");
+        document.getElementById("rev-travel-val").textContent = `+$${q.travelFee}`;
+      } else {
+        revTravelRow.classList.add("hidden");
+      }
+
+      const revFogRow = document.getElementById("rev-fog-row");
+      if (q.fogOn) {
+        revFogRow.classList.remove("hidden");
+        document.getElementById("rev-fog-val").textContent = `+$${q.fogFee}`;
+      } else {
+        revFogRow.classList.add("hidden");
+      }
+
+      document.getElementById("rev-total-val").textContent = `$${q.total} CAD`;
+      document.getElementById("revealed-breakdown").classList.remove("hidden");
+    }
+
+    /**
+     * Builds formatted plain-text quote summary including calculated pricing.
      */
     function buildQuoteText() {
       const q = getQuoteSummary();
@@ -760,11 +950,11 @@
         `Name: ${name}`,
         `Phone: ${phone}`,
         `Vehicle: ${q.vehicle}`,
-        `Vehicle Class: ${q.size.toUpperCase()} (+$${q.sizePrice})`,
-        `Condition: ${q.condition.toUpperCase()} ($${q.condPrice})`,
+        `Vehicle Class & Base: ${q.sizeLabel} ($${q.basePrice} starting base)`,
+        `Condition & Adjustment: ${q.conditionLabel} (+$${q.condAdj})`,
         `Warranty: ${q.warranty}`,
         `Mobile Service: ${q.spotType} | ${q.zoneLabel}`,
-        `Fog Lights Restoration Pair: ${q.fogOn ? "Yes (+$35)" : "No"}`,
+        `Fog Lights Restoration Pair: ${q.fogOn ? `Yes (+$${q.fogFee})` : "No"}`,
         `Photo Attached: ${q.photoName}`,
         `Street / Area: ${address}`,
         `TOTAL ESTIMATE: $${q.total} CAD`,
@@ -785,7 +975,7 @@
     }
 
     /**
-     * Submits quote request to Web3Forms API and shows confirmation status.
+     * Submits quote request to Web3Forms API and reveals the quote pricing breakdown.
      */
     async function submitQuote(event) {
       event.preventDefault();
@@ -807,12 +997,12 @@
         customer_phone: phone,
         street_or_area: address,
         vehicle: q.vehicle,
-        vehicle_class: `${q.size} (+$${q.sizePrice})`,
-        headlight_condition: `${q.condition} ($${q.condPrice})`,
+        vehicle_class: `${q.sizeLabel} ($${q.basePrice} starting base)`,
+        headlight_condition: `${q.conditionLabel} (+$${q.condAdj})`,
         warranty: q.warranty,
         mobile_area: q.zoneLabel,
         preferred_spot: q.spotType,
-        fog_lights_addon: q.fogOn ? "Yes (+$35)" : "No",
+        fog_lights_addon: q.fogOn ? `Yes (+$${q.fogFee})` : "No",
         photo_filename: q.photoName,
         total_estimate: `$${q.total} CAD`
       };
@@ -827,6 +1017,7 @@
           body: JSON.stringify(payload)
         });
         const result = await response.json();
+        renderRevealedQuote(q);
         if (result && result.success) {
           showStatus(
             `Quote locked ($${q.total} CAD) for ${q.vehicle} and sent to Resto Lights MTL! We will reach out to ${phone} shortly.`,
@@ -834,13 +1025,14 @@
           );
         } else {
           showStatus(
-            "Unable to confirm automatic email submission. Use WhatsApp, Text / SMS, or Quote (.txt) below to send your details.",
+            `Your quote total is $${q.total} CAD. Automatic email could not be confirmed—use WhatsApp, Text / SMS, or Quote (.txt) below to send your details.`,
             false
           );
         }
       } catch (err) {
+        renderRevealedQuote(q);
         showStatus(
-          "Network error while sending quote. Use WhatsApp, Text / SMS, or Quote (.txt) below to send your quote directly.",
+          `Your quote total is $${q.total} CAD. Network error sending email—use WhatsApp, Text / SMS, or Quote (.txt) below to send your quote directly.`,
           false
         );
       } finally {
@@ -864,28 +1056,217 @@
     }
 
     /**
-     * Generates and downloads a .txt quote file for the customer.
+     * Computes full quote details, quote number, and CAD total from current form selections.
      */
-    function downloadQuote() {
-      try {
-        const q = getQuoteSummary();
-        const blob = new Blob([buildQuoteText()], { type: "text/plain;charset=utf-8" });
-        const url = URL.createObjectURL(blob);
-        const link = document.createElement("a");
-        const safeVehicle = q.vehicle.replace(/[^a-zA-Z0-9-_]+/g, "-");
-        link.href = url;
-        link.download = `Resto-Lights-MTL-Quote-${safeVehicle}.txt`;
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
-        URL.revokeObjectURL(url);
-        showStatus(`Downloaded quote summary ($${q.total} CAD) as a .txt file.`, true);
-      } catch (err) {
-        showStatus("Could not download quote file in this browser.", false);
+    function getQuoteSummary() {
+      toggleCustomModel();
+      const quoteNumber = ensureQuoteNumber();
+      const year = document.getElementById("car-year").value;
+      const make = document.getElementById("car-make").value;
+      let model = document.getElementById("car-model").value;
+      const customModel = document.getElementById("custom-model-input").value.trim();
+      if ((model === "Other" || model === "Other Model") && customModel) {
+        model = customModel;
       }
+
+      const basePrice = VEHICLE_BASE_PRICES[state.size] ?? 100;
+      const condAdj = CONDITION_ADJUSTMENTS[state.condition] ?? 0;
+      const zoneVal = document.getElementById("mobile-zone").value;
+      const travelFee = zoneVal === "far" ? DISTANT_ZONE_SURCHARGE : 0;
+      const zoneName = zoneVal === "far" ? "Distant / Far-Out Area" : "Standard Montreal / Nearby Area";
+      const spotType = document.getElementById("spot-type").value;
+      const fogOn = document.getElementById("addon-fog").checked;
+      const fogFee = fogOn ? FOG_LIGHTS_ADDON_PRICE : 0;
+
+      const total = basePrice + condAdj + travelFee + fogFee;
+
+      return {
+        quoteNumber,
+        vehicle: `${year} ${make} ${model}`,
+        condition: state.condition,
+        conditionLabel: CONDITION_LABELS[state.condition] || "Light Haze / Fog",
+        condAdj,
+        size: state.size,
+        sizeLabel: SIZE_LABELS[state.size] || "Sedan / Coupe",
+        basePrice,
+        warranty: "3-Year Ceramic Coating Warranty Included ($0)",
+        travelFee,
+        zoneName,
+        zoneLabel: zoneVal === "far" ? `${zoneName} (+$${DISTANT_ZONE_SURCHARGE})` : `${zoneName} ($0)`,
+        spotType,
+        fogOn,
+        fogFee,
+        photoName: state.photoName || "None",
+        photoDataUrl: state.photoDataUrl || "",
+        photoMeta: state.photoMeta || "",
+        total
+      };
     }
 
-    init();
-  </script>
-</body>
-</html>
+    /**
+     * Updates non-priced selection summary before submission, and refreshes revealed quote if already submitted.
+     */
+    function updateQuote() {
+      const q = getQuoteSummary();
+      document.getElementById("quote-vehicle-heading").textContent = q.vehicle;
+      document.getElementById("bd-cond-val").textContent = q.conditionLabel;
+      document.getElementById("bd-size-val").textContent = q.sizeLabel;
+      document.getElementById("bd-warranty-val").textContent = "Included";
+      document.getElementById("bd-travel-val").textContent = q.spotType;
+      document.getElementById("bd-area-val").textContent = q.zoneName;
+
+      const addonsRow = document.getElementById("bd-addons-row");
+      if (q.fogOn) {
+        addonsRow.classList.remove("hidden");
+        document.getElementById("bd-addons-val").textContent = "Fog Lights Restoration Pair";
+      } else {
+        addonsRow.classList.add("hidden");
+      }
+
+      if (state.quoteRevealed) {
+        renderRevealedQuote(q);
+      }
+
+      const encodedText = encodeURIComponent(buildQuoteText());
+      document.getElementById("btn-whatsapp").href = `https://wa.me/${OWNER_PHONE_NUMBER}?text=${encodedText}`;
+      document.getElementById("btn-sms").href = `sms:+${OWNER_PHONE_NUMBER}?body=${encodedText}`;
+    }
+
+    /**
+     * Reveals the Quote Number, full quote details, pricing breakdown, and total after quote submission.
+     */
+    function renderRevealedQuote(q) {
+      const name = document.getElementById("cust-name").value.trim() || "Customer";
+      const phone = document.getElementById("cust-phone").value.trim() || "Not provided";
+      const address = document.getElementById("cust-address").value.trim() || "Not provided";
+
+      state.quoteRevealed = true;
+      document.getElementById("quote-pre-reveal").classList.add("hidden");
+
+      const totalEl = document.getElementById("quote-total");
+      totalEl.textContent = `$${q.total} CAD`;
+      totalEl.classList.remove("hidden");
+
+      const badgeEl = document.getElementById("quote-number-badge");
+      badgeEl.textContent = `# ${q.quoteNumber}`;
+      badgeEl.classList.remove("hidden");
+
+      document.getElementById("rev-quote-num").textContent = q.quoteNumber;
+      document.getElementById("rev-customer-val").textContent = `${name} • ${phone}`;
+      document.getElementById("rev-vehicle-spot-val").textContent = `${q.vehicle} (${q.spotType})`;
+      document.getElementById("rev-location-val").textContent = `${address} — ${q.zoneName}`;
+      document.getElementById("rev-base-val").textContent = `$${q.basePrice}`;
+      document.getElementById("rev-cond-val").textContent = q.condAdj > 0 ? `+$${q.condAdj}` : "+$0";
+
+      const revTravelRow = document.getElementById("rev-travel-row");
+      if (q.travelFee > 0) {
+        revTravelRow.classList.remove("hidden");
+        document.getElementById("rev-travel-val").textContent = `+$${q.travelFee}`;
+      } else {
+        revTravelRow.classList.add("hidden");
+      }
+
+      const revFogRow = document.getElementById("rev-fog-row");
+      if (q.fogOn) {
+        revFogRow.classList.remove("hidden");
+        document.getElementById("rev-fog-val").textContent = `+$${q.fogFee}`;
+      } else {
+        revFogRow.classList.add("hidden");
+      }
+
+      document.getElementById("rev-total-val").textContent = `$${q.total} CAD`;
+
+      const revPhotoWrap = document.getElementById("rev-photo-wrap");
+      if (q.photoDataUrl) {
+        document.getElementById("rev-photo-img").src = q.photoDataUrl;
+        document.getElementById("rev-photo-name").textContent = q.photoName;
+        document.getElementById("rev-photo-meta").textContent = `Attached & submitted (${q.photoMeta || "compressed image"})`;
+        revPhotoWrap.classList.remove("hidden");
+      } else {
+        revPhotoWrap.classList.add("hidden");
+      }
+
+      document.getElementById("revealed-breakdown").classList.remove("hidden");
+    }
+
+    /**
+     * Builds formatted plain-text quote summary including Quote Number, photo status, and calculated pricing.
+     */
+    function buildQuoteText() {
+      const q = getQuoteSummary();
+      const name = document.getElementById("cust-name").value.trim() || "Customer";
+      const phone = document.getElementById("cust-phone").value.trim() || "Not provided";
+      const address = document.getElementById("cust-address").value.trim() || "Not provided";
+      const photoSummary = q.photoDataUrl
+        ? `Attached & Submitted (${q.photoName}${q.photoMeta ? `, ${q.photoMeta}` : ""})`
+        : "None";
+
+      return [
+        "RESTO LIGHTS MTL - HEADLIGHTS RESTORATION QUOTE",
+        "------------------------------------------------",
+        `Quote Number: ${q.quoteNumber}`,
+        `Name: ${name}`,
+        `Phone: ${phone}`,
+        `Vehicle: ${q.vehicle}`,
+        `Vehicle Class & Base: ${q.sizeLabel} ($${q.basePrice} starting base)`,
+        `Condition & Adjustment: ${q.conditionLabel} (+$${q.condAdj})`,
+        `Warranty: ${q.warranty}`,
+        `Mobile Service: ${q.spotType} | ${q.zoneLabel}`,
+        `Fog Lights Restoration Pair: ${q.fogOn ? `Yes (+$${q.fogFee})` : "No"}`,
+        `Headlight Photo: ${photoSummary}`,
+        `Street / Area: ${address}`,
+        `TOTAL ESTIMATE: $${q.total} CAD`,
+        `Contact: (514) 775-1126`
+      ].join("\n");
+    }
+
+    /**
+     * Displays status banner feedback to the user.
+     */
+    function showStatus(message, isSuccess = true) {
+      const banner = document.getElementById("status-banner");
+      banner.className = isSuccess
+        ? "mt-4 p-3.5 rounded-xl text-xs leading-relaxed border bg-sky-500/15 border-sky-400/40 text-sky-100"
+        : "mt-4 p-3.5 rounded-xl text-xs leading-relaxed border bg-rose-500/15 border-rose-400/40 text-rose-200";
+      banner.textContent = message;
+      banner.classList.remove("hidden");
+    }
+
+    /**
+     * Generates a fresh random Quote Number on submission, sends payload to Web3Forms, and reveals full quote + price.
+     */
+    async function submitQuote(event) {
+      event.preventDefault();
+      state.quoteNumber = generateQuoteNumber();
+      const q = getQuoteSummary();
+      const name = document.getElementById("cust-name").value.trim();
+      const phone = document.getElementById("cust-phone").value.trim();
+      const address = document.getElementById("cust-address").value.trim();
+      const submitBtn = document.getElementById("btn-submit-quote");
+      const prevText = submitBtn.textContent;
+
+      submitBtn.disabled = true;
+      submitBtn.textContent = state.lang === "fr" ? "Envoi en cours..." : "Sending Request...";
+
+      const payload = {
+        access_key: WEB3FORMS_ACCESS_KEY,
+        subject: `Resto Lights MTL Quote [${q.quoteNumber}]: ${q.vehicle} ($${q.total} CAD)${q.photoDataUrl ? " [Photo Attached]" : ""}`,
+        from_name: "Resto Lights MTL Quote Estimator",
+        quote_number: q.quoteNumber,
+        customer_name: name,
+        customer_phone: phone,
+        street_or_area: address,
+        vehicle: q.vehicle,
+        vehicle_class: `${q.sizeLabel} ($${q.basePrice} starting base)`,
+        headlight_condition: `${q.conditionLabel} (+$${q.condAdj})`,
+        warranty: q.warranty,
+        mobile_area: q.zoneLabel,
+        preferred_spot: q.spotType,
+        fog_lights_addon: q.fogOn ? `Yes (+$${q.fogFee})` : "No",
+        photo_attached: q.photoDataUrl ? "Yes (Compressed JPEG Data URL Included)" : "No",
+        photo_filename: q.photoName,
+        photo_details: q.photoMeta || "None",
+        headlight_photo_data_url: q.photoDataUrl || "None",
+        total_estimate: `$${q.total} CAD`
+      };
+// ... existing ...
