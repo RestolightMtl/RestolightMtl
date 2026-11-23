@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Rajdhani:wght@600;700&display=swap" rel="stylesheet" />
   <script>
-    // Configure Tailwind custom theme fonts and colors for Resto Lights MTL
+    // Configure Tailwind theme fonts and colors for Resto Lights MTL
     try {
       tailwind.config = {
         theme: {
@@ -362,7 +362,7 @@
         </div>
 
         <div id="mobile-note" class="p-3.5 rounded-xl bg-sky-500/10 border border-sky-400/30 mb-4 text-xs text-slate-200 leading-relaxed">
-          We come directly to your home driveway, workplace, or any convenient parking lot across Greater Montreal. Your exact quote price is revealed right after submitting your request.
+          We come directly to your home driveway, workplace, or any convenient parking lot across Greater Montreal. Your exact quote price is revealed right after submitting your request (12–24 hour cancellation/rescheduling notice required).
         </div>
 
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-4">
@@ -407,7 +407,7 @@
       </div>
     </div>
 
-    <!-- Right 5 Columns: Quote Submission, Post-Submit Price Reveal, Download & WhatsApp/SMS -->
+    <!-- Right 5 Columns: Quote Submission, Post-Submit Price Reveal & Bottom Quick Tabs -->
     <div class="lg:col-span-5 lg:sticky lg:top-20 space-y-5">
       <div class="glass-card rounded-2xl p-5 sm:p-6 border-sky-400/30">
 
@@ -422,7 +422,7 @@
           </div>
         </div>
 
-        <!-- Pre-Submit Summary (Prices Hidden Until Submission) -->
+        <!-- Pre-Submit Summary (Prices Strictly Hidden Until Submission) -->
         <div id="pre-submit-summary" class="space-y-2 text-sm border-b border-slate-800 pb-4 mb-4">
           <div class="flex justify-between text-slate-300">
             <span>Vehicle Class</span>
@@ -433,7 +433,7 @@
             <span id="sum-cond-val" class="font-semibold text-white">Stage 1 — Light Haze / Fog</span>
           </div>
           <div class="flex justify-between text-slate-300">
-            <span>2-Yr Ceramic Warranty</span>
+            <span>2-Year Ceramic Warranty</span>
             <span class="font-semibold text-emerald-400">Included</span>
           </div>
           <div class="flex justify-between text-slate-300">
@@ -492,11 +492,6 @@
               <a id="revealed-photo-link" href="#" target="_blank" rel="noopener noreferrer" class="text-sky-300 underline truncate block">View uploaded photo</a>
             </div>
           </div>
-
-          <button type="button" onclick="downloadCurrentCustomerQuote()" class="mt-3 w-full py-2.5 px-3 rounded-xl bg-sky-500/20 hover:bg-sky-500/30 border border-sky-400/50 text-sky-200 text-xs font-bold uppercase tracking-wider transition flex items-center justify-center gap-2 cursor-pointer">
-            <span>⬇️</span>
-            <span id="btn-download-quote-card">Download Quote</span>
-          </button>
         </div>
 
         <!-- Customer Submission Form -->
@@ -522,24 +517,11 @@
           </button>
         </form>
 
-        <!-- Post-Submit Download + WhatsApp / SMS / New Quote Actions -->
-        <div id="post-submit-actions" class="hidden mt-3 space-y-2">
-          <button type="button" onclick="downloadCurrentCustomerQuote()" class="w-full py-2.5 px-4 rounded-xl bg-indigo-500/20 hover:bg-indigo-500/30 border border-indigo-400/50 text-indigo-200 text-xs font-bold uppercase tracking-wider transition flex items-center justify-center gap-2 cursor-pointer">
-            <span>⬇️</span>
-            <span id="btn-download-quote-bar">Download Quote</span>
+        <!-- New Quote Button Shown After Submission -->
+        <div id="post-submit-new-quote-wrap" class="hidden mt-3">
+          <button type="button" onclick="startNewQuote()" class="w-full py-2.5 px-3 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-600 text-slate-100 text-xs font-bold uppercase tracking-wider transition cursor-pointer">
+            🔄 Start New Quote
           </button>
-
-          <div class="grid grid-cols-3 gap-2">
-            <button type="button" onclick="sendWhatsApp()" class="py-2.5 px-2 rounded-xl bg-emerald-500/15 hover:bg-emerald-500/25 border border-emerald-400/40 text-emerald-300 text-xs font-bold transition text-center cursor-pointer">
-              💬 WhatsApp
-            </button>
-            <button type="button" onclick="sendSMS()" class="py-2.5 px-2 rounded-xl bg-sky-500/15 hover:bg-sky-500/25 border border-sky-400/40 text-sky-300 text-xs font-bold transition text-center cursor-pointer">
-              ✉️ Text / SMS
-            </button>
-            <button type="button" onclick="startNewQuote()" class="py-2.5 px-2 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-600 text-slate-100 text-xs font-bold transition text-center cursor-pointer">
-              🔄 New Quote
-            </button>
-          </div>
         </div>
 
         <!-- Status Banner -->
@@ -547,13 +529,13 @@
 
         <!-- Compact Bottom Quick Tabs: Contact by WhatsApp | By Text | Download Your Quote -->
         <div id="bottom-quick-tabs" class="mt-5 pt-4 border-t border-slate-800/90 grid grid-cols-3 gap-2">
-          <button type="button" onclick="sendWhatsApp()" class="py-2 px-2 rounded-lg bg-emerald-500/15 hover:bg-emerald-500/25 border border-emerald-400/35 text-emerald-300 text-[11px] font-bold leading-tight transition text-center cursor-pointer">
+          <button type="button" id="tab-whatsapp" onclick="sendWhatsApp()" class="py-2 px-2 rounded-lg bg-emerald-500/15 hover:bg-emerald-500/25 border border-emerald-400/35 text-emerald-300 text-[11px] font-bold leading-tight transition text-center cursor-pointer">
             Contact by WhatsApp
           </button>
-          <button type="button" onclick="sendSMS()" class="py-2 px-2 rounded-lg bg-sky-500/15 hover:bg-sky-500/25 border border-sky-400/35 text-sky-300 text-[11px] font-bold leading-tight transition text-center cursor-pointer">
+          <button type="button" id="tab-text" onclick="sendSMS()" class="py-2 px-2 rounded-lg bg-sky-500/15 hover:bg-sky-500/25 border border-sky-400/35 text-sky-300 text-[11px] font-bold leading-tight transition text-center cursor-pointer">
             By Text
           </button>
-          <button type="button" onclick="downloadCurrentCustomerQuote()" class="py-2 px-2 rounded-lg bg-indigo-500/15 hover:bg-indigo-500/25 border border-indigo-400/35 text-indigo-200 text-[11px] font-bold leading-tight transition text-center cursor-pointer">
+          <button type="button" id="tab-download" onclick="downloadCurrentCustomerQuote()" class="py-2 px-2 rounded-lg bg-indigo-500/15 hover:bg-indigo-500/25 border border-indigo-400/35 text-indigo-200 text-[11px] font-bold leading-tight transition text-center cursor-pointer">
             Download Your Quote
           </button>
         </div>
@@ -639,7 +621,7 @@
         photoSub: "Instant preview; uploaded to ImgBB and included in your quote request.",
         btnUploadPhoto: "Choose Photo",
         step3Title: "Mobile Service Spot & Add-ons",
-        mobileNote: "We come directly to your home driveway, workplace, or any convenient parking lot across Greater Montreal. Your exact quote price is revealed right after submitting your request.",
+        mobileNote: "We come directly to your home driveway, workplace, or any convenient parking lot across Greater Montreal. Your exact quote price is revealed right after submitting your request (12–24 hour cancellation/rescheduling notice required).",
         lblZone: "Area / Distance",
         lblSpot: "Preferred Spot",
         warrantyTitle: "2-Year Ceramic Coating Warranty",
@@ -651,8 +633,9 @@
         hiddenPriceNotice: "Submit your details below to unlock your instant quote price and download your quote.",
         btnSubmit: "Submit Quote & Reveal Price",
         btnResubmit: "Update & Re-Submit Quote",
-        btnDownloadCard: "Download Quote",
-        btnDownloadBar: "Download Quote"
+        tabWhatsApp: "Contact by WhatsApp",
+        tabText: "By Text",
+        tabDownload: "Download Your Quote"
       },
       fr: {
         heroBadge: "SERVICE 100% MOBILE • GARANTIE CÉRAMIQUE 2 ANS INCLUSE",
@@ -678,7 +661,7 @@
         photoSub: "Aperçu immédiat; téléversé sur ImgBB et joint à votre soumission.",
         btnUploadPhoto: "Choisir une photo",
         step3Title: "Lieu mobile & options",
-        mobileNote: "Nous venons à votre domicile, au travail ou dans un stationnement pratique du Grand Montréal. Le prix exact s'affiche dès la soumission.",
+        mobileNote: "Nous venons à votre domicile, au travail ou dans un stationnement pratique du Grand Montréal. Le prix exact s'affiche dès la soumission (préavis de 12 à 24 h requis pour annulation ou report).",
         lblZone: "Secteur / Distance",
         lblSpot: "Lieu préféré",
         warrantyTitle: "Garantie revêtement céramique 2 ans",
@@ -690,8 +673,9 @@
         hiddenPriceNotice: "Soumettez vos coordonnées ci-dessous pour voir le prix et télécharger votre soumission.",
         btnSubmit: "Soumettre & voir le prix",
         btnResubmit: "Mettre à jour et renvoyer",
-        btnDownloadCard: "Télécharger la soumission",
-        btnDownloadBar: "Télécharger la soumission"
+        tabWhatsApp: "Contact par WhatsApp",
+        tabText: "Par texto",
+        tabDownload: "Télécharger votre soumission"
       }
     };
 
@@ -939,8 +923,9 @@
       setText("card-warranty-note", t.cardWarrantyNote);
       setText("hidden-price-notice", t.hiddenPriceNotice);
       setText("btn-submit-quote", appState.submitted ? t.btnResubmit : t.btnSubmit);
-      setText("btn-download-quote-card", t.btnDownloadCard);
-      setText("btn-download-quote-bar", t.btnDownloadBar);
+      setText("tab-whatsapp", t.tabWhatsApp);
+      setText("tab-text", t.tabText);
+      setText("tab-download", t.tabDownload);
     }
 
     function computeQuoteDetails() {
@@ -1037,7 +1022,7 @@
       setTimeout(() => URL.revokeObjectURL(url), 1500);
     }
 
-    // Build customer quote receipt HTML preserving the exact locked quote number
+    // Build customer quote receipt HTML preserving the exact locked quote number and breakdown
     function buildCustomerQuoteDocument(data) {
       const quoteNum = data.quoteId || appState.quoteId;
       const baseFee = Number(data.basePrice || 100);
@@ -1072,6 +1057,7 @@
     .total { margin-top: 20px; padding: 16px 18px; border-radius: 12px; background: #050912; border: 1px solid rgba(56, 189, 248, 0.45); display: flex; justify-content: space-between; align-items: center; }
     .total-lbl { font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: #cbd5e1; }
     .total-amt { font-size: 32px; font-weight: 800; color: #38bdf8; }
+    .policy { margin-top: 14px; font-size: 11px; color: #94a3b8; line-height: 1.5; }
     .foot { padding: 16px 28px 24px; font-size: 11px; color: #94a3b8; line-height: 1.6; border-top: 1px solid #1e293b; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; }
     .print-btn { background: #38bdf8; color: #05070a; border: none; padding: 8px 14px; border-radius: 8px; font-weight: 700; font-size: 12px; cursor: pointer; }
     a { color: #38bdf8; }
@@ -1106,7 +1092,7 @@
       <div class="row"><span>Street / Parking Location</span><span>${escapeHtml(data.customerAddress || "")}</span></div>
       ${photoRow}
 
-      <div class="warranty">✓ 2-Year Ceramic Coating Warranty Included ($0)</div>
+      <div class="warranty">✓ 2-Year Ceramic Coating Warranty Included</div>
 
       <div class="heading">Quote Breakdown</div>
       <div class="row"><span>Base Service (${escapeHtml(data.classLabel || "")})</span><span>$${baseFee} CAD</span></div>
@@ -1119,6 +1105,8 @@
         <div class="total-lbl">Total Mobile Estimate</div>
         <div class="total-amt">$${totalFee} CAD</div>
       </div>
+
+      <div class="policy">Cancellation / Rescheduling Notice: Please provide 12–24 hours notice if you need to reschedule or cancel your mobile appointment.</div>
     </div>
     <div class="foot">
       <div><strong>Resto Lights MTL</strong> • Call / SMS / WhatsApp: (514) 775-1126</div>
@@ -1131,31 +1119,16 @@
 
     function downloadCurrentCustomerQuote() {
       try {
-        const q = computeQuoteDetails();
-        const nameEl = document.getElementById("cust-name");
-        const phoneEl = document.getElementById("cust-phone");
-        const addrEl = document.getElementById("cust-address");
+        // Keep price hidden and prompt submission if the customer has not submitted the form yet
+        if (!appState.submitted || !appState.activeQuoteData) {
+          showStatusBanner(
+            "Please submit your quote form first to reveal your price and download your quote.",
+            false
+          );
+          return;
+        }
 
-        const snapshot = appState.activeQuoteData || {
-          quoteId: q.quoteId,
-          dateText: new Date().toLocaleString("en-CA"),
-          customerName: nameEl ? nameEl.value.trim() : "",
-          customerPhone: phoneEl ? phoneEl.value.trim() : "",
-          customerAddress: addrEl ? addrEl.value.trim() : "",
-          vehicle: q.vehicle,
-          classLabel: q.classLabel,
-          conditionLabel: q.conditionLabel,
-          zoneLabel: q.zoneLabel,
-          spot: q.spot,
-          fogSelected: q.fogSelected,
-          basePrice: q.basePrice,
-          condSurcharge: q.condSurcharge,
-          travelSurcharge: q.travelSurcharge,
-          fogSurcharge: q.fogSurcharge,
-          totalPrice: q.totalPrice,
-          photoUrl: appState.uploadedPhotoUrl || ""
-        };
-
+        const snapshot = appState.activeQuoteData;
         const exactQuoteId = snapshot.quoteId || appState.quoteId;
         const html = buildCustomerQuoteDocument(snapshot);
         const safeId = String(exactQuoteId).replace(/[^a-zA-Z0-9_-]/g, "_");
@@ -1226,10 +1199,10 @@
 
       const preSummary = document.getElementById("pre-submit-summary");
       const revealedBox = document.getElementById("revealed-quote-box");
-      const postActions = document.getElementById("post-submit-actions");
+      const postNewQuoteWrap = document.getElementById("post-submit-new-quote-wrap");
       if (preSummary) preSummary.classList.add("hidden");
       if (revealedBox) revealedBox.classList.remove("hidden");
-      if (postActions) postActions.classList.remove("hidden");
+      if (postNewQuoteWrap) postNewQuoteWrap.classList.remove("hidden");
 
       setText("revealed-quote-id", "Quote #" + q.quoteId);
       setText("revealed-total", "$" + q.totalPrice);
@@ -1281,6 +1254,7 @@
         address_notes: customerAddress,
         fog_lights_addon: q.fogSelected ? "Yes (+$35)" : "No",
         estimated_total: `$${q.totalPrice} CAD`,
+        cancellation_policy: "12–24 hour cancellation/rescheduling notice required",
         headlight_photo_url: photoUrl || "No photo uploaded"
       };
 
@@ -1294,19 +1268,19 @@
         appState.submitted = true;
         if (data && data.success) {
           showStatusBanner(
-            `Quote #${q.quoteId} ($${q.totalPrice} CAD) is locked and sent to Resto Lights MTL! We will reach out to ${customerPhone} shortly.`,
+            `Quote #${q.quoteId} ($${q.totalPrice} CAD) is locked and sent to Resto Lights MTL! We will reach out to ${customerPhone} shortly. (12–24 hr cancellation notice applies.)`,
             true
           );
         } else {
           showStatusBanner(
-            `Your quote #${q.quoteId} is $${q.totalPrice} CAD. Download your quote or tap WhatsApp / Text / SMS below.`,
+            `Your quote #${q.quoteId} is $${q.totalPrice} CAD. Download your quote or tap WhatsApp / By Text below.`,
             false
           );
         }
       } catch (err) {
         appState.submitted = true;
         showStatusBanner(
-          `Your quote #${q.quoteId} is $${q.totalPrice} CAD. Download your quote or tap WhatsApp / Text / SMS below.`,
+          `Your quote #${q.quoteId} is $${q.totalPrice} CAD. Download your quote or tap WhatsApp / By Text below.`,
           false
         );
       } finally {
@@ -1317,43 +1291,66 @@
       }
     }
 
-    function buildQuoteMessageText() {
+    // Build WhatsApp/Text message: NO price info before submission; includes quote ID & price after submission
+    function buildContactMessageText() {
       const q = computeQuoteDetails();
       const nameEl = document.getElementById("cust-name");
       const phoneEl = document.getElementById("cust-phone");
       const addrEl = document.getElementById("cust-address");
-      const name = nameEl ? nameEl.value.trim() || "Customer" : "Customer";
+      const name = nameEl ? nameEl.value.trim() || "Not provided" : "Not provided";
       const phone = phoneEl ? phoneEl.value.trim() || "Not provided" : "Not provided";
       const address = addrEl ? addrEl.value.trim() || "Not provided" : "Not provided";
 
-      const lines = [
-        `RESTO LIGHTS MTL — QUOTE #${q.quoteId}`,
-        "------------------------------------",
-        `Name: ${name}`,
-        `Phone: ${phone}`,
-        `Vehicle: ${q.vehicle} (${q.classLabel})`,
-        `Condition: ${q.conditionLabel}`,
-        "Warranty: 2-Year Ceramic Coating (Included)",
-        `Mobile Spot: ${q.spot} | ${q.zoneLabel}`,
-        `Fog Lights Pair: ${q.fogSelected ? "Yes (+$35)" : "No"}`,
-        `Location: ${address}`,
-        `TOTAL ESTIMATE: $${q.totalPrice} CAD`
-      ];
+      if (!appState.submitted || !appState.activeQuoteData) {
+        const preLines = [
+          "RESTO LIGHTS MTL — MOBILE INQUIRY",
+          "------------------------------------",
+          `Name: ${name}`,
+          `Phone: ${phone}`,
+          `Vehicle: ${q.vehicle} (${q.classLabel})`,
+          `Condition: ${q.conditionLabel}`,
+          "Warranty: 2-Year Ceramic Coating (Included)",
+          `Mobile Spot: ${q.spot} | ${q.zoneLabel}`,
+          `Fog Lights Pair: ${q.fogSelected ? "Yes" : "No"}`,
+          `Location: ${address}`
+        ];
 
-      if (appState.uploadedPhotoUrl) {
-        lines.push(`Headlight Photo: ${appState.uploadedPhotoUrl}`);
+        if (appState.uploadedPhotoUrl) {
+          preLines.push(`Headlight Photo: ${appState.uploadedPhotoUrl}`);
+        }
+
+        return preLines.join("\n");
       }
 
-      return lines.join("\n");
+      const locked = appState.activeQuoteData;
+      const postLines = [
+        `RESTO LIGHTS MTL — QUOTE #${locked.quoteId}`,
+        "------------------------------------",
+        `Name: ${locked.customerName || name}`,
+        `Phone: ${locked.customerPhone || phone}`,
+        `Vehicle: ${locked.vehicle} (${locked.classLabel})`,
+        `Condition: ${locked.conditionLabel}`,
+        "Warranty: 2-Year Ceramic Coating (Included)",
+        `Mobile Spot: ${locked.spot} | ${locked.zoneLabel}`,
+        `Fog Lights Pair: ${locked.fogSelected ? "Yes (+$35)" : "No"}`,
+        `Location: ${locked.customerAddress || address}`,
+        `TOTAL ESTIMATE: $${locked.totalPrice} CAD`
+      ];
+
+      if (locked.photoUrl || appState.uploadedPhotoUrl) {
+        postLines.push(`Headlight Photo: ${locked.photoUrl || appState.uploadedPhotoUrl}`);
+      }
+
+      return postLines.join("\n");
     }
 
     function sendWhatsApp() {
-      const encoded = encodeURIComponent(buildQuoteMessageText());
+      const encoded = encodeURIComponent(buildContactMessageText());
       window.open(`https://wa.me/1${BUSINESS_PHONE}?text=${encoded}`, "_blank", "noopener,noreferrer");
     }
 
     function sendSMS() {
-      const encoded = encodeURIComponent(buildQuoteMessageText());
+      const encoded = encodeURIComponent(buildContactMessageText());
       window.location.href = `sms:+1${BUSINESS_PHONE}?body=${encoded}`;
     }
 
@@ -1366,14 +1363,14 @@
 
         const preSummary = document.getElementById("pre-submit-summary");
         const revealedBox = document.getElementById("revealed-quote-box");
-        const postActions = document.getElementById("post-submit-actions");
+        const postNewQuoteWrap = document.getElementById("post-submit-new-quote-wrap");
         const photoWrap = document.getElementById("revealed-photo-wrap");
         const statusBanner = document.getElementById("status-banner");
         const submitBtn = document.getElementById("btn-submit-quote");
 
         if (preSummary) preSummary.classList.remove("hidden");
         if (revealedBox) revealedBox.classList.add("hidden");
-        if (postActions) postActions.classList.add("hidden");
+        if (postNewQuoteWrap) postNewQuoteWrap.classList.add("hidden");
         if (photoWrap) photoWrap.classList.add("hidden");
         if (statusBanner) statusBanner.classList.add("hidden");
         if (submitBtn) submitBtn.textContent = I18N[appState.lang].btnSubmit;
