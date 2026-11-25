@@ -4,12 +4,13 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Resto Lights MTL — Mobile Headlight Restoration Quote Estimator</title>
+  <!-- Load Tailwind CSS and Google Fonts -->
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Rajdhani:wght@600;700&display=swap" rel="stylesheet" />
   <script>
-    // Configure Tailwind theme fonts and colors for Resto Lights MTL
+    // Configure Tailwind theme tokens for Resto Lights MTL
     try {
       tailwind.config = {
         theme: {
@@ -30,11 +31,11 @@
         },
       };
     } catch (err) {
-      // Safe fallback if Tailwind CDN is still loading
+      // Safe fallback if Tailwind config initializes asynchronously
     }
   </script>
   <style>
-    /* Deep black void background with subtle xenon blue lighting */
+    /* Deep obsidian void background with xenon blue radial glow */
     body {
       background-color: #05070a;
       color: #f1f5f9;
@@ -75,17 +76,17 @@
 </head>
 <body class="min-h-screen antialiased selection:bg-sky-500/30 selection:text-sky-200">
 
-  <!-- Top Navigation Header with Brand Logo, Phone & EN/FR Toggle -->
+  <!-- Top Navigation Bar -->
   <header class="border-b border-slate-800/80 bg-black/85 backdrop-blur-md sticky top-0 z-40">
     <div class="max-w-6xl mx-auto px-4 py-2.5 flex items-center justify-between gap-3">
       <a href="#" class="flex items-center gap-3 group shrink-0" aria-label="Resto Lights MTL Home">
         <div class="brand-logo-frame rounded-lg overflow-hidden h-12 sm:h-14 flex items-center justify-center px-2 bg-black">
-          <!-- Loads logo.jpg or IMG_0210_2.jpeg from hosting directory, with exact SVG emblem fallback -->
+          <!-- Primary logo.jpg with exact inline SVG emblem fallback -->
           <img
             src="logo.jpg"
             alt="Resto Lights MTL Logo"
             class="h-10 sm:h-12 w-auto object-contain select-none"
-            onerror="if(!this.dataset.triedAlt){this.dataset.triedAlt='1';this.src='IMG_0210_2.jpeg';}else{this.style.display='none';document.getElementById('hdr-logo-svg').classList.remove('hidden');}"
+            onerror="this.style.display='none';document.getElementById('hdr-logo-svg').classList.remove('hidden');"
           />
           <svg id="hdr-logo-svg" viewBox="0 0 760 280" class="hidden h-10 sm:h-12 w-auto select-none" role="img" aria-label="Resto Lights MTL Headlights Restoration Logo">
             <defs>
@@ -107,13 +108,17 @@
               </radialGradient>
             </defs>
             <rect width="760" height="280" fill="#000000" />
+            <!-- Car Hood & Roof Silhouette -->
             <path d="M164 146 C168 112, 186 104, 240 100 C286 96, 314 96, 314 96" fill="none" stroke="url(#hdrChromeGrad)" stroke-width="3.2" stroke-linecap="round" />
             <path d="M262 96 C298 62, 342 42, 418 40 C486 38, 526 42, 548 56 C556 64, 562 76, 564 88" fill="none" stroke="url(#hdrChromeGrad)" stroke-width="3.6" stroke-linecap="round" />
             <path d="M532 54 C544 62, 550 74, 552 86" fill="none" stroke="#cbd5e1" stroke-width="2.4" stroke-linecap="round" />
+            <!-- Side Mirror -->
             <path d="M562 78 C578 72, 600 74, 604 84 C600 88, 592 86, 582 86" fill="none" stroke="#e2e8f0" stroke-width="3" stroke-linecap="round" />
+            <!-- Left Foggy Oxidized Headlight Half -->
             <path d="M300 144 C336 108, 386 94, 456 88 L438 144 Z" fill="#9ca3af" fill-opacity="0.34" stroke="#94a3b8" stroke-width="2.2" />
             <ellipse cx="402" cy="120" rx="26" ry="18" fill="#d1d5db" fill-opacity="0.28" stroke="#94a3b8" stroke-width="1.5" />
             <path d="M324 138 C342 122, 364 114, 378 122 L372 140 Z" fill="#d97706" fill-opacity="0.32" />
+            <!-- Right Restored Xenon Projector Headlight Half -->
             <path d="M456 88 C514 82, 566 80, 588 86 C586 114, 578 134, 564 144 L438 144 Z" fill="#050912" stroke="#f8fafc" stroke-width="3" />
             <path d="M466 94 L576 90 L562 138 L448 138 Z" fill="none" stroke="#7dd3fc" stroke-width="1.8" />
             <circle cx="526" cy="114" r="24" fill="none" stroke="#38bdf8" stroke-width="3.2" />
@@ -121,10 +126,12 @@
             <circle cx="526" cy="114" r="9.5" fill="#ffffff" />
             <circle cx="526" cy="114" r="54" fill="url(#hdrXenonGlow)" />
             <line x1="435" y1="114" x2="640" y2="114" stroke="#7dd3fc" stroke-width="1.8" stroke-opacity="0.85" />
+            <!-- Diagonal Spark Split Divider -->
             <line x1="462" y1="74" x2="430" y2="164" stroke="#38bdf8" stroke-width="2.8" />
             <circle cx="457" cy="88" r="5" fill="#ffffff" />
             <line x1="440" y1="88" x2="474" y2="88" stroke="#e0f2fe" stroke-width="2.2" />
             <line x1="457" y1="71" x2="457" y2="105" stroke="#e0f2fe" stroke-width="2.2" />
+            <!-- Typography -->
             <text x="98" y="198" fill="url(#hdrChromeGrad)" font-family="Rajdhani, sans-serif" font-weight="700" font-style="italic" font-size="68" letter-spacing="3">RESTO</text>
             <text x="368" y="198" fill="url(#hdrBlueGrad)" font-family="Rajdhani, sans-serif" font-weight="700" font-style="italic" font-size="68" letter-spacing="3">LIGHTS</text>
             <line x1="158" y1="220" x2="322" y2="220" stroke="#cbd5e1" stroke-width="2.2" />
@@ -136,10 +143,7 @@
       </a>
 
       <div class="flex items-center gap-2 sm:gap-3">
-        <a href="tel:5147751126" class="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-700 hover:border-sky-400/60 text-xs font-semibold text-sky-300 transition">
-          <span>📞</span> (514) 775-1126
-        </a>
-
+        <!-- Bilingual EN / FR Toggle -->
         <div class="inline-flex rounded-lg bg-slate-900 p-1 border border-slate-800">
           <button type="button" id="btn-en" onclick="setLang('en')" class="px-2.5 py-1 rounded-md text-xs font-bold bg-sky-500 text-slate-950 transition cursor-pointer">EN</button>
           <button type="button" id="btn-fr" onclick="setLang('fr')" class="px-2.5 py-1 rounded-md text-xs font-bold text-slate-300 hover:text-white transition cursor-pointer">FR</button>
@@ -157,7 +161,7 @@
           src="logo.jpg"
           alt="Resto Lights MTL Logo"
           class="w-full h-auto max-h-52 object-contain mx-auto rounded-xl select-none"
-          onerror="if(!this.dataset.triedAlt){this.dataset.triedAlt='1';this.src='IMG_0210_2.jpeg';}else{this.style.display='none';document.getElementById('hero-logo-svg').classList.remove('hidden');}"
+          onerror="this.style.display='none';document.getElementById('hero-logo-svg').classList.remove('hidden');"
         />
         <svg id="hero-logo-svg" viewBox="0 0 760 280" class="hidden w-full h-auto max-h-52 object-contain mx-auto rounded-xl select-none" role="img" aria-label="Resto Lights MTL Headlights Restoration Emblem">
           <defs>
@@ -225,10 +229,10 @@
   <!-- Main Estimator Grid -->
   <main class="max-w-6xl mx-auto px-4 pb-16 grid grid-cols-1 lg:grid-cols-12 gap-7 items-start">
 
-    <!-- Left 7 Columns: Vehicle, Condition, Photo & Mobile Service -->
+    <!-- Left 7 Columns: Vehicle, Headlight Condition, Photo & Mobile Service -->
     <div class="lg:col-span-7 space-y-6">
 
-      <!-- Step 1: Vehicle Information -->
+      <!-- Step 1: Vehicle Information (Starts Completely Empty/Unselected) -->
       <div class="glass-card rounded-2xl p-5 sm:p-6">
         <div class="flex items-center justify-between mb-4">
           <h2 class="font-display text-xl sm:text-2xl font-bold uppercase tracking-wide text-white flex items-center gap-2.5">
@@ -251,14 +255,14 @@
 
           <div>
             <label for="car-model" id="lbl-model" class="block text-xs font-semibold uppercase tracking-wider text-slate-300 mb-1.5">Model</label>
-            <select id="car-model" onchange="handleModelChange()" class="w-full rounded-xl bg-slate-950/90 border border-slate-700/80 focus:border-sky-400 px-3.5 py-2.5 text-sm text-white outline-none transition cursor-pointer"></select>
+            <select id="car-model" disabled onchange="handleModelChange()" class="w-full rounded-xl bg-slate-950/90 border border-slate-700/80 focus:border-sky-400 disabled:opacity-50 disabled:cursor-not-allowed px-3.5 py-2.5 text-sm text-white outline-none transition cursor-pointer"></select>
           </div>
         </div>
 
-        <!-- Custom Model Input when "Other" is selected -->
+        <!-- Custom Model Input (Empty Placeholder) -->
         <div id="custom-model-wrap" class="hidden mt-3">
           <label for="custom-model-input" id="lbl-custom-model" class="block text-xs font-semibold uppercase tracking-wider text-slate-300 mb-1.5">Custom Vehicle Model</label>
-          <input id="custom-model-input" type="text" oninput="updateQuotePreview()" placeholder="Enter your car model (e.g. Civic Touring, RAV4 Hybrid)" class="w-full rounded-xl bg-slate-950/90 border border-slate-700/80 focus:border-sky-400 px-3.5 py-2.5 text-sm text-white outline-none transition" />
+          <input id="custom-model-input" type="text" placeholder="" oninput="updateQuotePreview()" class="w-full rounded-xl bg-slate-950/90 border border-slate-700/80 focus:border-sky-400 px-3.5 py-2.5 text-sm text-white outline-none transition" />
         </div>
 
         <!-- Vehicle Class Selector -->
@@ -281,7 +285,7 @@
         </div>
       </div>
 
-      <!-- Step 2: Headlight Condition & Photo -->
+      <!-- Step 2: Headlight Condition & Photo Upload -->
       <div class="glass-card rounded-2xl p-5 sm:p-6">
         <div class="flex items-center justify-between mb-4">
           <h2 class="font-display text-xl sm:text-2xl font-bold uppercase tracking-wide text-white flex items-center gap-2.5">
@@ -407,14 +411,14 @@
       </div>
     </div>
 
-    <!-- Right 5 Columns: Quote Submission, Post-Submit Price Reveal & Bottom Quick Tabs -->
+    <!-- Right 5 Columns: Quote Request, Post-Submit Price Reveal & Bottom Quick Tabs -->
     <div class="lg:col-span-5 lg:sticky lg:top-20 space-y-5">
       <div class="glass-card rounded-2xl p-5 sm:p-6 border-sky-400/30">
 
         <div class="flex items-center justify-between border-b border-slate-800 pb-4 mb-4">
           <div>
             <span id="quote-label" class="text-xs font-bold uppercase tracking-widest text-sky-400">Custom Quote Request</span>
-            <h2 id="quote-vehicle-heading" class="font-display text-2xl font-bold text-white mt-0.5">2018 Toyota Corolla</h2>
+            <h2 id="quote-vehicle-heading" class="font-display text-2xl font-bold text-white mt-0.5">Select Your Vehicle</h2>
           </div>
           <div class="text-right">
             <span id="quote-id-badge" class="inline-block px-2.5 py-1 rounded-lg bg-slate-900 border border-slate-700 font-mono text-xs font-bold text-sky-300">RLM-3748</span>
@@ -422,8 +426,12 @@
           </div>
         </div>
 
-        <!-- Pre-Submit Summary (Prices Strictly Hidden Until Submission) -->
+        <!-- Pre-Submit Summary (Strictly NO Dollar Prices Displayed) -->
         <div id="pre-submit-summary" class="space-y-2 text-sm border-b border-slate-800 pb-4 mb-4">
+          <div class="flex justify-between text-slate-300">
+            <span>Vehicle</span>
+            <span id="sum-vehicle-val" class="font-semibold text-slate-400">Not selected yet</span>
+          </div>
           <div class="flex justify-between text-slate-300">
             <span>Vehicle Class</span>
             <span id="sum-class-val" class="font-semibold text-white">Sedan / Coupe</span>
@@ -494,21 +502,21 @@
           </div>
         </div>
 
-        <!-- Customer Submission Form -->
+        <!-- Customer Form (All Placeholders Empty as Requested) -->
         <form id="quote-form" onsubmit="submitQuote(event)" class="space-y-3">
           <div>
-            <label for="cust-name" class="block text-xs font-semibold uppercase tracking-wider text-slate-300 mb-1">Your Name *</label>
-            <input id="cust-name" type="text" required placeholder="e.g. Jaspreet Singh" class="w-full rounded-xl bg-slate-950 border border-slate-700 focus:border-sky-400 px-3.5 py-2.5 text-sm text-white outline-none transition" />
+            <label for="cust-name" id="lbl-cust-name" class="block text-xs font-semibold uppercase tracking-wider text-slate-300 mb-1">Your Name *</label>
+            <input id="cust-name" type="text" required placeholder="" autocomplete="off" class="w-full rounded-xl bg-slate-950 border border-slate-700 focus:border-sky-400 px-3.5 py-2.5 text-sm text-white outline-none transition" />
           </div>
 
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
             <div>
-              <label for="cust-phone" class="block text-xs font-semibold uppercase tracking-wider text-slate-300 mb-1">Phone Number *</label>
-              <input id="cust-phone" type="tel" required placeholder="(514) 555-0199" class="w-full rounded-xl bg-slate-950 border border-slate-700 focus:border-sky-400 px-3.5 py-2.5 text-sm text-white outline-none transition" />
+              <label for="cust-phone" id="lbl-cust-phone" class="block text-xs font-semibold uppercase tracking-wider text-slate-300 mb-1">Phone Number *</label>
+              <input id="cust-phone" type="tel" required placeholder="" autocomplete="off" class="w-full rounded-xl bg-slate-950 border border-slate-700 focus:border-sky-400 px-3.5 py-2.5 text-sm text-white outline-none transition" />
             </div>
             <div>
-              <label for="cust-address" class="block text-xs font-semibold uppercase tracking-wider text-slate-300 mb-1">Street / Area *</label>
-              <input id="cust-address" type="text" required placeholder="Street or parking spot" class="w-full rounded-xl bg-slate-950 border border-slate-700 focus:border-sky-400 px-3.5 py-2.5 text-sm text-white outline-none transition" />
+              <label for="cust-address" id="lbl-cust-address" class="block text-xs font-semibold uppercase tracking-wider text-slate-300 mb-1">Street / Area *</label>
+              <input id="cust-address" type="text" required placeholder="" autocomplete="off" class="w-full rounded-xl bg-slate-950 border border-slate-700 focus:border-sky-400 px-3.5 py-2.5 text-sm text-white outline-none transition" />
             </div>
           </div>
 
@@ -519,15 +527,15 @@
 
         <!-- New Quote Button Shown After Submission -->
         <div id="post-submit-new-quote-wrap" class="hidden mt-3">
-          <button type="button" onclick="startNewQuote()" class="w-full py-2.5 px-3 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-600 text-slate-100 text-xs font-bold uppercase tracking-wider transition cursor-pointer">
+          <button type="button" id="btn-new-quote" onclick="startNewQuote()" class="w-full py-2.5 px-3 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-600 text-slate-100 text-xs font-bold uppercase tracking-wider transition cursor-pointer">
             🔄 Start New Quote
           </button>
         </div>
 
-        <!-- Status Banner -->
+        <!-- Inline Status Message Banner -->
         <div id="status-banner" role="status" aria-live="polite" class="hidden mt-4 p-3.5 rounded-xl text-xs leading-relaxed border"></div>
 
-        <!-- Compact Bottom Quick Tabs: Contact by WhatsApp | By Text | Download Your Quote -->
+        <!-- Three Compact Bottom Tabs: Contact by WhatsApp | By Text | Download Your Quote -->
         <div id="bottom-quick-tabs" class="mt-5 pt-4 border-t border-slate-800/90 grid grid-cols-3 gap-2">
           <button type="button" id="tab-whatsapp" onclick="sendWhatsApp()" class="py-2 px-2 rounded-lg bg-emerald-500/15 hover:bg-emerald-500/25 border border-emerald-400/35 text-emerald-300 text-[11px] font-bold leading-tight transition text-center cursor-pointer">
             Contact by WhatsApp
@@ -544,13 +552,13 @@
   </main>
 
   <script>
-    // API endpoints, keys & business phone number
+    // Integration endpoints & constants
     const WEB3FORMS_ENDPOINT = "https://api.web3forms.com/submit";
     const WEB3FORMS_KEY = "31e61cc2-53bf-405a-bb25-811432eaf4b6";
     const IMGBB_API_KEY = "19f05b263103f7f88f87d8bb48c3c46e";
     const BUSINESS_PHONE = "5147751126";
 
-    // Sequential quote numbering persistence key (starts at RLM-3748)
+    // Sequential quote numbering persistence (starts at RLM-3748)
     const QUOTE_PREFIX = "RLM-";
     const QUOTE_START_NUMBER = 3748;
     const QUOTE_STORAGE_KEY = "rlm_last_quote_number";
@@ -607,6 +615,11 @@
         lblYear: "Year",
         lblMake: "Make",
         lblModel: "Model",
+        selectYearOpt: "Select Year",
+        selectMakeOpt: "Select Make",
+        selectModelOpt: "Select Model",
+        vehicleNotSelectedHeading: "Select Your Vehicle",
+        vehicleNotSelectedVal: "Not selected yet",
         lblCustomModel: "Custom Vehicle Model",
         lblSize: "Vehicle Class",
         step2Title: "Headlight Condition",
@@ -631,8 +644,12 @@
         quoteLabel: "Custom Quote Request",
         cardWarrantyNote: "2-Yr Ceramic Included",
         hiddenPriceNotice: "Submit your details below to unlock your instant quote price and download your quote.",
+        lblCustName: "Your Name *",
+        lblCustPhone: "Phone Number *",
+        lblCustAddress: "Street / Area *",
         btnSubmit: "Submit Quote & Reveal Price",
         btnResubmit: "Update & Re-Submit Quote",
+        btnNewQuote: "🔄 Start New Quote",
         tabWhatsApp: "Contact by WhatsApp",
         tabText: "By Text",
         tabDownload: "Download Your Quote"
@@ -647,6 +664,11 @@
         lblYear: "Année",
         lblMake: "Marque",
         lblModel: "Modèle",
+        selectYearOpt: "Choisir l'année",
+        selectMakeOpt: "Choisir la marque",
+        selectModelOpt: "Choisir le modèle",
+        vehicleNotSelectedHeading: "Choisissez votre véhicule",
+        vehicleNotSelectedVal: "Non sélectionné",
         lblCustomModel: "Modèle de véhicule personnalisé",
         lblSize: "Catégorie de véhicule",
         step2Title: "État des phares",
@@ -671,8 +693,12 @@
         quoteLabel: "Demande de soumission",
         cardWarrantyNote: "Céramique 2 ans incluse",
         hiddenPriceNotice: "Soumettez vos coordonnées ci-dessous pour voir le prix et télécharger votre soumission.",
+        lblCustName: "Votre nom *",
+        lblCustPhone: "Numéro de téléphone *",
+        lblCustAddress: "Rue / Secteur *",
         btnSubmit: "Soumettre & voir le prix",
         btnResubmit: "Mettre à jour et renvoyer",
+        btnNewQuote: "🔄 Nouvelle soumission",
         tabWhatsApp: "Contact par WhatsApp",
         tabText: "Par texto",
         tabDownload: "Télécharger votre soumission"
@@ -706,7 +732,6 @@
         .replace(/'/g, "&#39;");
     }
 
-    // Safely read last quote sequence number from localStorage
     function readLastQuoteNumber() {
       try {
         if (!window.localStorage) return null;
@@ -719,25 +744,22 @@
       }
     }
 
-    // Safely persist last quote sequence number to localStorage
     function writeLastQuoteNumber(num) {
       try {
         if (!window.localStorage) return;
         const safeNum = Number.isFinite(num) && num >= QUOTE_START_NUMBER ? num : QUOTE_START_NUMBER;
         window.localStorage.setItem(QUOTE_STORAGE_KEY, String(safeNum));
       } catch (err) {
-        // Ignore storage errors
+        // Ignore storage restrictions
       }
     }
 
-    // Peek active quote ID without incrementing
     function getCurrentQuoteId() {
       const saved = readLastQuoteNumber();
       const active = saved !== null ? saved : QUOTE_START_NUMBER;
       return `${QUOTE_PREFIX}${active}`;
     }
 
-    // Increment quote ID by +1 and persist to localStorage
     function advanceQuoteId() {
       try {
         const saved = readLastQuoteNumber();
@@ -753,52 +775,91 @@
       return appState.quoteId;
     }
 
+    // Populate Year, Make & Model dropdowns starting completely empty/unselected
     function populateVehicleDropdowns() {
       const yearSelect = document.getElementById("car-year");
       const makeSelect = document.getElementById("car-make");
-      if (!yearSelect || !makeSelect) return;
+      const modelSelect = document.getElementById("car-model");
+      const t = I18N[appState.lang];
+      if (!yearSelect || !makeSelect || !modelSelect) return;
 
       yearSelect.innerHTML = "";
+      const defaultYearOpt = document.createElement("option");
+      defaultYearOpt.value = "";
+      defaultYearOpt.textContent = t.selectYearOpt;
+      defaultYearOpt.selected = true;
+      yearSelect.appendChild(defaultYearOpt);
+
       for (let y = 2027; y >= 1995; y--) {
         const opt = document.createElement("option");
         opt.value = String(y);
         opt.textContent = String(y);
-        if (y === 2018) opt.selected = true;
         yearSelect.appendChild(opt);
       }
 
       makeSelect.innerHTML = "";
+      const defaultMakeOpt = document.createElement("option");
+      defaultMakeOpt.value = "";
+      defaultMakeOpt.textContent = t.selectMakeOpt;
+      defaultMakeOpt.selected = true;
+      makeSelect.appendChild(defaultMakeOpt);
+
       Object.keys(VEHICLES).forEach((make) => {
         const opt = document.createElement("option");
         opt.value = make;
         opt.textContent = make;
-        if (make === "Toyota") opt.selected = true;
         makeSelect.appendChild(opt);
       });
 
-      populateModels("Toyota", "Corolla");
+      resetModelDropdown();
     }
 
-    function populateModels(make, preferredModel) {
+    function resetModelDropdown() {
       const modelSelect = document.getElementById("car-model");
+      const t = I18N[appState.lang];
       if (!modelSelect) return;
-      const list = VEHICLES[make] || ["Other"];
       modelSelect.innerHTML = "";
-      list.forEach((m) => {
+      const defaultModelOpt = document.createElement("option");
+      defaultModelOpt.value = "";
+      defaultModelOpt.textContent = t.selectModelOpt;
+      defaultModelOpt.selected = true;
+      modelSelect.appendChild(defaultModelOpt);
+      modelSelect.disabled = true;
+      toggleCustomModelInput();
+    }
+
+    function populateModels(make) {
+      const modelSelect = document.getElementById("car-model");
+      const t = I18N[appState.lang];
+      if (!modelSelect) return;
+
+      if (!make || !VEHICLES[make]) {
+        resetModelDropdown();
+        return;
+      }
+
+      modelSelect.innerHTML = "";
+      const defaultModelOpt = document.createElement("option");
+      defaultModelOpt.value = "";
+      defaultModelOpt.textContent = t.selectModelOpt;
+      defaultModelOpt.selected = true;
+      modelSelect.appendChild(defaultModelOpt);
+
+      VEHICLES[make].forEach((m) => {
         const opt = document.createElement("option");
         opt.value = m;
         opt.textContent = m;
-        if (m === preferredModel) opt.selected = true;
         modelSelect.appendChild(opt);
       });
+
+      modelSelect.disabled = false;
       toggleCustomModelInput();
     }
 
     function handleMakeChange() {
       const makeSelect = document.getElementById("car-make");
-      const make = makeSelect ? makeSelect.value : "Toyota";
-      const list = VEHICLES[make] || ["Other"];
-      populateModels(make, list[0]);
+      const make = makeSelect ? makeSelect.value : "";
+      populateModels(make);
       updateQuotePreview();
     }
 
@@ -889,6 +950,19 @@
           : "px-2.5 py-1 rounded-md text-xs font-bold text-slate-300 hover:text-white transition cursor-pointer";
       }
 
+      const yearSelect = document.getElementById("car-year");
+      const makeSelect = document.getElementById("car-make");
+      const modelSelect = document.getElementById("car-model");
+      if (yearSelect && yearSelect.options.length > 0 && yearSelect.options[0].value === "") {
+        yearSelect.options[0].textContent = t.selectYearOpt;
+      }
+      if (makeSelect && makeSelect.options.length > 0 && makeSelect.options[0].value === "") {
+        makeSelect.options[0].textContent = t.selectMakeOpt;
+      }
+      if (modelSelect && modelSelect.options.length > 0 && modelSelect.options[0].value === "") {
+        modelSelect.options[0].textContent = t.selectModelOpt;
+      }
+
       setText("hero-badge", t.heroBadge);
       setText("hero-title-1", t.heroTitle1);
       setText("hero-title-2", t.heroTitle2);
@@ -922,14 +996,21 @@
       setText("quote-label", t.quoteLabel);
       setText("card-warranty-note", t.cardWarrantyNote);
       setText("hidden-price-notice", t.hiddenPriceNotice);
+      setText("lbl-cust-name", t.lblCustName);
+      setText("lbl-cust-phone", t.lblCustPhone);
+      setText("lbl-cust-address", t.lblCustAddress);
       setText("btn-submit-quote", appState.submitted ? t.btnResubmit : t.btnSubmit);
+      setText("btn-new-quote", t.btnNewQuote);
       setText("tab-whatsapp", t.tabWhatsApp);
       setText("tab-text", t.tabText);
       setText("tab-download", t.tabDownload);
+
+      updateQuotePreview();
     }
 
     function computeQuoteDetails() {
       toggleCustomModelInput();
+      const t = I18N[appState.lang];
       const yearEl = document.getElementById("car-year");
       const makeEl = document.getElementById("car-make");
       const modelEl = document.getElementById("car-model");
@@ -938,13 +1019,18 @@
       const spotEl = document.getElementById("spot-type");
       const fogEl = document.getElementById("addon-fog");
 
-      const year = yearEl ? yearEl.value : "2018";
-      const make = makeEl ? makeEl.value : "Toyota";
-      let model = modelEl ? modelEl.value : "Corolla";
+      const year = yearEl ? yearEl.value.trim() : "";
+      const make = makeEl ? makeEl.value.trim() : "";
+      let model = modelEl ? modelEl.value.trim() : "";
       const customModel = customEl ? customEl.value.trim() : "";
-      if ((model === "Other" || model === "Other Model") && customModel) {
-        model = customModel;
+      if (model === "Other" || model === "Other Model") {
+        model = customModel || "Other";
       }
+
+      const parts = [year, make, model].filter(Boolean);
+      const hasVehicle = parts.length > 0;
+      const vehicleDisplay = hasVehicle ? parts.join(" ") : t.vehicleNotSelectedHeading;
+      const vehicleSummary = hasVehicle ? parts.join(" ") : t.vehicleNotSelectedVal;
 
       const basePrice = CLASS_BASE_PRICES[appState.size] || 100;
       const condSurcharge = CONDITION_SURCHARGES[appState.condition] || 0;
@@ -958,7 +1044,9 @@
 
       return {
         quoteId: appState.quoteId,
-        vehicle: `${year} ${make} ${model}`.trim(),
+        hasVehicle,
+        vehicle: vehicleDisplay,
+        vehicleSummary,
         classLabel: CLASS_LABELS[appState.size] || "Sedan / Coupe",
         conditionLabel: CONDITION_LABELS[appState.condition] || "Stage 1 — Light Haze / Fog",
         zoneKey,
@@ -977,6 +1065,11 @@
       try {
         const q = computeQuoteDetails();
         setText("quote-vehicle-heading", q.vehicle);
+        const sumVehEl = document.getElementById("sum-vehicle-val");
+        if (sumVehEl) {
+          sumVehEl.textContent = q.vehicleSummary;
+          sumVehEl.className = q.hasVehicle ? "font-semibold text-white" : "font-semibold text-slate-400";
+        }
         setText("sum-class-val", q.classLabel);
         setText("sum-cond-val", q.conditionLabel);
         setText("sum-zone-val", q.zoneLabel);
@@ -1022,7 +1115,6 @@
       setTimeout(() => URL.revokeObjectURL(url), 1500);
     }
 
-    // Build customer quote receipt HTML preserving the exact locked quote number and breakdown
     function buildCustomerQuoteDocument(data) {
       const quoteNum = data.quoteId || appState.quoteId;
       const baseFee = Number(data.basePrice || 100);
@@ -1109,7 +1201,7 @@
       <div class="policy">Cancellation / Rescheduling Notice: Please provide 12–24 hours notice if you need to reschedule or cancel your mobile appointment.</div>
     </div>
     <div class="foot">
-      <div><strong>Resto Lights MTL</strong> • Call / SMS / WhatsApp: (514) 775-1126</div>
+      <div><strong>Resto Lights MTL</strong> • Greater Montreal Mobile Service</div>
       <button type="button" class="print-btn" onclick="window.print()">Save as PDF / Print</button>
     </div>
   </div>
@@ -1119,7 +1211,6 @@
 
     function downloadCurrentCustomerQuote() {
       try {
-        // Keep price hidden and prompt submission if the customer has not submitted the form yet
         if (!appState.submitted || !appState.activeQuoteData) {
           showStatusBanner(
             "Please submit your quote form first to reveal your price and download your quote.",
@@ -1134,7 +1225,7 @@
         const safeId = String(exactQuoteId).replace(/[^a-zA-Z0-9_-]/g, "_");
         triggerDownloadFile(`${safeId}-Quote.html`, html, "text/html;charset=utf-8");
       } catch (err) {
-        // Ignore download error
+        // Safe no-op
       }
     }
 
@@ -1142,6 +1233,12 @@
       event.preventDefault();
       const submitBtn = document.getElementById("btn-submit-quote");
       const t = I18N[appState.lang];
+
+      const q = computeQuoteDetails();
+      if (!q.hasVehicle) {
+        showStatusBanner("Please select your vehicle Year, Make, or Model before submitting.", false);
+        return;
+      }
 
       if (submitBtn) {
         submitBtn.disabled = true;
@@ -1152,7 +1249,7 @@
         advanceQuoteId();
       }
 
-      const q = computeQuoteDetails();
+      const lockedQ = computeQuoteDetails();
       const nameEl = document.getElementById("cust-name");
       const phoneEl = document.getElementById("cust-phone");
       const addrEl = document.getElementById("cust-address");
@@ -1172,7 +1269,7 @@
       }
 
       appState.activeQuoteData = {
-        quoteId: q.quoteId,
+        quoteId: lockedQ.quoteId,
         dateText: new Date().toLocaleString("en-CA", {
           year: "numeric",
           month: "short",
@@ -1183,17 +1280,17 @@
         customerName,
         customerPhone,
         customerAddress,
-        vehicle: q.vehicle,
-        classLabel: q.classLabel,
-        conditionLabel: q.conditionLabel,
-        zoneLabel: q.zoneLabel,
-        spot: q.spot,
-        fogSelected: q.fogSelected,
-        basePrice: q.basePrice,
-        condSurcharge: q.condSurcharge,
-        travelSurcharge: q.travelSurcharge,
-        fogSurcharge: q.fogSurcharge,
-        totalPrice: q.totalPrice,
+        vehicle: lockedQ.vehicle,
+        classLabel: lockedQ.classLabel,
+        conditionLabel: lockedQ.conditionLabel,
+        zoneLabel: lockedQ.zoneLabel,
+        spot: lockedQ.spot,
+        fogSelected: lockedQ.fogSelected,
+        basePrice: lockedQ.basePrice,
+        condSurcharge: lockedQ.condSurcharge,
+        travelSurcharge: lockedQ.travelSurcharge,
+        fogSurcharge: lockedQ.fogSurcharge,
+        totalPrice: lockedQ.totalPrice,
         photoUrl: photoUrl || ""
       };
 
@@ -1204,17 +1301,17 @@
       if (revealedBox) revealedBox.classList.remove("hidden");
       if (postNewQuoteWrap) postNewQuoteWrap.classList.remove("hidden");
 
-      setText("revealed-quote-id", "Quote #" + q.quoteId);
-      setText("revealed-total", "$" + q.totalPrice);
-      setText("rev-base-label", "Base Service (" + q.classLabel + ")");
-      setText("rev-base-val", "$" + q.basePrice);
-      setText("rev-cond-label", "Condition (" + q.conditionLabel + ")");
-      setText("rev-cond-val", q.condSurcharge > 0 ? "+$" + q.condSurcharge : "$0");
-      setText("rev-travel-val", q.travelSurcharge > 0 ? "+$" + q.travelSurcharge : "$0");
+      setText("revealed-quote-id", "Quote #" + lockedQ.quoteId);
+      setText("revealed-total", "$" + lockedQ.totalPrice);
+      setText("rev-base-label", "Base Service (" + lockedQ.classLabel + ")");
+      setText("rev-base-val", "$" + lockedQ.basePrice);
+      setText("rev-cond-label", "Condition (" + lockedQ.conditionLabel + ")");
+      setText("rev-cond-val", lockedQ.condSurcharge > 0 ? "+$" + lockedQ.condSurcharge : "$0");
+      setText("rev-travel-val", lockedQ.travelSurcharge > 0 ? "+$" + lockedQ.travelSurcharge : "$0");
 
       const revFogRow = document.getElementById("rev-fog-row");
       if (revFogRow) {
-        if (q.fogSelected) revFogRow.classList.remove("hidden");
+        if (lockedQ.fogSelected) revFogRow.classList.remove("hidden");
         else revFogRow.classList.add("hidden");
       }
 
@@ -1240,20 +1337,20 @@
 
       const payload = {
         access_key: WEB3FORMS_KEY,
-        subject: `New Quote #${q.quoteId}: ${q.vehicle} — $${q.totalPrice} CAD`,
+        subject: `New Quote #${lockedQ.quoteId}: ${lockedQ.vehicle} — $${lockedQ.totalPrice} CAD`,
         from_name: "Resto Lights MTL Estimator",
-        quote_number: q.quoteId,
+        quote_number: lockedQ.quoteId,
         customer_name: customerName,
         customer_phone: customerPhone,
-        vehicle: q.vehicle,
-        vehicle_class: `${q.classLabel} ($${q.basePrice})`,
-        headlight_condition: `${q.conditionLabel} (+$${q.condSurcharge})`,
+        vehicle: lockedQ.vehicle,
+        vehicle_class: `${lockedQ.classLabel} ($${lockedQ.basePrice})`,
+        headlight_condition: `${lockedQ.conditionLabel} (+$${lockedQ.condSurcharge})`,
         warranty: "2-Year Ceramic Coating Warranty (Included)",
-        mobile_area: `${q.zoneLabel} (+$${q.travelSurcharge})`,
-        preferred_spot: q.spot,
+        mobile_area: `${lockedQ.zoneLabel} (+$${lockedQ.travelSurcharge})`,
+        preferred_spot: lockedQ.spot,
         address_notes: customerAddress,
-        fog_lights_addon: q.fogSelected ? "Yes (+$35)" : "No",
-        estimated_total: `$${q.totalPrice} CAD`,
+        fog_lights_addon: lockedQ.fogSelected ? "Yes (+$35)" : "No",
+        estimated_total: `$${lockedQ.totalPrice} CAD`,
         cancellation_policy: "12–24 hour cancellation/rescheduling notice required",
         headlight_photo_url: photoUrl || "No photo uploaded"
       };
@@ -1268,19 +1365,19 @@
         appState.submitted = true;
         if (data && data.success) {
           showStatusBanner(
-            `Quote #${q.quoteId} ($${q.totalPrice} CAD) is locked and sent to Resto Lights MTL! We will reach out to ${customerPhone} shortly. (12–24 hr cancellation notice applies.)`,
+            `Quote #${lockedQ.quoteId} ($${lockedQ.totalPrice} CAD) is locked and sent to Resto Lights MTL! We will reach out to ${customerPhone} shortly. (12–24 hr cancellation notice applies.)`,
             true
           );
         } else {
           showStatusBanner(
-            `Your quote #${q.quoteId} is $${q.totalPrice} CAD. Download your quote or tap WhatsApp / By Text below.`,
+            `Your quote #${lockedQ.quoteId} is $${lockedQ.totalPrice} CAD. Download your quote or tap WhatsApp / By Text below.`,
             false
           );
         }
       } catch (err) {
         appState.submitted = true;
         showStatusBanner(
-          `Your quote #${q.quoteId} is $${q.totalPrice} CAD. Download your quote or tap WhatsApp / By Text below.`,
+          `Your quote #${lockedQ.quoteId} is $${lockedQ.totalPrice} CAD. Download your quote or tap WhatsApp / By Text below.`,
           false
         );
       } finally {
@@ -1307,7 +1404,7 @@
           "------------------------------------",
           `Name: ${name}`,
           `Phone: ${phone}`,
-          `Vehicle: ${q.vehicle} (${q.classLabel})`,
+          `Vehicle: ${q.vehicleSummary} (${q.classLabel})`,
           `Condition: ${q.conditionLabel}`,
           "Warranty: 2-Year Ceramic Coating (Included)",
           `Mobile Spot: ${q.spot} | ${q.zoneLabel}`,
@@ -1361,6 +1458,15 @@
         advanceQuoteId();
         clearPhoto();
 
+        const formEl = document.getElementById("quote-form");
+        if (formEl) formEl.reset();
+        const customInput = document.getElementById("custom-model-input");
+        if (customInput) customInput.value = "";
+
+        populateVehicleDropdowns();
+        selectSize("standard");
+        selectCondition("light");
+
         const preSummary = document.getElementById("pre-submit-summary");
         const revealedBox = document.getElementById("revealed-quote-box");
         const postNewQuoteWrap = document.getElementById("post-submit-new-quote-wrap");
@@ -1392,7 +1498,7 @@
         setLang("en");
         updateQuotePreview();
       } catch (err) {
-        // Keep page rendered safely
+        // Ensure UI renders safely
       }
     }
 
