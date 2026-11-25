@@ -258,7 +258,7 @@
         <!-- Custom Model Input when "Other" is selected -->
         <div id="custom-model-wrap" class="hidden mt-3">
           <label for="custom-model-input" id="lbl-custom-model" class="block text-xs font-semibold uppercase tracking-wider text-slate-300 mb-1.5">Custom Vehicle Model</label>
-          <input id="custom-model-input" type="text" oninput="updateQuotePreview()" placeholder="Enter your car model (e.g. Civic Touring, RAV4 Hybrid)" class="w-full rounded-xl bg-slate-950/90 border border-slate-700/80 focus:border-sky-400 px-3.5 py-2.5 text-sm text-white outline-none transition" />
+          <input id="custom-model-input" type="text" value="" oninput="updateQuotePreview()" class="w-full rounded-xl bg-slate-950/90 border border-slate-700/80 focus:border-sky-400 px-3.5 py-2.5 text-sm text-white outline-none transition" />
         </div>
 
         <!-- Vehicle Class Selector -->
@@ -414,7 +414,7 @@
         <div class="flex items-center justify-between border-b border-slate-800 pb-4 mb-4">
           <div>
             <span id="quote-label" class="text-xs font-bold uppercase tracking-widest text-sky-400">Custom Quote Request</span>
-            <h2 id="quote-vehicle-heading" class="font-display text-2xl font-bold text-white mt-0.5">2018 Toyota Corolla</h2>
+            <h2 id="quote-vehicle-heading" class="font-display text-2xl font-bold text-white mt-0.5">Select Vehicle</h2>
           </div>
           <div class="text-right">
             <span id="quote-id-badge" class="inline-block px-2.5 py-1 rounded-lg bg-slate-900 border border-slate-700 font-mono text-xs font-bold text-sky-300">RLM-3748</span>
@@ -494,27 +494,27 @@
           </div>
         </div>
 
-        <!-- Customer Submission Form -->
+        <!-- Customer Submission Form (Empty Initial Inputs, No Examples) -->
         <form id="quote-form" onsubmit="submitQuote(event)" class="space-y-3">
           <div>
             <label for="cust-name" class="block text-xs font-semibold uppercase tracking-wider text-slate-300 mb-1">Your Name *</label>
-            <input id="cust-name" type="text" required placeholder="e.g. Jaspreet Singh" class="w-full rounded-xl bg-slate-950 border border-slate-700 focus:border-sky-400 px-3.5 py-2.5 text-sm text-white outline-none transition" />
+            <input id="cust-name" type="text" value="" required class="w-full rounded-xl bg-slate-950 border border-slate-700 focus:border-sky-400 px-3.5 py-2.5 text-sm text-white outline-none transition" />
           </div>
 
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
             <div>
               <label for="cust-phone" class="block text-xs font-semibold uppercase tracking-wider text-slate-300 mb-1">Phone Number *</label>
-              <input id="cust-phone" type="tel" required placeholder="(514) 555-0199" class="w-full rounded-xl bg-slate-950 border border-slate-700 focus:border-sky-400 px-3.5 py-2.5 text-sm text-white outline-none transition" />
+              <input id="cust-phone" type="tel" value="" required class="w-full rounded-xl bg-slate-950 border border-slate-700 focus:border-sky-400 px-3.5 py-2.5 text-sm text-white outline-none transition" />
             </div>
             <div>
               <label for="cust-email" id="lbl-cust-email" class="block text-xs font-semibold uppercase tracking-wider text-slate-300 mb-1">Email Address *</label>
-              <input id="cust-email" type="email" required placeholder="you@example.com" class="w-full rounded-xl bg-slate-950 border border-slate-700 focus:border-sky-400 px-3.5 py-2.5 text-sm text-white outline-none transition" />
+              <input id="cust-email" type="email" value="" required class="w-full rounded-xl bg-slate-950 border border-slate-700 focus:border-sky-400 px-3.5 py-2.5 text-sm text-white outline-none transition" />
             </div>
           </div>
 
           <div>
             <label for="cust-address" class="block text-xs font-semibold uppercase tracking-wider text-slate-300 mb-1">Street / Area *</label>
-            <input id="cust-address" type="text" required placeholder="Street or parking spot" class="w-full rounded-xl bg-slate-950 border border-slate-700 focus:border-sky-400 px-3.5 py-2.5 text-sm text-white outline-none transition" />
+            <input id="cust-address" type="text" value="" required class="w-full rounded-xl bg-slate-950 border border-slate-700 focus:border-sky-400 px-3.5 py-2.5 text-sm text-white outline-none transition" />
           </div>
 
           <button id="btn-submit-quote" type="submit" class="w-full py-3.5 px-4 rounded-xl bg-sky-400 hover:bg-sky-300 text-slate-950 font-bold text-sm uppercase tracking-wider transition xenon-glow cursor-pointer">
@@ -768,46 +768,63 @@
       if (!yearSelect || !makeSelect) return;
 
       yearSelect.innerHTML = "";
+      const blankYear = document.createElement("option");
+      blankYear.value = "";
+      blankYear.textContent = "";
+      blankYear.selected = true;
+      yearSelect.appendChild(blankYear);
+
       for (let y = 2027; y >= 1995; y--) {
         const opt = document.createElement("option");
         opt.value = String(y);
         opt.textContent = String(y);
-        if (y === 2018) opt.selected = true;
         yearSelect.appendChild(opt);
       }
 
       makeSelect.innerHTML = "";
+      const blankMake = document.createElement("option");
+      blankMake.value = "";
+      blankMake.textContent = "";
+      blankMake.selected = true;
+      makeSelect.appendChild(blankMake);
+
       Object.keys(VEHICLES).forEach((make) => {
         const opt = document.createElement("option");
         opt.value = make;
         opt.textContent = make;
-        if (make === "Toyota") opt.selected = true;
         makeSelect.appendChild(opt);
       });
 
-      populateModels("Toyota", "Corolla");
+      populateModels("", "");
     }
 
     function populateModels(make, preferredModel) {
       const modelSelect = document.getElementById("car-model");
       if (!modelSelect) return;
-      const list = VEHICLES[make] || ["Other"];
       modelSelect.innerHTML = "";
-      list.forEach((m) => {
-        const opt = document.createElement("option");
-        opt.value = m;
-        opt.textContent = m;
-        if (m === preferredModel) opt.selected = true;
-        modelSelect.appendChild(opt);
-      });
+
+      const blankModel = document.createElement("option");
+      blankModel.value = "";
+      blankModel.textContent = "";
+      blankModel.selected = !preferredModel;
+      modelSelect.appendChild(blankModel);
+
+      if (make && VEHICLES[make]) {
+        VEHICLES[make].forEach((m) => {
+          const opt = document.createElement("option");
+          opt.value = m;
+          opt.textContent = m;
+          if (m === preferredModel) opt.selected = true;
+          modelSelect.appendChild(opt);
+        });
+      }
       toggleCustomModelInput();
     }
 
     function handleMakeChange() {
       const makeSelect = document.getElementById("car-make");
-      const make = makeSelect ? makeSelect.value : "Toyota";
-      const list = VEHICLES[make] || ["Other"];
-      populateModels(make, list[0]);
+      const make = makeSelect ? makeSelect.value : "";
+      populateModels(make, "");
       updateQuotePreview();
     }
 
@@ -947,13 +964,16 @@
       const spotEl = document.getElementById("spot-type");
       const fogEl = document.getElementById("addon-fog");
 
-      const year = yearEl ? yearEl.value : "2018";
-      const make = makeEl ? makeEl.value : "Toyota";
-      let model = modelEl ? modelEl.value : "Corolla";
+      const year = yearEl ? yearEl.value.trim() : "";
+      const make = makeEl ? makeEl.value.trim() : "";
+      let model = modelEl ? modelEl.value.trim() : "";
       const customModel = customEl ? customEl.value.trim() : "";
       if ((model === "Other" || model === "Other Model") && customModel) {
         model = customModel;
       }
+
+      const vehicleParts = [year, make, model].filter(Boolean);
+      const vehicleDisplay = vehicleParts.length ? vehicleParts.join(" ") : "Select Vehicle";
 
       const basePrice = CLASS_BASE_PRICES[appState.size] || 100;
       const condSurcharge = CONDITION_SURCHARGES[appState.condition] || 0;
@@ -967,7 +987,7 @@
 
       return {
         quoteId: appState.quoteId,
-        vehicle: `${year} ${make} ${model}`.trim(),
+        vehicle: vehicleDisplay,
         classLabel: CLASS_LABELS[appState.size] || "Sedan / Coupe",
         conditionLabel: CONDITION_LABELS[appState.condition] || "Stage 1 — Light Haze / Fog",
         zoneKey,
