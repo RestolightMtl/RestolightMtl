@@ -76,7 +76,7 @@
 </head>
 <body class="min-h-screen antialiased selection:bg-sky-500/30 selection:text-sky-200">
 
-  <!-- Top Navigation Bar -->
+  <!-- Top Navigation Bar (No owner phone number displayed) -->
   <header class="border-b border-slate-800/80 bg-black/85 backdrop-blur-md sticky top-0 z-40">
     <div class="max-w-6xl mx-auto px-4 py-2.5 flex items-center justify-between gap-3">
       <a href="#" class="flex items-center gap-3 group shrink-0" aria-label="Resto Lights MTL Home">
@@ -108,7 +108,7 @@
               </radialGradient>
             </defs>
             <rect width="760" height="280" fill="#000000" />
-            <!-- Car Hood & Roof Silhouette -->
+            <!-- Car Hood, Fender & Roof Silhouette -->
             <path d="M164 146 C168 112, 186 104, 240 100 C286 96, 314 96, 314 96" fill="none" stroke="url(#hdrChromeGrad)" stroke-width="3.2" stroke-linecap="round" />
             <path d="M262 96 C298 62, 342 42, 418 40 C486 38, 526 42, 548 56 C556 64, 562 76, 564 88" fill="none" stroke="url(#hdrChromeGrad)" stroke-width="3.6" stroke-linecap="round" />
             <path d="M532 54 C544 62, 550 74, 552 86" fill="none" stroke="#cbd5e1" stroke-width="2.4" stroke-linecap="round" />
@@ -453,7 +453,7 @@
             <span id="sum-fog-val" class="font-semibold text-slate-400">No</span>
           </div>
           <div id="hidden-price-notice" class="mt-2 p-2.5 rounded-xl bg-sky-500/10 border border-sky-400/25 text-xs text-sky-200 text-center">
-            Submit your details below to unlock your instant quote price and download your quote.
+            Submit your details below to unlock your instant quote price, receive it by email, and download your quote.
           </div>
         </div>
 
@@ -502,26 +502,32 @@
           </div>
         </div>
 
-        <!-- Customer Form (All Placeholders Empty as Requested) -->
+        <!-- Customer Form (All Placeholders Empty as Requested, Valid Email Required) -->
         <form id="quote-form" onsubmit="submitQuote(event)" class="space-y-3">
-          <div>
-            <label for="cust-name" id="lbl-cust-name" class="block text-xs font-semibold uppercase tracking-wider text-slate-300 mb-1">Your Name *</label>
-            <input id="cust-name" type="text" required placeholder="" autocomplete="off" class="w-full rounded-xl bg-slate-950 border border-slate-700 focus:border-sky-400 px-3.5 py-2.5 text-sm text-white outline-none transition" />
-          </div>
-
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <div>
+              <label for="cust-name" id="lbl-cust-name" class="block text-xs font-semibold uppercase tracking-wider text-slate-300 mb-1">Your Name *</label>
+              <input id="cust-name" type="text" required placeholder="" autocomplete="off" class="w-full rounded-xl bg-slate-950 border border-slate-700 focus:border-sky-400 px-3.5 py-2.5 text-sm text-white outline-none transition" />
+            </div>
+
             <div>
               <label for="cust-phone" id="lbl-cust-phone" class="block text-xs font-semibold uppercase tracking-wider text-slate-300 mb-1">Phone Number *</label>
               <input id="cust-phone" type="tel" required placeholder="" autocomplete="off" class="w-full rounded-xl bg-slate-950 border border-slate-700 focus:border-sky-400 px-3.5 py-2.5 text-sm text-white outline-none transition" />
             </div>
-            <div>
-              <label for="cust-address" id="lbl-cust-address" class="block text-xs font-semibold uppercase tracking-wider text-slate-300 mb-1">Street / Area *</label>
-              <input id="cust-address" type="text" required placeholder="" autocomplete="off" class="w-full rounded-xl bg-slate-950 border border-slate-700 focus:border-sky-400 px-3.5 py-2.5 text-sm text-white outline-none transition" />
-            </div>
+          </div>
+
+          <div>
+            <label for="cust-email" id="lbl-cust-email" class="block text-xs font-semibold uppercase tracking-wider text-slate-300 mb-1">Valid Email Address *</label>
+            <input id="cust-email" type="email" required placeholder="" autocomplete="off" class="w-full rounded-xl bg-slate-950 border border-slate-700 focus:border-sky-400 px-3.5 py-2.5 text-sm text-white outline-none transition" />
+          </div>
+
+          <div>
+            <label for="cust-address" id="lbl-cust-address" class="block text-xs font-semibold uppercase tracking-wider text-slate-300 mb-1">Street / Area *</label>
+            <input id="cust-address" type="text" required placeholder="" autocomplete="off" class="w-full rounded-xl bg-slate-950 border border-slate-700 focus:border-sky-400 px-3.5 py-2.5 text-sm text-white outline-none transition" />
           </div>
 
           <button id="btn-submit-quote" type="submit" class="w-full py-3.5 px-4 rounded-xl bg-sky-400 hover:bg-sky-300 text-slate-950 font-bold text-sm uppercase tracking-wider transition xenon-glow cursor-pointer">
-            Submit Quote & Reveal Price
+            Lock Quote & Reveal My Price
           </button>
         </form>
 
@@ -643,11 +649,12 @@
         fogSub: "Restore matching fog lamps during the same mobile visit",
         quoteLabel: "Custom Quote Request",
         cardWarrantyNote: "2-Yr Ceramic Included",
-        hiddenPriceNotice: "Submit your details below to unlock your instant quote price and download your quote.",
+        hiddenPriceNotice: "Submit your details below to unlock your instant quote price, receive it by email, and download your quote.",
         lblCustName: "Your Name *",
         lblCustPhone: "Phone Number *",
+        lblCustEmail: "Valid Email Address *",
         lblCustAddress: "Street / Area *",
-        btnSubmit: "Submit Quote & Reveal Price",
+        btnSubmit: "Lock Quote & Reveal My Price",
         btnResubmit: "Update & Re-Submit Quote",
         btnNewQuote: "🔄 Start New Quote",
         tabWhatsApp: "Contact by WhatsApp",
@@ -692,11 +699,12 @@
         fogSub: "Restaurer les antibrouillards lors de la même visite mobile",
         quoteLabel: "Demande de soumission",
         cardWarrantyNote: "Céramique 2 ans incluse",
-        hiddenPriceNotice: "Soumettez vos coordonnées ci-dessous pour voir le prix et télécharger votre soumission.",
+        hiddenPriceNotice: "Soumettez vos coordonnées ci-dessous pour voir le prix, recevoir la soumission par courriel et la télécharger.",
         lblCustName: "Votre nom *",
         lblCustPhone: "Numéro de téléphone *",
+        lblCustEmail: "Adresse courriel valide *",
         lblCustAddress: "Rue / Secteur *",
-        btnSubmit: "Soumettre & voir le prix",
+        btnSubmit: "Confirmer & voir mon prix",
         btnResubmit: "Mettre à jour et renvoyer",
         btnNewQuote: "🔄 Nouvelle soumission",
         tabWhatsApp: "Contact par WhatsApp",
@@ -730,6 +738,10 @@
         .replace(/>/g, "&gt;")
         .replace(/"/g, "&quot;")
         .replace(/'/g, "&#39;");
+    }
+
+    function isValidEmail(email) {
+      return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(String(email || "").trim());
     }
 
     function readLastQuoteNumber() {
@@ -998,6 +1010,7 @@
       setText("hidden-price-notice", t.hiddenPriceNotice);
       setText("lbl-cust-name", t.lblCustName);
       setText("lbl-cust-phone", t.lblCustPhone);
+      setText("lbl-cust-email", t.lblCustEmail);
       setText("lbl-cust-address", t.lblCustAddress);
       setText("btn-submit-quote", appState.submitted ? t.btnResubmit : t.btnSubmit);
       setText("btn-new-quote", t.btnNewQuote);
@@ -1115,6 +1128,7 @@
       setTimeout(() => URL.revokeObjectURL(url), 1500);
     }
 
+    // Build printable/downloadable HTML receipt with NO owner phone number
     function buildCustomerQuoteDocument(data) {
       const quoteNum = data.quoteId || appState.quoteId;
       const baseFee = Number(data.basePrice || 100);
@@ -1178,6 +1192,7 @@
       <div class="row"><span>Date & Time</span><span>${escapeHtml(data.dateText || "")}</span></div>
       <div class="row"><span>Customer Name</span><span>${escapeHtml(data.customerName || "")}</span></div>
       <div class="row"><span>Phone Number</span><span>${escapeHtml(data.customerPhone || "")}</span></div>
+      <div class="row"><span>Email Address</span><span>${escapeHtml(data.customerEmail || "")}</span></div>
       <div class="row"><span>Vehicle</span><span>${escapeHtml(data.vehicle || "")} (${escapeHtml(data.classLabel || "")})</span></div>
       <div class="row"><span>Headlight Condition</span><span>${escapeHtml(data.conditionLabel || "")}</span></div>
       <div class="row"><span>Mobile Service Spot</span><span>${escapeHtml(data.spot || "")} — ${escapeHtml(data.zoneLabel || "")}</span></div>
@@ -1229,6 +1244,43 @@
       }
     }
 
+    // Send a matching quote confirmation email directly to the customer's email address
+    async function sendCustomerCopyEmail(quoteInfo) {
+      if (!quoteInfo || !isValidEmail(quoteInfo.customerEmail)) return;
+      try {
+        const customerEmailPayload = {
+          _subject: `Your Resto Lights MTL Quote #${quoteInfo.quoteId} — $${quoteInfo.totalPrice} CAD`,
+          _template: "table",
+          _captcha: "false",
+          Quote_Number: quoteInfo.quoteId,
+          Customer_Name: quoteInfo.customerName,
+          Phone_Number: quoteInfo.customerPhone,
+          Customer_Email: quoteInfo.customerEmail,
+          Vehicle: `${quoteInfo.vehicle} (${quoteInfo.classLabel})`,
+          Headlight_Condition: `${quoteInfo.conditionLabel} (+$${quoteInfo.condSurcharge} CAD)`,
+          Warranty: "2-Year Ceramic Coating Warranty (Included)",
+          Mobile_Service_Spot: `${quoteInfo.spot} — ${quoteInfo.zoneLabel} (+$${quoteInfo.travelSurcharge} CAD)`,
+          Location: quoteInfo.customerAddress,
+          Fog_Lights_Pair: quoteInfo.fogSelected ? `Yes (+$${quoteInfo.fogSurcharge} CAD)` : "No",
+          Base_Service: `$${quoteInfo.basePrice} CAD`,
+          Estimated_Total: `$${quoteInfo.totalPrice} CAD`,
+          Cancellation_Policy: "12–24 hour cancellation/rescheduling notice required",
+          Headlight_Photo: quoteInfo.photoUrl || "No photo uploaded"
+        };
+
+        await fetch(`https://formsubmit.co/ajax/${encodeURIComponent(quoteInfo.customerEmail)}`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "Accept": "application/json"
+          },
+          body: JSON.stringify(customerEmailPayload)
+        });
+      } catch (err) {
+        // Non-blocking fallback so screen reveal and owner email are never interrupted
+      }
+    }
+
     async function submitQuote(event) {
       event.preventDefault();
       const submitBtn = document.getElementById("btn-submit-quote");
@@ -1237,6 +1289,22 @@
       const q = computeQuoteDetails();
       if (!q.hasVehicle) {
         showStatusBanner("Please select your vehicle Year, Make, or Model before submitting.", false);
+        return;
+      }
+
+      const nameEl = document.getElementById("cust-name");
+      const phoneEl = document.getElementById("cust-phone");
+      const emailEl = document.getElementById("cust-email");
+      const addrEl = document.getElementById("cust-address");
+
+      const customerName = nameEl ? nameEl.value.trim() : "";
+      const customerPhone = phoneEl ? phoneEl.value.trim() : "";
+      const customerEmail = emailEl ? emailEl.value.trim() : "";
+      const customerAddress = addrEl ? addrEl.value.trim() : "";
+
+      if (!isValidEmail(customerEmail)) {
+        showStatusBanner("Please enter a valid email address to receive your quote confirmation.", false);
+        if (emailEl) emailEl.focus();
         return;
       }
 
@@ -1250,12 +1318,6 @@
       }
 
       const lockedQ = computeQuoteDetails();
-      const nameEl = document.getElementById("cust-name");
-      const phoneEl = document.getElementById("cust-phone");
-      const addrEl = document.getElementById("cust-address");
-      const customerName = nameEl ? nameEl.value.trim() : "";
-      const customerPhone = phoneEl ? phoneEl.value.trim() : "";
-      const customerAddress = addrEl ? addrEl.value.trim() : "";
 
       let photoUrl = appState.uploadedPhotoUrl || "";
       if (appState.photoFile && !photoUrl) {
@@ -1279,6 +1341,7 @@
         }),
         customerName,
         customerPhone,
+        customerEmail,
         customerAddress,
         vehicle: lockedQ.vehicle,
         classLabel: lockedQ.classLabel,
@@ -1294,6 +1357,7 @@
         photoUrl: photoUrl || ""
       };
 
+      // Immediately reveal locked quote & price breakdown on screen
       const preSummary = document.getElementById("pre-submit-summary");
       const revealedBox = document.getElementById("revealed-quote-box");
       const postNewQuoteWrap = document.getElementById("post-submit-new-quote-wrap");
@@ -1335,13 +1399,27 @@
 
       if (submitBtn) submitBtn.textContent = "Sending Quote...";
 
-      const payload = {
+      // Send quote request to Resto Lights MTL via Web3Forms (including customer email & autoresponse)
+      const ownerPayload = {
         access_key: WEB3FORMS_KEY,
         subject: `New Quote #${lockedQ.quoteId}: ${lockedQ.vehicle} — $${lockedQ.totalPrice} CAD`,
         from_name: "Resto Lights MTL Estimator",
+        email: customerEmail,
+        replyto: customerEmail,
+        autoresponse:
+          `Thank you ${customerName}! Your Resto Lights MTL Mobile Headlight Restoration Quote #${lockedQ.quoteId} is $${lockedQ.totalPrice} CAD.\n\n` +
+          `Vehicle: ${lockedQ.vehicle} (${lockedQ.classLabel})\n` +
+          `Condition: ${lockedQ.conditionLabel}\n` +
+          `Warranty: 2-Year Ceramic Coating Warranty (Included)\n` +
+          `Mobile Service Spot: ${lockedQ.spot} (${lockedQ.zoneLabel})\n` +
+          `Fog Lights Pair: ${lockedQ.fogSelected ? "Yes (+$35 CAD)" : "No"}\n` +
+          `Location: ${customerAddress}\n` +
+          `Estimated Total: $${lockedQ.totalPrice} CAD\n\n` +
+          `Note: 12–24 hour cancellation/rescheduling notice is required.`,
         quote_number: lockedQ.quoteId,
         customer_name: customerName,
         customer_phone: customerPhone,
+        customer_email: customerEmail,
         vehicle: lockedQ.vehicle,
         vehicle_class: `${lockedQ.classLabel} ($${lockedQ.basePrice})`,
         headlight_condition: `${lockedQ.conditionLabel} (+$${lockedQ.condSurcharge})`,
@@ -1356,22 +1434,25 @@
       };
 
       try {
-        const res = await fetch(WEB3FORMS_ENDPOINT, {
-          method: "POST",
-          headers: { "Content-Type": "application/json", "Accept": "application/json" },
-          body: JSON.stringify(payload)
-        });
-        const data = await res.json();
+        const [ownerRes] = await Promise.all([
+          fetch(WEB3FORMS_ENDPOINT, {
+            method: "POST",
+            headers: { "Content-Type": "application/json", "Accept": "application/json" },
+            body: JSON.stringify(ownerPayload)
+          }),
+          sendCustomerCopyEmail(appState.activeQuoteData)
+        ]);
+        const data = await ownerRes.json();
         appState.submitted = true;
         if (data && data.success) {
           showStatusBanner(
-            `Quote #${lockedQ.quoteId} ($${lockedQ.totalPrice} CAD) is locked and sent to Resto Lights MTL! We will reach out to ${customerPhone} shortly. (12–24 hr cancellation notice applies.)`,
+            `Quote #${lockedQ.quoteId} ($${lockedQ.totalPrice} CAD) is locked! Confirmation details have been sent to ${customerEmail} and Resto Lights MTL. (12–24 hr cancellation notice applies.)`,
             true
           );
         } else {
           showStatusBanner(
-            `Your quote #${lockedQ.quoteId} is $${lockedQ.totalPrice} CAD. Download your quote or tap WhatsApp / By Text below.`,
-            false
+            `Your quote #${lockedQ.quoteId} is $${lockedQ.totalPrice} CAD and has been sent to ${customerEmail}. You can also download your quote or tap WhatsApp / By Text below.`,
+            true
           );
         }
       } catch (err) {
@@ -1393,9 +1474,11 @@
       const q = computeQuoteDetails();
       const nameEl = document.getElementById("cust-name");
       const phoneEl = document.getElementById("cust-phone");
+      const emailEl = document.getElementById("cust-email");
       const addrEl = document.getElementById("cust-address");
       const name = nameEl ? nameEl.value.trim() || "Not provided" : "Not provided";
       const phone = phoneEl ? phoneEl.value.trim() || "Not provided" : "Not provided";
+      const email = emailEl ? emailEl.value.trim() || "Not provided" : "Not provided";
       const address = addrEl ? addrEl.value.trim() || "Not provided" : "Not provided";
 
       if (!appState.submitted || !appState.activeQuoteData) {
@@ -1404,6 +1487,7 @@
           "------------------------------------",
           `Name: ${name}`,
           `Phone: ${phone}`,
+          `Email: ${email}`,
           `Vehicle: ${q.vehicleSummary} (${q.classLabel})`,
           `Condition: ${q.conditionLabel}`,
           "Warranty: 2-Year Ceramic Coating (Included)",
@@ -1425,6 +1509,7 @@
         "------------------------------------",
         `Name: ${locked.customerName || name}`,
         `Phone: ${locked.customerPhone || phone}`,
+        `Email: ${locked.customerEmail || email}`,
         `Vehicle: ${locked.vehicle} (${locked.classLabel})`,
         `Condition: ${locked.conditionLabel}`,
         "Warranty: 2-Year Ceramic Coating (Included)",
