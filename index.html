@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Resto Lights MTL — Mobile Headlight Restoration</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Rajdhani:wght@600;700&display=swap" rel="stylesheet">
@@ -72,17 +73,29 @@
             class="h-9 sm:h-11 w-auto object-contain select-none"
             onerror="this.style.display='none'; document.getElementById('hdr-logo-svg').classList.remove('hidden');"
           />
-          <svg id="hdr-logo-svg" viewBox="0 0 220 48" class="hidden h-8 w-auto select-none" role="img" aria-label="Resto Lights MTL Logo">
+          <svg id="hdr-logo-svg" viewBox="0 0 260 62" class="hidden h-9 w-auto select-none" role="img" aria-label="Resto Lights MTL Logo">
             <defs>
-              <linearGradient id="rlmHdrGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+              <linearGradient id="rlmHdrSilver" x1="0%" y1="0%" x2="0%" y2="100%">
                 <stop offset="0%" stop-color="#ffffff" />
                 <stop offset="50%" stop-color="#cbd5e1" />
-                <stop offset="100%" stop-color="#38bdf8" />
+                <stop offset="100%" stop-color="#64748b" />
+              </linearGradient>
+              <linearGradient id="rlmHdrBlue" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stop-color="#7dd3fc" />
+                <stop offset="50%" stop-color="#0ea5e9" />
+                <stop offset="100%" stop-color="#0369a1" />
               </linearGradient>
             </defs>
-            <ellipse cx="22" cy="24" rx="15" ry="10" fill="none" stroke="#38bdf8" stroke-width="2" />
-            <circle cx="24" cy="24" r="5" fill="#7dd3fc" />
-            <text x="46" y="29" fill="url(#rlmHdrGrad)" font-family="Rajdhani, sans-serif" font-weight="700" font-style="italic" font-size="22" letter-spacing="1.5">RESTO LIGHTS MTL</text>
+            <path d="M18 32 C24 18, 48 12, 82 12 L94 18" fill="none" stroke="#e2e8f0" stroke-width="1.8" stroke-linecap="round"/>
+            <path d="M40 31 L66 24 L62 33 L36 33 Z" fill="rgba(148,163,184,0.35)" stroke="#94a3b8" stroke-width="1"/>
+            <path d="M68 23 L96 22 L92 33 L64 33 Z" fill="rgba(14,165,233,0.22)" stroke="#38bdf8" stroke-width="1.4"/>
+            <circle cx="80" cy="28" r="4" fill="#ffffff"/>
+            <circle cx="80" cy="28" r="7" fill="none" stroke="#38bdf8" stroke-width="1.2"/>
+            <text x="108" y="33" font-family="Rajdhani, sans-serif" font-weight="700" font-style="italic" font-size="22" letter-spacing="1">
+              <tspan fill="url(#rlmHdrSilver)">RESTO </tspan>
+              <tspan fill="url(#rlmHdrBlue)">LIGHTS</tspan>
+            </text>
+            <text x="168" y="48" text-anchor="middle" fill="#38bdf8" font-family="Inter, sans-serif" font-weight="800" font-size="11" letter-spacing="4">MTL</text>
           </svg>
         </div>
       </a>
@@ -98,89 +111,12 @@
 
   <!-- Hero Section -->
   <section class="max-w-6xl mx-auto px-4 pt-7 pb-6 text-center">
-    <div class="max-w-sm mx-auto mb-5">
+    <div class="max-w-md mx-auto mb-5">
       <div class="brand-logo-frame rounded-2xl overflow-hidden bg-black p-3">
         <img
           src="logo.jpg"
           alt="Resto Lights MTL Logo"
-          class="w-full h-auto max-h-44 object-contain mx-auto rounded-xl select-none"
+          class="w-full h-auto max-h-48 object-contain mx-auto rounded-xl select-none"
           onerror="this.style.display='none'; document.getElementById('hero-logo-svg').classList.remove('hidden');"
         />
-        <svg id="hero-logo-svg" viewBox="0 0 360 110" class="hidden w-full h-28 mx-auto select-none" role="img" aria-label="Resto Lights MTL Emblem">
-          <defs>
-            <linearGradient id="rlmHeroGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%" stop-color="#ffffff" />
-              <stop offset="45%" stop-color="#e2e8f0" />
-              <stop offset="100%" stop-color="#38bdf8" />
-            </linearGradient>
-          </defs>
-          <ellipse cx="62" cy="55" rx="36" ry="24" fill="none" stroke="#38bdf8" stroke-width="2.5" />
-          <ellipse cx="62" cy="55" rx="22" ry="14" fill="rgba(56,189,248,0.15)" stroke="#7dd3fc" stroke-width="1.5" />
-          <circle cx="66" cy="55" r="8" fill="#7dd3fc" />
-          <text x="112" y="52" fill="url(#rlmHeroGrad)" font-family="Rajdhani, sans-serif" font-weight="700" font-style="italic" font-size="30" letter-spacing="1.5">RESTO LIGHTS</text>
-          <text x="112" y="80" fill="#38bdf8" font-family="Inter, sans-serif" font-weight="700" font-size="15" letter-spacing="4">MONTREAL MOBILE</text>
-        </svg>
-      </div>
-    </div>
-
-    <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-sky-500/10 border border-sky-400/30 text-sky-300 text-xs font-semibold tracking-wide mb-4">
-      <span class="w-2 h-2 rounded-full bg-sky-400 animate-pulse"></span>
-      <span id="hero-badge">100% MOBILE SERVICE • 2-YR CERAMIC COATING INCLUDED</span>
-    </div>
-
-    <h1 class="font-display text-4xl sm:text-6xl font-bold tracking-tight uppercase leading-none mb-3">
-      <span id="hero-title-1" class="text-white">Crystal Clear Beams.</span>
-      <span id="hero-title-2" class="logo-text-chrome block sm:inline"> Instant Mobile Quote.</span>
-    </h1>
-
-    <p id="hero-subtitle" class="max-w-2xl mx-auto text-slate-300 text-sm sm:text-base leading-relaxed">
-      We come directly to your home, office, or any convenient parking lot across Greater Montreal. Every restoration includes a 2-year ceramic coating warranty.
-    </p>
-  </section>
-
-  <!-- Main Estimator Grid -->
-  <main class="max-w-6xl mx-auto px-4 pb-16 grid grid-cols-1 lg:grid-cols-12 gap-7 items-start">
-
-    <!-- Left 7 Columns -->
-    <div class="lg:col-span-7 space-y-6">
-
-      <!-- Step 1: Vehicle Information -->
-      <div class="glass-card rounded-2xl p-5 sm:p-6">
-        <div class="flex items-center justify-between mb-4">
-          <h2 class="font-display text-xl sm:text-2xl font-bold uppercase tracking-wide text-white flex items-center gap-2.5">
-            <span class="w-7 h-7 rounded-lg bg-sky-500/20 border border-sky-400/40 text-sky-300 text-sm flex items-center justify-center font-bold">1</span>
-            <span id="step1-title">Vehicle Information</span>
-          </h2>
-          <span class="text-xs text-sky-300/90 font-medium">Year • Make • Model</span>
-        </div>
-
-        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
-          <div>
-            <label for="car-year" class="block text-xs font-semibold uppercase tracking-wider text-slate-300 mb-1.5">Year</label>
-            <select id="car-year" onchange="updateQuotePreview()" class="w-full rounded-xl bg-slate-950/90 border border-slate-700/80 focus:border-sky-400 px-3.5 py-2.5 text-sm text-white outline-none transition"></select>
-          </div>
-
-          <div>
-            <label for="car-make" class="block text-xs font-semibold uppercase tracking-wider text-slate-300 mb-1.5">Make</label>
-            <select id="car-make" onchange="handleMakeChange()" class="w-full rounded-xl bg-slate-950/90 border border-slate-700/80 focus:border-sky-400 px-3.5 py-2.5 text-sm text-white outline-none transition"></select>
-          </div>
-
-          <div>
-            <label for="car-model" class="block text-xs font-semibold uppercase tracking-wider text-slate-300 mb-1.5">Model</label>
-            <select id="car-model" onchange="updateQuotePreview()" class="w-full rounded-xl bg-slate-950/90 border border-slate-700/80 focus:border-sky-400 px-3.5 py-2.5 text-sm text-white outline-none transition"></select>
-          </div>
-        </div>
-
-        <div id="custom-model-wrap" class="hidden mt-3">
-          <input id="custom-model-input" type="text" value="" oninput="updateQuotePreview()" class="w-full rounded-xl bg-slate-950/90 border border-slate-700/80 focus:border-sky-400 px-3.5 py-2.5 text-sm text-white outline-none transition" />
-        </div>
-
-        <!-- Vehicle Class -->
-        <div class="mt-4 pt-4 border-t border-slate-800/80">
-          <label class="block text-xs font-semibold uppercase tracking-wider text-slate-300 mb-2">Vehicle Class</label>
-          <div class="grid grid-cols-3 gap-2.5">
-            <button type="button" data-size="standard" onclick="selectSize('standard')" id="size-standard" class="size-btn py-2.5 px-3 rounded-xl border border-sky-400 bg-sky-500/15 text-sky-200 text-xs sm:text-sm font-semibold transition text-center cursor-pointer">
-              <span>Sedan / Coupe</span>
-              <span class="block text-[11px] text-sky-300/80 font-normal">Standard Class</span>
-            </button>
-            <button type="button" data-size="suv" onclick
+        <svg id="hero-logo-svg" viewBox
