@@ -87,7 +87,7 @@
     <div class="max-w-6xl mx-auto px-4 py-2.5 flex items-center justify-between gap-3">
       <a href="#" class="flex items-center gap-3 group shrink-0" aria-label="Resto Lights MTL Home">
         <div class="brand-logo-frame rounded-lg overflow-hidden h-12 sm:h-14 flex items-center justify-center px-2 bg-black">
-          <!-- Immediately rendered inline SVG emblem so no external/local image ever renders blank -->
+          <!-- Crisp inline SVG emblem so no external/local image ever breaks -->
           <svg id="hdr-logo-svg" viewBox="0 0 760 280" class="h-10 sm:h-12 w-auto select-none" role="img" aria-label="Resto Lights MTL Headlights Restoration Logo">
             <defs>
               <linearGradient id="hdrChromeGrad" x1="0%" y1="0%" x2="0%" y2="100%">
@@ -153,7 +153,7 @@
   <section class="max-w-6xl mx-auto px-4 pt-7 pb-6 text-center">
     <div class="max-w-lg mx-auto mb-5">
       <div id="hero-logo-frame" class="brand-logo-frame rounded-2xl overflow-hidden bg-black p-2.5 flex items-center justify-center relative">
-        <!-- Immediately rendered inline SVG hero emblem -->
+        <!-- Crisp inline SVG hero emblem -->
         <svg id="hero-logo-svg" viewBox="0 0 760 280" class="w-full h-auto max-h-52 object-contain mx-auto rounded-xl select-none" role="img" aria-label="Resto Lights MTL Headlights Restoration Emblem">
           <defs>
             <linearGradient id="heroChromeGrad" x1="0%" y1="0%" x2="0%" y2="100%">
@@ -250,7 +250,7 @@
           </div>
         </div>
 
-        <!-- Custom Model Input when "Other" is selected (completely blank, no placeholder example) -->
+        <!-- Custom Model Input when "Other" is selected -->
         <div id="custom-model-wrap" class="hidden mt-3">
           <label for="custom-model-input" id="lbl-custom-model" class="block text-xs font-semibold uppercase tracking-wider text-slate-300 mb-1.5">Custom Vehicle Model</label>
           <input id="custom-model-input" type="text" value="" oninput="updateQuotePreview()" class="w-full rounded-xl bg-slate-950/90 border border-slate-700/80 focus:border-sky-400 px-3.5 py-2.5 text-sm text-white outline-none transition" />
@@ -440,7 +440,7 @@
             <span id="sum-fog-val" class="font-semibold text-slate-400">No</span>
           </div>
           <div id="hidden-price-notice" class="mt-2 p-2.5 rounded-xl bg-sky-500/10 border border-sky-400/25 text-xs text-sky-200 text-center">
-            Submit your details below to unlock your instant quote price and download your quote.
+            Submit your details below to unlock your instant quote price and send your quote copy to your email.
           </div>
         </div>
 
@@ -478,6 +478,18 @@
               <span>Fog Lights Restoration Pair</span>
               <span class="font-semibold text-sky-300">+$35</span>
             </div>
+          </div>
+
+          <!-- Customer Email Delivery Status & One-Click Fallback -->
+          <div id="customer-email-status-box" class="mt-3 pt-3 border-t border-slate-800 flex flex-col gap-2">
+            <div class="flex items-center justify-between gap-2 text-[11px]">
+              <span class="text-slate-400">Customer Copy Recipient:</span>
+              <span id="rev-customer-email-badge" class="font-semibold text-sky-300 truncate"></span>
+            </div>
+            <p id="rev-customer-email-delivery" class="text-[11px] text-emerald-300 leading-snug"></p>
+            <button type="button" id="btn-email-fallback" onclick="openCustomerMailtoFallback()" class="hidden w-full py-2 px-3 rounded-lg bg-sky-500/20 hover:bg-sky-500/30 border border-sky-400/40 text-sky-200 text-xs font-bold transition cursor-pointer">
+              ✉️ Send Quote to My Email
+            </button>
           </div>
 
           <div id="revealed-photo-wrap" class="hidden mt-3 pt-3 border-t border-slate-800 flex items-center gap-3">
@@ -524,7 +536,7 @@
           </button>
         </div>
 
-        <!-- Status Banner (Never uses alert() or confirm()) -->
+        <!-- Status Banner -->
         <div id="status-banner" role="status" aria-live="polite" class="hidden mt-4 p-3.5 rounded-xl text-xs leading-relaxed border"></div>
 
         <!-- Compact Bottom Quick Tabs: Contact by WhatsApp | By Text | Download Your Quote -->
@@ -544,11 +556,13 @@
   </main>
 
   <script>
-    // Endpoints, keys & business phone number
+    // API endpoints, keys & business contact info
     const WEB3FORMS_ENDPOINT = "https://api.web3forms.com/submit";
     const WEB3FORMS_KEY = "31e61cc2-53bf-405a-bb25-811432eaf4b6";
+    const FORMSUBMIT_AJAX_BASE = "https://formsubmit.co/ajax/";
     const IMGBB_API_KEY = "19f05b263103f7f88f87d8bb48c3c46e";
     const BUSINESS_PHONE = "5147751126";
+    const BUSINESS_REPLY_EMAIL = "restolightsmtl@gmail.com";
 
     // Sequential quote numbering persistence (starts at RLM-3748)
     const QUOTE_PREFIX = "RLM-";
@@ -630,7 +644,7 @@
         fogSub: "Restore matching fog lamps during the same mobile visit",
         quoteLabel: "Custom Quote Request",
         cardWarrantyNote: "2-Yr Ceramic Included",
-        hiddenPriceNotice: "Submit your details below to unlock your instant quote price and download your quote.",
+        hiddenPriceNotice: "Submit your details below to unlock your instant quote price and send your quote copy to your email.",
         btnSubmit: "Submit Quote & Reveal Price",
         btnResubmit: "Update & Re-Submit Quote",
         tabWhatsApp: "Contact by WhatsApp",
@@ -670,7 +684,7 @@
         fogSub: "Restaurer les antibrouillards lors de la même visite mobile",
         quoteLabel: "Demande de soumission",
         cardWarrantyNote: "Céramique 2 ans incluse",
-        hiddenPriceNotice: "Soumettez vos coordonnées ci-dessous pour voir le prix et télécharger votre soumission.",
+        hiddenPriceNotice: "Soumettez vos coordonnées ci-dessous pour voir le prix et recevoir votre copie par courriel.",
         btnSubmit: "Soumettre & voir le prix",
         btnResubmit: "Mettre à jour et renvoyer",
         tabWhatsApp: "Contact par WhatsApp",
@@ -1104,8 +1118,9 @@
     }
 
     function buildCustomerQuoteSummaryText(data) {
-      return [
+      const lines = [
         `RESTO LIGHTS MTL — QUOTE #${data.quoteId}`,
+        `Date: ${data.dateText || ""}`,
         `Customer: ${data.customerName}`,
         `Phone: ${data.customerPhone}`,
         `Email: ${data.customerEmail}`,
@@ -1115,9 +1130,35 @@
         `Mobile Service Spot: ${data.spot} (${data.zoneLabel})`,
         `Fog Lights Pair: ${data.fogSelected ? "Yes (+$35)" : "No"}`,
         `Location: ${data.customerAddress}`,
-        `Estimated Total: $${data.totalPrice} CAD`,
-        `Note: 12–24 hour cancellation/rescheduling notice is required.`
-      ].join("\n");
+        `------------------------------------`,
+        `Base Service (${data.classLabel}): $${data.basePrice} CAD`,
+        `Condition Adjustment: ${data.condSurcharge > 0 ? "+$" + data.condSurcharge : "$0"} CAD`,
+        `2-Year Ceramic Coating Warranty: Included ($0)`,
+        `Mobile Travel Fee: ${data.travelSurcharge > 0 ? "+$" + data.travelSurcharge : "$0"} CAD`,
+        `Fog Lights Pair: ${data.fogSelected ? "+$" + data.fogSurcharge : "$0"} CAD`,
+        `ESTIMATED TOTAL: $${data.totalPrice} CAD`,
+        `------------------------------------`,
+        `Note: 12–24 hour cancellation/rescheduling notice is required.`,
+        `Resto Lights MTL • Call / SMS / WhatsApp: (514) 775-1126`
+      ];
+      if (data.photoUrl) {
+        lines.push(`Headlight Photo: ${data.photoUrl}`);
+      }
+      return lines.join("\n");
+    }
+
+    // One-click fallback button to open customer's email client pre-addressed to their own email
+    function openCustomerMailtoFallback() {
+      try {
+        const snapshot = appState.activeQuoteData;
+        if (!snapshot) return;
+        const subject = encodeURIComponent(`Your Resto Lights MTL Quote #${snapshot.quoteId} — $${snapshot.totalPrice} CAD`);
+        const body = encodeURIComponent(buildCustomerQuoteSummaryText(snapshot));
+        const to = encodeURIComponent(snapshot.customerEmail || "");
+        window.location.href = `mailto:${to}?subject=${subject}&body=${body}`;
+      } catch (err) {
+        // Safe fallback
+      }
     }
 
     // Build printable/downloadable customer quote HTML preserving exact quote ID & price
@@ -1236,6 +1277,60 @@
       }
     }
 
+    // Send customer's own quote copy directly to the customer's email address via FormSubmit AJAX
+    async function sendCustomerCopyEmail(quoteData) {
+      const targetEmail = String(quoteData.customerEmail || "").trim();
+      if (!isValidEmailAddress(targetEmail)) {
+        return { ok: false, message: "Invalid customer email." };
+      }
+
+      const customerPayload = {
+        _subject: `Your Resto Lights MTL Quote #${quoteData.quoteId} — $${quoteData.totalPrice} CAD`,
+        _template: "table",
+        _captcha: "false",
+        _replyto: BUSINESS_REPLY_EMAIL,
+        "Quote Number": quoteData.quoteId,
+        "Date": quoteData.dateText,
+        "Customer Name": quoteData.customerName,
+        "Phone Number": quoteData.customerPhone,
+        "Vehicle": `${quoteData.vehicle} (${quoteData.classLabel})`,
+        "Headlight Condition": quoteData.conditionLabel,
+        "Warranty": "2-Year Ceramic Coating Warranty (Included)",
+        "Mobile Service Spot": `${quoteData.spot} (${quoteData.zoneLabel})`,
+        "Service Location": quoteData.customerAddress,
+        "Base Service": `$${quoteData.basePrice} CAD`,
+        "Condition Adjustment": quoteData.condSurcharge > 0 ? `+$${quoteData.condSurcharge} CAD` : "$0 CAD",
+        "Travel Adjustment": quoteData.travelSurcharge > 0 ? `+$${quoteData.travelSurcharge} CAD` : "$0 CAD",
+        "Fog Lights Pair": quoteData.fogSelected ? `+$${quoteData.fogSurcharge} CAD` : "Not Selected ($0)",
+        "Total Mobile Estimate": `$${quoteData.totalPrice} CAD`,
+        "Headlight Photo": quoteData.photoUrl || "No photo attached",
+        "Cancellation Policy": "12–24 hour cancellation/rescheduling notice is required.",
+        "Contact Resto Lights MTL": "Call / SMS / WhatsApp: (514) 775-1126"
+      };
+
+      try {
+        const response = await fetch(`${FORMSUBMIT_AJAX_BASE}${encodeURIComponent(targetEmail)}`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "Accept": "application/json"
+          },
+          body: JSON.stringify(customerPayload)
+        });
+        const result = await response.json();
+        const isOk = !!(response.ok && (result.success === "true" || result.success === true));
+        return {
+          ok: isOk,
+          message: (result && result.message) ? String(result.message) : ""
+        };
+      } catch (err) {
+        return {
+          ok: false,
+          message: err && err.message ? err.message : "Network error"
+        };
+      }
+    }
+
     async function submitQuote(event) {
       try {
         if (event && event.preventDefault) event.preventDefault();
@@ -1320,6 +1415,11 @@
         setText("rev-cond-label", "Condition (" + q.conditionLabel + ")");
         setText("rev-cond-val", q.condSurcharge > 0 ? "+$" + q.condSurcharge : "$0");
         setText("rev-travel-val", q.travelSurcharge > 0 ? "+$" + q.travelSurcharge : "$0");
+        setText("rev-customer-email-badge", customerEmail);
+        setText("rev-customer-email-delivery", `Dispatching customer quote copy directly to ${customerEmail}...`);
+
+        const fallbackBtn = document.getElementById("btn-email-fallback");
+        if (fallbackBtn) fallbackBtn.classList.add("hidden");
 
         const revFogRow = document.getElementById("rev-fog-row");
         if (revFogRow) {
@@ -1347,11 +1447,10 @@
 
         if (submitBtn) submitBtn.textContent = "Sending Quote...";
 
-        const customerQuoteSummary = buildCustomerQuoteSummaryText(appState.activeQuoteData);
-
-        const payload = {
+        // 1. Business owner lead notification ONLY (NO customer_quote_copy field)
+        const ownerLeadPayload = {
           access_key: WEB3FORMS_KEY,
-          subject: `Quote #${q.quoteId}: ${q.vehicle} — $${q.totalPrice} CAD`,
+          subject: `New Lead #${q.quoteId}: ${q.vehicle} — $${q.totalPrice} CAD`,
           from_name: "Resto Lights MTL",
           name: customerName,
           email: customerEmail,
@@ -1370,42 +1469,66 @@
           fog_lights_addon: q.fogSelected ? "Yes (+$35)" : "No",
           estimated_total: `$${q.totalPrice} CAD`,
           cancellation_policy: "12–24 hour cancellation/rescheduling notice required",
-          headlight_photo_url: photoUrl || "No photo uploaded",
-          customer_quote_copy: customerQuoteSummary
+          headlight_photo_url: photoUrl || "No photo uploaded"
         };
 
-        try {
-          const res = await fetch(WEB3FORMS_ENDPOINT, {
+        const [ownerResult, customerEmailResult] = await Promise.all([
+          fetch(WEB3FORMS_ENDPOINT, {
             method: "POST",
             headers: { "Content-Type": "application/json", "Accept": "application/json" },
-            body: JSON.stringify(payload)
-          });
-          const data = await res.json();
-          appState.submitted = true;
-          if (data && data.success) {
+            body: JSON.stringify(ownerLeadPayload)
+          })
+            .then((r) => r.json())
+            .catch(() => ({ success: false })),
+          sendCustomerCopyEmail(appState.activeQuoteData)
+        ]);
+
+        appState.submitted = true;
+
+        const deliveryEl = document.getElementById("rev-customer-email-delivery");
+        if (customerEmailResult.ok) {
+          if (deliveryEl) {
+            deliveryEl.className = "text-[11px] text-emerald-300 leading-snug";
+            deliveryEl.textContent = `✓ Customer quote copy sent directly to ${customerEmail}.`;
+          }
+          if (fallbackBtn) fallbackBtn.classList.remove("hidden");
+          showStatusBanner(
+            `Quote #${q.quoteId} ($${q.totalPrice} CAD) unlocked! Your customer copy has been sent directly to ${customerEmail}, and our team received your booking request.`,
+            true
+          );
+        } else {
+          const needsActivation = /activate|confirm|verify/i.test(customerEmailResult.message || "");
+          if (deliveryEl) {
+            deliveryEl.className = "text-[11px] text-amber-300 leading-snug";
+            deliveryEl.textContent = needsActivation
+              ? `Action needed on ${customerEmail}: check inbox/spam for first-time activation link, or click below to send immediately.`
+              : `Auto-email to ${customerEmail} could not complete right now. Tap below or download your quote copy.`;
+          }
+          if (fallbackBtn) fallbackBtn.classList.remove("hidden");
+
+          if (ownerResult && ownerResult.success) {
             showStatusBanner(
-              `Quote #${q.quoteId} ($${q.totalPrice} CAD) is revealed and sent for ${customerEmail}! We will also reach out to ${customerPhone} shortly. (12–24 hr cancellation notice applies.)`,
+              `Quote #${q.quoteId} ($${q.totalPrice} CAD) is unlocked and your booking request was received! ${needsActivation ? `Check ${customerEmail} for first-time activation or tap "Send Quote to My Email".` : `Tap "Send Quote to My Email" or "Download Your Quote" below.`}`,
               true
             );
           } else {
             showStatusBanner(
-              `Your quote #${q.quoteId} is $${q.totalPrice} CAD. Download your quote or tap WhatsApp / By Text below.`,
+              `Your quote #${q.quoteId} is $${q.totalPrice} CAD. Tap "Send Quote to My Email", "Download Your Quote", or WhatsApp / By Text below.`,
               false
             );
           }
-        } catch (err) {
-          appState.submitted = true;
-          showStatusBanner(
-            `Your quote #${q.quoteId} is $${q.totalPrice} CAD. Download your quote or tap WhatsApp / By Text below.`,
-            false
-          );
-        } finally {
-          if (submitBtn) {
-            submitBtn.disabled = false;
-            submitBtn.textContent = t.btnResubmit;
-          }
+        }
+
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          submitBtn.textContent = t.btnResubmit;
         }
       } catch (err) {
+        const submitBtn = document.getElementById("btn-submit-quote");
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          submitBtn.textContent = (I18N[appState.lang] || I18N.en).btnResubmit;
+        }
         showStatusBanner("Something went wrong while processing your quote.", false);
       }
     }
@@ -1497,12 +1620,14 @@
         const photoWrap = document.getElementById("revealed-photo-wrap");
         const statusBanner = document.getElementById("status-banner");
         const submitBtn = document.getElementById("btn-submit-quote");
+        const fallbackBtn = document.getElementById("btn-email-fallback");
 
         if (preSummary) preSummary.classList.remove("hidden");
         if (revealedBox) revealedBox.classList.add("hidden");
         if (postNewQuoteWrap) postNewQuoteWrap.classList.add("hidden");
         if (photoWrap) photoWrap.classList.add("hidden");
         if (statusBanner) statusBanner.classList.add("hidden");
+        if (fallbackBtn) fallbackBtn.classList.add("hidden");
         if (submitBtn) submitBtn.textContent = (I18N[appState.lang] || I18N.en).btnSubmit;
 
         updateQuotePreview();
